@@ -24,7 +24,7 @@ public class ConexionBD {
     	 //Chargement du pilote JDBC pour MYSQL puis creation de la connection
     	   //DriverManager.registerDriver(new com.mysql.jdbc.Driver());
     	// ou bien 
-          Class.forName("com.mysql.jdbc.Driver");
+          Class.forName("com.mysql.cj.jdbc.Driver");
        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/sweetloc","root","");
 				if (conn!=null)
 	System.out.println("Connexion à la base de données a été établie avec succès");
