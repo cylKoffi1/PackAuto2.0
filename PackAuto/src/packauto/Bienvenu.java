@@ -100,7 +100,7 @@ public class Bienvenu extends javax.swing.JFrame {
 
     private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
         dispose();
-        new ParkA().setVisible(true);        
+        new Connexion().setVisible(true);        
     }//GEN-LAST:event_okActionPerformed
 
     /**

@@ -4,6 +4,8 @@
  */
 package packauto;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author cylko
@@ -41,10 +43,10 @@ public class DetailVoiture extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         txtdtnaissance = new com.toedter.calendar.JDateChooser();
-        jTextField5 = new javax.swing.JTextField();
+        txtPath = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
+        btnPath = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,7 +221,7 @@ public class DetailVoiture extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(112, 112, 112))
         );
         jPanel2Layout.setVerticalGroup(
@@ -233,37 +235,37 @@ public class DetailVoiture extends javax.swing.JFrame {
                         .addContainerGap(43, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(114, 114, 114))))
         );
 
         jPanel5.getAccessibleContext().setAccessibleName("Information Voiture");
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
+        image.setBackground(new java.awt.Color(255, 255, 255));
+        image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, Short.MAX_VALUE)
+            .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 283, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jButton2.setBackground(new java.awt.Color(102, 0, 0));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/explorateur.png"))); // NOI18N
-        jButton2.setText("choisir");
-        jButton2.setAlignmentX(0.5F);
-        jButton2.setAlignmentY(0.0F);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnPath.setBackground(new java.awt.Color(102, 0, 0));
+        btnPath.setForeground(new java.awt.Color(255, 255, 255));
+        btnPath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/explorateur.png"))); // NOI18N
+        btnPath.setText("choisir");
+        btnPath.setAlignmentX(0.5F);
+        btnPath.setAlignmentY(0.0F);
+        btnPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnPathActionPerformed(evt);
             }
         });
 
@@ -278,7 +280,7 @@ public class DetailVoiture extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnPath)
                         .addGap(119, 119, 119))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -292,7 +294,7 @@ public class DetailVoiture extends javax.swing.JFrame {
                 .addGap(130, 130, 130)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(btnPath)
                 .addGap(42, 42, 42))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -304,10 +306,42 @@ public class DetailVoiture extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPathActionPerformed
+        imagess();
+    }//GEN-LAST:event_btnPathActionPerformed
+public void imagess() {
+        ConexionBD v = new ConexionBD();
+        v.filen();
+        String vpath = v.getp();
+        int width =200;
+        int heigth= 200;
+        image.getIcon().getIconHeight();
+        
+        try {
+        if (vpath == null) {
 
+        } else {
+            image.setIcon(new ImageIcon(vpath));
+            txtPath.setText(vpath);
+
+            
+//                File image = new File(vpath);
+//                FileInputStream fs = new FileInputStream(image);
+//                ByteArrayOutputStream bs = new ByteArrayOutputStream();
+//                byte[] b = new byte[1024];
+//                for (int re; (re = fs.read(b)) != -1;) {
+//                    bs.write(b, 0, re);
+//
+//                }
+//                this.photo = bs.toByteArray();
+
+//            
+            } 
+            }catch (Exception e) {
+                e.printStackTrace();
+        }
+
+    }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -377,11 +411,11 @@ public class DetailVoiture extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnPath;
+    private javax.swing.JLabel image;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -394,7 +428,7 @@ public class DetailVoiture extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtPath;
     private com.toedter.calendar.JDateChooser txtdtnaissance;
     // End of variables declaration//GEN-END:variables
 }
