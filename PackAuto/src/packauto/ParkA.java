@@ -7,22 +7,36 @@ package packauto;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.sql.*;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+import java.util.Date;
 
-/**
+/** 
  *
  * @author cylko
  */
 public class ParkA extends javax.swing.JFrame {
-
+    Connection conn = null ;
+    ResultSet rs = null;
+    PreparedStatement ps = null;
+    public ImageIcon Format =null;
+    static String test;
     /**
      * Creates new form ParkA
      */
     public ParkA() {
+        
         initComponents();
+        
+        conn = ConexionBD.Conexion();
+        AfficheTablo();
+        ComboxAff();
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +58,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        table1 = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -82,18 +96,18 @@ public class ParkA extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jTextField5 = new javax.swing.JTextField();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jTextField6 = new javax.swing.JTextField();
-        jComboBox10 = new javax.swing.JComboBox<>();
-        jComboBox11 = new javax.swing.JComboBox<>();
-        jComboBox12 = new javax.swing.JComboBox<>();
-        jComboBox13 = new javax.swing.JComboBox<>();
+        dateIm = new com.toedter.calendar.JDateChooser();
+        nbPla = new javax.swing.JComboBox<>();
+        vitText = new javax.swing.JTextField();
+        tempCom = new javax.swing.JComboBox<>();
+        marqVoit = new javax.swing.JComboBox<>();
+        vitCom = new javax.swing.JComboBox<>();
+        carBCom = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        table2 = new javax.swing.JTable();
         imgPath1 = new javax.swing.JLabel();
         textPath1 = new javax.swing.JTextField();
+        matTex = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
@@ -177,7 +191,7 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -196,7 +210,7 @@ public class ParkA extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(table1);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -492,31 +506,35 @@ public class ParkA extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Boîte de vitesse :");
 
-        jTextField5.setBorder(null);
-
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        jComboBox6.setBorder(null);
-
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        nbPla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
+        nbPla.setBorder(null);
+        nbPla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                nbPlaActionPerformed(evt);
             }
         });
 
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox10.setBorder(null);
+        vitText.setBorder(null);
+        vitText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vitTextActionPerformed(evt);
+            }
+        });
 
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        jComboBox11.setBorder(null);
+        tempCom.setBorder(null);
 
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        jComboBox12.setBorder(null);
+        marqVoit.setBorder(null);
+        marqVoit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marqVoitActionPerformed(evt);
+            }
+        });
 
-        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        jComboBox13.setBorder(null);
+        vitCom.setBorder(null);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        carBCom.setBorder(null);
+
+        table2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -535,11 +553,23 @@ public class ParkA extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        table2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table2);
 
         imgPath1.setBackground(new java.awt.Color(0, 0, 0));
         imgPath1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
         imgPath1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        matTex.setBorder(null);
+        matTex.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matTexActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -570,31 +600,31 @@ public class ParkA extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel18Layout.createSequentialGroup()
                                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(vitText)
+                                    .addComponent(nbPla, 0, 105, Short.MAX_VALUE)
+                                    .addComponent(matTex, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel18Layout.createSequentialGroup()
                                         .addComponent(jLabel24)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(carBCom, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel18Layout.createSequentialGroup()
                                         .addComponent(jLabel25)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(vitCom, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel18Layout.createSequentialGroup()
                                         .addComponent(jLabel19)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(marqVoit, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel23)
                                     .addComponent(jLabel22))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                                    .addComponent(jComboBox10, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(dateIm, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                                    .addComponent(tempCom, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
@@ -605,29 +635,29 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
-                    .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(marqVoit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23)
-                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tempCom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(matTex, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nbPla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17)
-                            .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(vitCom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18)
                             .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(vitText, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel24)
-                                .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(carBCom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel22))))
                     .addComponent(jLabel25)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                    .addComponent(dateIm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel18Layout.createSequentialGroup()
@@ -908,7 +938,169 @@ public class ParkA extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-public void imagee() {
+   public void ComboxAff(){
+     /*  try{    
+        String[] queries = {"SELECT * FROM marque", "SELECT * FROM boitevitesse", "SELECT * FROM temperature", "SELECT * FROM carburant"};
+        PreparedStatement[] statements = new PreparedStatement[queries.length];
+        ResultSet[] resultSets = new ResultSet[queries.length];
+
+        for (int i = 0; i < queries.length; i++) {
+            statements[i] = conn.prepareStatement(queries[i]);
+            resultSets[i] = statements[i].executeQuery();
+        }
+
+        while (resultSets[0].next()) {
+            marqVoit.addItem(resultSets[0].getString("libMarque"));
+        }
+
+        while (resultSets[1].next()) {
+            vitCom.addItem(resultSets[1].getString("libBoiteV"));
+        }
+
+        while (resultSets[2].next()) {
+            tempCom.addItem(resultSets[2].getString("libTemperature"));
+        }
+
+        while (resultSets[3].next()) {
+            carBCom.addItem(resultSets[3].getString("libCarburant"));
+        }
+
+        for (ResultSet resultSet : resultSets) {
+            resultSet.close();
+        }
+
+        for (PreparedStatement statement : statements) {
+            statement.close();
+        }
+        ps.close();
+        rs.close();
+            
+           
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
+   }
+    
+    public void AfficheTablo() {
+        try {
+
+            String sql = "SELECT\n" +
+"  voiture.matVoiture AS 'Matricule',\n" +
+"  voiture.nbrePlace AS 'Place',\n" +
+"  voiture.puissanceMax AS 'Vitesse',\n" +
+"  marque.libMarque AS 'Marque',\n" +
+"  boitevitesse.libBoiteV AS 'BoiteV',\n" +
+"  carburant.libCarburant AS 'Energie',\n" +
+"  temperature.libTemperature AS 'temp',\n" +
+"  voiture.Date AS 'Date'\n" +
+"FROM\n" +
+"  voiture\n" +
+"  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
+"  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
+"  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
+"  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            table1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            String sql1 = "SELECT\n" +
+"matVoiture AS 'Matricule',\n"+
+"  voiture.puissanceMax AS 'Vitesse',\n" +
+"  marque.libMarque AS 'Marque',\n" +
+"  boitevitesse.libBoiteV AS 'BoiteV',\n" +
+"  carburant.libCarburant AS 'Energie'\n" +
+"FROM\n" +
+"  voiture\n" +
+"  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
+"  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
+"  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant;";
+            PreparedStatement ps1 = conn.prepareStatement(sql1);
+            ResultSet rs1 = ps1.executeQuery();
+            table2.setModel(DbUtils.resultSetToTableModel(rs1));
+
+                ps1.close();
+                rs1.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally {
+
+          
+        }
+    }
+    
+    public void Deplace() {
+        try {
+
+            int row = table2.getSelectedRow();
+            this.test = (table2.getModel().getValueAt(row, 0).toString());
+            String requet = "SELECT\n" +
+"  voiture.matVoiture,\n" +
+"  voiture.nbrePlace,\n" +
+"  voiture.puissanceMax ,\n" +
+"  marque.libMarque,\n" +
+"  boitevitesse.libBoiteV,\n" +
+"  carburant.libCarburant ,\n" +
+"  temperature.libTemperature,\n" +
+"  voiture.Date,\n" +
+"  voiture.photoV \n" +
+"FROM\n" +
+"  voiture\n" +
+"  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
+"  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
+"  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
+"  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature\n" +
+"WHERE voiture.matVoiture = '" + test + "' ";
+            ps = conn.prepareStatement(requet);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                String t1 = rs.getString("matVoiture");
+                matTex.setText(t1);
+                String t2 = rs.getString("nbrePlace");
+                nbPla.addItem(t2);
+                String t3 = rs.getString("puissanceMax");
+                vitText.setText(t3);
+                String t4 = rs.getString("libMarque");
+                marqVoit.addItem(t4);
+                String t5 = rs.getString("libBoiteV");
+                vitCom.addItem(t5);
+                String t6 = rs.getString("nbrePlace");
+                carBCom.addItem(t6);
+                String t7 = rs.getString("libTemperature");
+                tempCom.addItem(t7);
+                Date date = rs.getDate("Date");
+                dateIm.setDate(date);
+                
+                String t8 =rs.getString("photoV");
+                if(t8.equals("")){
+                    ImageIcon img202 = new ImageIcon(getClass().getResource("file_image_1.png"));
+                    imgPath1.setIcon(img202);
+                }else{
+                    imgPath1.setIcon(new ImageIcon(t8));
+                }
+//                byte[] imagedata =rs.getBytes("image");
+//                Format = new ImageIcon(imagedata);
+//                image.setIcon(Format);
+                
+            }
+ps.close();
+                rs.close();
+        } catch (Exception e) {
+            System.out.println(e);
+            
+        }finally {
+
+            try {
+                ps.close();
+                rs.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erreur BD");
+            }
+        }
+    }
+    
+    public void imagee() {
         ConexionBD v = new ConexionBD();
         v.filen();
         String vpath = v.getp();
@@ -962,13 +1154,29 @@ public void imagee() {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton15ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void vitTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_vitTextActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void matTexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTexActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_matTexActionPerformed
+
+    private void nbPlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbPlaActionPerformed
+        
+    }//GEN-LAST:event_nbPlaActionPerformed
+
+    private void marqVoitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marqVoitActionPerformed
+    
+    }//GEN-LAST:event_marqVoitActionPerformed
+
+    private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
+        Deplace();
+    }//GEN-LAST:event_table2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1008,6 +1216,8 @@ public void imagee() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ajouter;
     private javax.swing.JTabbedPane ajouterVoiture;
+    private javax.swing.JComboBox<String> carBCom;
+    private com.toedter.calendar.JDateChooser dateIm;
     private javax.swing.JLabel imgPath;
     private javax.swing.JLabel imgPath1;
     private javax.swing.JButton jButton1;
@@ -1022,17 +1232,11 @@ public void imagee() {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox10;
-    private javax.swing.JComboBox<String> jComboBox11;
-    private javax.swing.JComboBox<String> jComboBox12;
-    private javax.swing.JComboBox<String> jComboBox13;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1071,14 +1275,18 @@ public void imagee() {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JComboBox<String> marqVoit;
+    private javax.swing.JTextField matTex;
+    private javax.swing.JComboBox<String> nbPla;
+    private javax.swing.JTable table1;
+    private javax.swing.JTable table2;
+    private javax.swing.JComboBox<String> tempCom;
     private javax.swing.JTextField textPath;
     private javax.swing.JTextField textPath1;
+    private javax.swing.JComboBox<String> vitCom;
+    private javax.swing.JTextField vitText;
     // End of variables declaration//GEN-END:variables
 }

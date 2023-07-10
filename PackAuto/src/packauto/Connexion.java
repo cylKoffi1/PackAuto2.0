@@ -213,7 +213,7 @@ public class Connexion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      String requete ="select * from admin where emailAdmin = ? and mdpAdmin =? ";
+      String requete ="SELECT * FROM `admin` WHERE loginAdmin =? AND mdpAdmin =?";
         try{
             
             ps = conn.prepareStatement(requete);
