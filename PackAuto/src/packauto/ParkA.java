@@ -13,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JTextField;
 
 /** 
  *
@@ -62,7 +65,7 @@ public class ParkA extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
-        imgPath = new javax.swing.JLabel();
+        imagePhoto = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -73,16 +76,16 @@ public class ParkA extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        DateImm = new com.toedter.calendar.JDateChooser();
+        nombrePlace = new javax.swing.JComboBox<>();
+        MarquVoit = new javax.swing.JComboBox<>();
+        BoiteVite = new javax.swing.JComboBox<>();
+        Energie = new javax.swing.JComboBox<>();
+        Temper = new javax.swing.JComboBox<>();
+        VitesseMax = new javax.swing.JTextField();
+        matricule = new javax.swing.JTextField();
         ajouter = new javax.swing.JButton();
-        textPath = new javax.swing.JTextField();
+        textPhoto = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
@@ -258,21 +261,21 @@ public class ParkA extends javax.swing.JFrame {
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
 
-        imgPath.setBackground(new java.awt.Color(0, 0, 0));
-        imgPath.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
-        imgPath.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        imagePhoto.setBackground(new java.awt.Color(0, 0, 0));
+        imagePhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
+        imagePhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imgPath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(imagePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(imgPath, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -307,24 +310,32 @@ public class ParkA extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Boîte de vitesse :");
 
-        jTextField3.setBorder(null);
+        nombrePlace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        nombrePlace.setBorder(null);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        jComboBox1.setBorder(null);
+        MarquVoit.setBorder(null);
 
-        jTextField4.setBorder(null);
+        BoiteVite.setBorder(null);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.setBorder(null);
+        Energie.setBorder(null);
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox3.setBorder(null);
+        Temper.setBorder(null);
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox4.setBorder(null);
+        VitesseMax.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        VitesseMax.setBorder(null);
+        VitesseMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VitesseMaxActionPerformed(evt);
+            }
+        });
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox5.setBorder(null);
+        matricule.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule.setBorder(null);
+        matricule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matriculeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -341,17 +352,16 @@ public class ParkA extends javax.swing.JFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField3)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField4)
-                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(nombrePlace, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MarquVoit, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BoiteVite, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Energie, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Temper, 0, 156, Short.MAX_VALUE)
+                    .addComponent(VitesseMax, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DateImm, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                    .addComponent(matricule))
                 .addContainerGap())
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
@@ -366,34 +376,34 @@ public class ParkA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
+                    .addComponent(nombrePlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(VitesseMax, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MarquVoit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BoiteVite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Energie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Temper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DateImm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addGap(45, 45, 45))
         );
@@ -437,7 +447,7 @@ public class ParkA extends javax.swing.JFrame {
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(85, 85, 85))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                        .addComponent(textPath, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))))
         );
         jPanel13Layout.setVerticalGroup(
@@ -446,7 +456,7 @@ public class ParkA extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textPath, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addGap(45, 45, 45)
@@ -454,7 +464,7 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(71, 71, 71))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -939,32 +949,45 @@ public class ParkA extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
    public void ComboxAff(){
-     /*  try{    
+       try{    
         String[] queries = {"SELECT * FROM marque", "SELECT * FROM boitevitesse", "SELECT * FROM temperature", "SELECT * FROM carburant"};
         PreparedStatement[] statements = new PreparedStatement[queries.length];
         ResultSet[] resultSets = new ResultSet[queries.length];
 
+        // Récupérer les données depuis votre base de données
         for (int i = 0; i < queries.length; i++) {
             statements[i] = conn.prepareStatement(queries[i]);
             resultSets[i] = statements[i].executeQuery();
         }
 
+        // Utilisez une Map pour associer les identifiants aux noms
+        Map<Integer, String> dataMap = new HashMap<>();
+
+        // Parcourir les données et ajouter-les à la Map
         while (resultSets[0].next()) {
-            marqVoit.addItem(resultSets[0].getString("libMarque"));
+            int id = resultSets[0].getInt("idMarque");
+            String nom = resultSets[0].getString("libMarque");
+            dataMap.put(id, nom);
+        }
+
+        // Remplir les JComboBox avec les noms correspondants
+        for (Map.Entry<Integer, String> entry : dataMap.entrySet()) {
+            MarquVoit.addItem(entry.getValue());
         }
 
         while (resultSets[1].next()) {
-            vitCom.addItem(resultSets[1].getString("libBoiteV"));
+            BoiteVite.addItem(resultSets[1].getString("libBoiteV"));
         }
 
         while (resultSets[2].next()) {
-            tempCom.addItem(resultSets[2].getString("libTemperature"));
+            Temper.addItem(resultSets[2].getString("libTemperature"));
         }
 
         while (resultSets[3].next()) {
-            carBCom.addItem(resultSets[3].getString("libCarburant"));
+            Energie.addItem(resultSets[3].getString("libCarburant"));
         }
 
+        // Fermer les ressources
         for (ResultSet resultSet : resultSets) {
             resultSet.close();
         }
@@ -972,13 +995,15 @@ public class ParkA extends javax.swing.JFrame {
         for (PreparedStatement statement : statements) {
             statement.close();
         }
+
+
         ps.close();
         rs.close();
             
            
         } catch (Exception e) {
             System.out.println(e);
-        }*/
+        }
    }
     
     public void AfficheTablo() {
@@ -1078,9 +1103,6 @@ public class ParkA extends javax.swing.JFrame {
                 }else{
                     imgPath1.setIcon(new ImageIcon(t8));
                 }
-//                byte[] imagedata =rs.getBytes("image");
-//                Format = new ImageIcon(imagedata);
-//                image.setIcon(Format);
                 
             }
 ps.close();
@@ -1131,8 +1153,8 @@ ps.close();
 
         // Mettre à jour l'icône du JLabel avec l'image redimensionnée
         ImageIcon imageIcon = new ImageIcon(resizedImage);
-        imgPath.setIcon(imageIcon);
-        textPath.setText(vpath);
+        imagePhoto.setIcon(imageIcon);
+        textPhoto.setText(vpath);
             } 
             }catch (Exception e) {
                 e.printStackTrace();
@@ -1141,9 +1163,62 @@ ps.close();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         imagee();
     }//GEN-LAST:event_jButton2ActionPerformed
+private int getIdFromDatabase(String id, String table, String columnName, String value) throws SQLException {
+    
+    String query = "SELECT "+id+" FROM " + table + " WHERE " + columnName + " = ?";
+    PreparedStatement statement = conn.prepareStatement(query);
+    statement.setString(1, value);
+    ResultSet resultSet = statement.executeQuery();
+
+    int ids = -1; // Valeur par défaut si aucune correspondance n'est trouvée
+
+    if (resultSet.next()) {
+        ids = resultSet.getInt(id);
+    }
+
+    // Fermer les ressources
+    resultSet.close();
+    statement.close();
+
+    return ids;
+}
 
     private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
         
+        try {
+            
+            // Récupérer les valeurs sélectionnées dans les JComboBox
+            String selectedBoiteVite = (String) BoiteVite.getSelectedItem();
+            String selectedTemper = (String) Temper.getSelectedItem();
+            String selectedEnergie = (String) Energie.getSelectedItem();
+            String selectedMarquVoit = (String) MarquVoit.getSelectedItem();
+            String selectedPlace = (String) nombrePlace.getSelectedItem();
+
+            // Récupérer les identifiants correspondants depuis la base de données
+            int idBoiteVite = getIdFromDatabase("idBoiteV","boitevitesse", "libBoiteV", selectedBoiteVite);
+            int idTemper = getIdFromDatabase("idTemperature","temperature", "libTemperature", selectedTemper);
+            int idCarburant = getIdFromDatabase("idCarburant","carburant", "libCarburant", selectedEnergie);
+            int idMarque = getIdFromDatabase("idMarque","marque", "libMarque", selectedMarquVoit);
+
+            String requete = "INSERT INTO `voiture`(`matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`) VALUES (?,"+selectedPlace+",?,"+idMarque+","+idBoiteVite+","+idCarburant+","+idTemper+",?,?)";
+            ps = conn.prepareStatement(requete);
+            ps.setString(1, matricule.getText());
+            ps.setString(2, VitesseMax.getText());
+            java.util.Date date = DateImm.getDate(); // Récupérer la valeur du JDateChooser
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+            ps.setDate(3,  sqlDate);
+            ps.setString(4, textPhoto.getText());
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Enregistrement avec succès");
+                ps.close();
+                rs.close();
+           
+
+        } catch (Exception e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tout est Obligatoire");
+        }
     }//GEN-LAST:event_ajouterActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -1177,6 +1252,14 @@ ps.close();
     private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
         Deplace();
     }//GEN-LAST:event_table2MouseClicked
+
+    private void VitesseMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VitesseMaxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VitesseMaxActionPerformed
+
+    private void matriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_matriculeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1214,11 +1297,17 @@ ps.close();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> BoiteVite;
+    private com.toedter.calendar.JDateChooser DateImm;
+    private javax.swing.JComboBox<String> Energie;
+    private javax.swing.JComboBox<String> MarquVoit;
+    private javax.swing.JComboBox<String> Temper;
+    private javax.swing.JTextField VitesseMax;
     private javax.swing.JButton ajouter;
     private javax.swing.JTabbedPane ajouterVoiture;
     private javax.swing.JComboBox<String> carBCom;
     private com.toedter.calendar.JDateChooser dateIm;
-    private javax.swing.JLabel imgPath;
+    private javax.swing.JLabel imagePhoto;
     private javax.swing.JLabel imgPath1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1231,12 +1320,6 @@ ps.close();
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1276,16 +1359,16 @@ ps.close();
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JComboBox<String> marqVoit;
     private javax.swing.JTextField matTex;
+    private javax.swing.JTextField matricule;
     private javax.swing.JComboBox<String> nbPla;
+    private javax.swing.JComboBox<String> nombrePlace;
     private javax.swing.JTable table1;
     private javax.swing.JTable table2;
     private javax.swing.JComboBox<String> tempCom;
-    private javax.swing.JTextField textPath;
     private javax.swing.JTextField textPath1;
+    private javax.swing.JTextField textPhoto;
     private javax.swing.JComboBox<String> vitCom;
     private javax.swing.JTextField vitText;
     // End of variables declaration//GEN-END:variables
