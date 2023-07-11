@@ -4,6 +4,7 @@
  */
 package packauto;
 
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,6 +16,7 @@ import net.proteanit.sql.DbUtils;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /** 
@@ -35,8 +37,9 @@ public class ParkA extends javax.swing.JFrame {
         initComponents();
         
         conn = ConexionBD.Conexion();
-        AfficheTablo();
+        AfficheTableau();
         ComboxAff();
+        efface();
     }
 
     
@@ -62,6 +65,7 @@ public class ParkA extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
+        jButton12 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -215,18 +219,30 @@ public class ParkA extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(table1);
 
+        jButton12.setBackground(new java.awt.Color(153, 153, 153));
+        jButton12.setForeground(new java.awt.Color(255, 255, 255));
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/actualiser.png"))); // NOI18N
+        jButton12.setText("Actualiser");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(76, 76, 76))
             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel11Layout.createSequentialGroup()
                     .addGap(189, 189, 189)
@@ -241,9 +257,11 @@ public class ParkA extends javax.swing.JFrame {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(24, 24, 24)
                 .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,10 +291,7 @@ public class ParkA extends javax.swing.JFrame {
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imagePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(imagePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, Short.MAX_VALUE)
         );
 
         jPanel15.setBackground(new java.awt.Color(102, 0, 0));
@@ -566,6 +581,9 @@ public class ParkA extends javax.swing.JFrame {
         table2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 table2MouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table2MouseReleased(evt);
             }
         });
         jScrollPane2.setViewportView(table2);
@@ -1006,163 +1024,186 @@ public class ParkA extends javax.swing.JFrame {
         }
    }
     
-    public void AfficheTablo() {
-        try {
+    public void AfficheTableau() {
+    try {
+        String sql1 = "SELECT\n" +
+                "  voiture.matVoiture AS 'Matricule',\n" +
+                "  voiture.nbrePlace AS 'Place',\n" +
+                "  voiture.puissanceMax AS 'Vitesse',\n" +
+                "  marque.libMarque AS 'Marque',\n" +
+                "  boitevitesse.libBoiteV AS 'BoiteV',\n" +
+                "  carburant.libCarburant AS 'Energie',\n" +
+                "  temperature.libTemperature AS 'temp',\n" +
+                "  voiture.Date AS 'Date'\n" +
+                "FROM\n" +
+                "  voiture\n" +
+                "  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
+                "  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
+                "  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
+                "  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature;";
+        String sql2 = "SELECT\n" +
+                "  voiture.matVoiture AS 'Matricule',\n" +
+                "  voiture.puissanceMax AS 'Vitesse',\n" +
+                "  marque.libMarque AS 'Marque',\n" +
+                "  boitevitesse.libBoiteV AS 'BoiteV',\n" +
+                "  carburant.libCarburant AS 'Energie'\n" +
+                "FROM\n" +
+                "  voiture\n" +
+                "  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
+                "  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
+                "  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant;";
 
-            String sql = "SELECT\n" +
-"  voiture.matVoiture AS 'Matricule',\n" +
-"  voiture.nbrePlace AS 'Place',\n" +
-"  voiture.puissanceMax AS 'Vitesse',\n" +
-"  marque.libMarque AS 'Marque',\n" +
-"  boitevitesse.libBoiteV AS 'BoiteV',\n" +
-"  carburant.libCarburant AS 'Energie',\n" +
-"  temperature.libTemperature AS 'temp',\n" +
-"  voiture.Date AS 'Date'\n" +
-"FROM\n" +
-"  voiture\n" +
-"  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
-"  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
-"  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
-"  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature;";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            table1.setModel(DbUtils.resultSetToTableModel(rs));
-            
-            String sql1 = "SELECT\n" +
-"matVoiture AS 'Matricule',\n"+
-"  voiture.puissanceMax AS 'Vitesse',\n" +
-"  marque.libMarque AS 'Marque',\n" +
-"  boitevitesse.libBoiteV AS 'BoiteV',\n" +
-"  carburant.libCarburant AS 'Energie'\n" +
-"FROM\n" +
-"  voiture\n" +
-"  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
-"  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
-"  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant;";
-            PreparedStatement ps1 = conn.prepareStatement(sql1);
-            ResultSet rs1 = ps1.executeQuery();
-            table2.setModel(DbUtils.resultSetToTableModel(rs1));
+        PreparedStatement ps1 = conn.prepareStatement(sql1);
+        PreparedStatement ps2 = conn.prepareStatement(sql2);
+        ResultSet rs1 = ps1.executeQuery();
+        ResultSet rs2 = ps2.executeQuery();
 
-                ps1.close();
-                rs1.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }finally {
+        table1.setModel(DbUtils.resultSetToTableModel(rs1));
+        table2.setModel(DbUtils.resultSetToTableModel(rs2));
 
-          
-        }
+        ps1.close();
+        rs1.close();
+        ps2.close();
+        rs2.close();
+    } catch (Exception e) {
+        System.out.println(e);
     }
+}
+
     
     public void Deplace() {
-        try {
+    try {
+        int row = table2.getSelectedRow();
+        this.test = (table2.getModel().getValueAt(row, 0).toString());
+        String requet = "SELECT\n" +
+                "  voiture.matVoiture,\n" +
+                "  voiture.nbrePlace,\n" +
+                "  voiture.puissanceMax ,\n" +
+                "  marque.libMarque,\n" +
+                "  boitevitesse.libBoiteV,\n" +
+                "  carburant.libCarburant ,\n" +
+                "  temperature.libTemperature,\n" +
+                "  voiture.Date,\n" +
+                "  voiture.photoV \n" +
+                "FROM\n" +
+                "  voiture\n" +
+                "  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
+                "  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
+                "  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
+                "  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature\n" +
+                "WHERE voiture.matVoiture = '" + test + "' ";
+        ps = conn.prepareStatement(requet);
+        rs = ps.executeQuery();
 
-            int row = table2.getSelectedRow();
-            this.test = (table2.getModel().getValueAt(row, 0).toString());
-            String requet = "SELECT\n" +
-"  voiture.matVoiture,\n" +
-"  voiture.nbrePlace,\n" +
-"  voiture.puissanceMax ,\n" +
-"  marque.libMarque,\n" +
-"  boitevitesse.libBoiteV,\n" +
-"  carburant.libCarburant ,\n" +
-"  temperature.libTemperature,\n" +
-"  voiture.Date,\n" +
-"  voiture.photoV \n" +
-"FROM\n" +
-"  voiture\n" +
-"  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
-"  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
-"  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
-"  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature\n" +
-"WHERE voiture.matVoiture = '" + test + "' ";
-            ps = conn.prepareStatement(requet);
-            rs = ps.executeQuery();
+        if (rs.next()) {
+            // Actualiser les champs
+            String t1 = rs.getString("matVoiture");
+            matTex.setText(t1);
+            String t2 = rs.getString("nbrePlace");
+            nbPla.setSelectedItem(t2);
+            String t3 = rs.getString("puissanceMax");
+            vitText.setText(t3);
+            
+// Effacer les anciennes données des combobox
+            marqVoit.removeAllItems();
+            vitCom.removeAllItems();
+            carBCom.removeAllItems();
+            tempCom.removeAllItems();
 
-            if (rs.next()) {
-                String t1 = rs.getString("matVoiture");
-                matTex.setText(t1);
-                String t2 = rs.getString("nbrePlace");
-                nbPla.addItem(t2);
-                String t3 = rs.getString("puissanceMax");
-                vitText.setText(t3);
-                String t4 = rs.getString("libMarque");
-                marqVoit.addItem(t4);
-                String t5 = rs.getString("libBoiteV");
-                vitCom.addItem(t5);
-                String t6 = rs.getString("nbrePlace");
-                carBCom.addItem(t6);
-                String t7 = rs.getString("libTemperature");
-                tempCom.addItem(t7);
-                Date date = rs.getDate("Date");
-                dateIm.setDate(date);
-                
-                String t8 =rs.getString("photoV");
-                if(t8.equals("")){
-                    ImageIcon img202 = new ImageIcon(getClass().getResource("file_image_1.png"));
-                    imgPath1.setIcon(img202);
-                }else{
-                    imgPath1.setIcon(new ImageIcon(t8));
-                }
-                
+
+            String t4 = rs.getString("libMarque");
+            marqVoit.addItem(t4);
+            String t5 = rs.getString("libBoiteV");
+            vitCom.addItem(t5);
+            String t6 = rs.getString("libCarburant");
+            carBCom.addItem(t6);
+            String t7 = rs.getString("libTemperature");
+            tempCom.addItem(t7);
+            Date date = rs.getDate("Date");
+            dateIm.setDate(date);
+
+            String t8 = rs.getString("photoV");
+            if (t8 == null || t8.equals("")) {
+                ImageIcon imgIcon = new ImageIcon(getClass().getResource("voiture.png"));
+                Image img = imgIcon.getImage();
+                Image resizedImg = img.getScaledInstance(300, 166, Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(resizedImg);
+                imgPath1.setIcon(imageIcon);
+            } else {
+                ImageIcon imageIcon = new ImageIcon(t8);
+                Image img = imageIcon.getImage();
+                Image resizedImg = img.getScaledInstance(300, 166, Image.SCALE_SMOOTH);
+                ImageIcon resizedImageIcon = new ImageIcon(resizedImg);
+                imgPath1.setIcon(resizedImageIcon);
             }
-ps.close();
-                rs.close();
+        }
+
+        ps.close();
+        rs.close();
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
+
+
+    public void efface() {
+        try {
+   /* ImageIcon img01 = new ImageIcon(getClass().getResource("voiture.png"));
+       imgPath1.setIcon(img01);
+            matTex.setText("");
+            vitText.setText("");
+            textPath1.setText("");
+            nbPla.setSelectedIndex(-1);
+            marqVoit.setSelectedIndex(-1);
+            vitCom.setSelectedIndex(-1);
+            carBCom.setSelectedIndex(-1);
+            tempCom.setSelectedIndex(-1);
+            
+            dateIm.setDate(null);*/
+            
         } catch (Exception e) {
             System.out.println(e);
-            
-        }finally {
-
-            try {
-                ps.close();
-                rs.close();
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "erreur BD");
-            }
         }
     }
+public void imagee(int maxWidth, int maxHeight, JLabel label, JTextField textLabel) {
+    ConexionBD v = new ConexionBD();
+    v.filen();
+    String vpath = v.getp();
     
-    public void imagee() {
-        ConexionBD v = new ConexionBD();
-        v.filen();
-        String vpath = v.getp();
-        int width =200;
-        int heigth= 200;
-        
-        try {
+    try {
         if (vpath == null) {
-
+            // Faire quelque chose si le chemin de l'image est nul
         } else {
- // Charger l'image
-        BufferedImage image = ImageIO.read(new File(vpath));
+            // Charger l'image
+            BufferedImage image = ImageIO.read(new File(vpath));
 
-        // Redimensionner l'image
-        int maxWidth = 300; // Largeur maximale souhaitée pour l'image
-        int maxHeight = 300; // Hauteur maximale souhaitée pour l'image
-        int imageWidth = image.getWidth();
-        int imageHeight = image.getHeight();
+            // Redimensionner l'image
+            int imageWidth = image.getWidth();
+            int imageHeight = image.getHeight();
 
-        double widthScale = (double) maxWidth / imageWidth;
-        double heightScale = (double) maxHeight / imageHeight;
-        double scale = Math.min(widthScale, heightScale);
+            double widthScale = (double) maxWidth / imageWidth;
+            double heightScale = (double) maxHeight / imageHeight;
+            double scale = Math.min(widthScale, heightScale);
 
-        int scaledWidth = (int) (scale * imageWidth);
-        int scaledHeight = (int) (scale * imageHeight);
+            int scaledWidth = (int) (scale * imageWidth);
+            int scaledHeight = (int) (scale * imageHeight);
 
-        Image resizedImage = image.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
+            Image resizedImage = image.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
 
-        // Mettre à jour l'icône du JLabel avec l'image redimensionnée
-        ImageIcon imageIcon = new ImageIcon(resizedImage);
-        imagePhoto.setIcon(imageIcon);
-        textPhoto.setText(vpath);
-            } 
-            }catch (Exception e) {
-                e.printStackTrace();
+            // Mettre à jour l'icône du JLabel avec l'image redimensionnée
+            ImageIcon imageIcon = new ImageIcon(resizedImage);
+            label.setIcon(imageIcon);
+            textLabel.setText(vpath);
         }
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+}
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        imagee();
+        imagee(300, 300, imagePhoto, textPhoto);
     }//GEN-LAST:event_jButton2ActionPerformed
+
 private int getIdFromDatabase(String id, String table, String columnName, String value) throws SQLException {
     
     String query = "SELECT "+id+" FROM " + table + " WHERE " + columnName + " = ?";
@@ -1182,11 +1223,9 @@ private int getIdFromDatabase(String id, String table, String columnName, String
 
     return ids;
 }
-
     private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
-        
+         
         try {
-            
             // Récupérer les valeurs sélectionnées dans les JComboBox
             String selectedBoiteVite = (String) BoiteVite.getSelectedItem();
             String selectedTemper = (String) Temper.getSelectedItem();
@@ -1195,34 +1234,41 @@ private int getIdFromDatabase(String id, String table, String columnName, String
             String selectedPlace = (String) nombrePlace.getSelectedItem();
 
             // Récupérer les identifiants correspondants depuis la base de données
-            int idBoiteVite = getIdFromDatabase("idBoiteV","boitevitesse", "libBoiteV", selectedBoiteVite);
-            int idTemper = getIdFromDatabase("idTemperature","temperature", "libTemperature", selectedTemper);
-            int idCarburant = getIdFromDatabase("idCarburant","carburant", "libCarburant", selectedEnergie);
-            int idMarque = getIdFromDatabase("idMarque","marque", "libMarque", selectedMarquVoit);
+            int idBoiteVite = getIdFromDatabase("idBoiteV", "boitevitesse", "libBoiteV", selectedBoiteVite);
+            int idTemper = getIdFromDatabase("idTemperature", "temperature", "libTemperature", selectedTemper);
+            int idCarburant = getIdFromDatabase("idCarburant", "carburant", "libCarburant", selectedEnergie);
+            int idMarque = getIdFromDatabase("idMarque", "marque", "libMarque", selectedMarquVoit);
 
-            String requete = "INSERT INTO `voiture`(`matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`) VALUES (?,"+selectedPlace+",?,"+idMarque+","+idBoiteVite+","+idCarburant+","+idTemper+",?,?)";
+            String requete = "INSERT INTO voiture(matVoiture, nbrePlace, puissanceMax, idMarque, idBoiteV, idCarburant, idTemperature, Date, photoV) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conn.prepareStatement(requete);
             ps.setString(1, matricule.getText());
-            ps.setString(2, VitesseMax.getText());
+            ps.setString(2, selectedPlace);
+            ps.setString(3, VitesseMax.getText());
+            ps.setInt(4, idMarque);
+            ps.setInt(5, idBoiteVite);
+            ps.setInt(6, idCarburant);
+            ps.setInt(7, idTemper);
             java.util.Date date = DateImm.getDate(); // Récupérer la valeur du JDateChooser
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            ps.setDate(3,  sqlDate);
-            ps.setString(4, textPhoto.getText());
+            ps.setDate(8, sqlDate);
+            ps.setString(9, textPhoto.getText());
             ps.execute();
 
-            JOptionPane.showMessageDialog(null, "Enregistrement avec succès");
-                ps.close();
-                rs.close();
-           
+            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
+            ps.close();
 
-        } catch (Exception e) {
+            // Actualiser la table
+            AfficheTableau();
+            efface();
+
+        } catch (HeadlessException | SQLException e) {
             System.out.println("--> SQLException : " + e);
-            JOptionPane.showMessageDialog(null, "Tout est Obligatoire");
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
         }
     }//GEN-LAST:event_ajouterActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        imagee(300, 166, imgPath1, textPath1);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -1260,6 +1306,14 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     private void matriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_matriculeActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void table2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseReleased
+
+    }//GEN-LAST:event_table2MouseReleased
 
     /**
      * @param args the command line arguments
@@ -1312,6 +1366,7 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
