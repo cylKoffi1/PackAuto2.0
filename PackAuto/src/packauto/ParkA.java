@@ -61,7 +61,7 @@ public class ParkA extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        photoPP = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
@@ -170,21 +170,21 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
-        jLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        photoPP.setBackground(new java.awt.Color(0, 0, 0));
+        photoPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
+        photoPP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(photoPP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(photoPP, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -215,6 +215,11 @@ public class ParkA extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table1MouseClicked(evt);
             }
         });
         jScrollPane4.setViewportView(table1);
@@ -287,11 +292,11 @@ public class ParkA extends javax.swing.JFrame {
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imagePhoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(imagePhoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imagePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 137, Short.MAX_VALUE)
+            .addComponent(imagePhoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, Short.MAX_VALUE)
         );
 
         jPanel15.setBackground(new java.awt.Color(102, 0, 0));
@@ -608,14 +613,14 @@ public class ParkA extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jScrollPane2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                                .addComponent(imgPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                                .addComponent(textPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42))))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addGap(61, 61, 61)
+                                .addComponent(textPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(imgPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel21)
@@ -689,8 +694,8 @@ public class ParkA extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(imgPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(imgPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textPath1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -1069,8 +1074,39 @@ public class ParkA extends javax.swing.JFrame {
         System.out.println(e);
     }
 }
+     public void DeplaceP() {
+    try {
+        int row = table1.getSelectedRow();
+        this.test = (table1.getModel().getValueAt(row, 0).toString());
+        String requet = "SELECT voiture.photoV FROM voiture INNER JOIN marque ON voiture.idMarque = marque.idMarque INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature WHERE voiture.matVoiture = '" + test + "'";
 
-    
+        ps = conn.prepareStatement(requet);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            
+            String t8 = rs.getString("photoV");
+            if (t8 == null || t8.equals("")) {
+                ImageIcon imgIcon = new ImageIcon(getClass().getResource("voiture.png"));
+                Image img = imgIcon.getImage();
+                Image resizedImg = img.getScaledInstance(300, 125, Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(resizedImg);
+                photoPP.setIcon(imageIcon);
+            } else {
+                ImageIcon imageIcon = new ImageIcon(t8);
+                Image img = imageIcon.getImage();
+                Image resizedImg = img.getScaledInstance(300, 125, Image.SCALE_SMOOTH);
+                ImageIcon resizedImageIcon = new ImageIcon(resizedImg);
+                photoPP.setIcon(resizedImageIcon);
+            }
+        }
+
+        ps.close();
+        rs.close();
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
     public void Deplace() {
     try {
         int row = table2.getSelectedRow();
@@ -1148,18 +1184,18 @@ public class ParkA extends javax.swing.JFrame {
 
     public void efface() {
         try {
-   /* ImageIcon img01 = new ImageIcon(getClass().getResource("voiture.png"));
+    ImageIcon img01 = new ImageIcon(getClass().getResource("voiture.png"));
        imgPath1.setIcon(img01);
             matTex.setText("");
             vitText.setText("");
             textPath1.setText("");
-            nbPla.setSelectedIndex(-1);
-            marqVoit.setSelectedIndex(-1);
-            vitCom.setSelectedIndex(-1);
-            carBCom.setSelectedIndex(-1);
-            tempCom.setSelectedIndex(-1);
+            nbPla.setSelectedIndex(0);
+            marqVoit.removeAllItems();
+            vitCom.removeAllItems();
+            carBCom.removeAllItems();
+            tempCom.removeAllItems();;
             
-            dateIm.setDate(null);*/
+            dateIm.setDate(null);
             
         } catch (Exception e) {
             System.out.println(e);
@@ -1268,7 +1304,7 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     }//GEN-LAST:event_ajouterActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        imagee(300, 166, imgPath1, textPath1);
+        imagee(225, 129, imgPath1, textPath1);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -1314,6 +1350,10 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     private void table2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseReleased
 
     }//GEN-LAST:event_table2MouseReleased
+
+    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
+        DeplaceP();
+    }//GEN-LAST:event_table1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1394,7 +1434,6 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -1419,6 +1458,7 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     private javax.swing.JTextField matricule;
     private javax.swing.JComboBox<String> nbPla;
     private javax.swing.JComboBox<String> nombrePlace;
+    private javax.swing.JLabel photoPP;
     private javax.swing.JTable table1;
     private javax.swing.JTable table2;
     private javax.swing.JComboBox<String> tempCom;
