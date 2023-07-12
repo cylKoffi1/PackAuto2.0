@@ -1349,10 +1349,10 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     }//GEN-LAST:event_vitTextActionPerformed
 public void suppexamen() {
         try {
-            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer une Seance,est ce que tu es sur?",
-                    "Supprimer Seance", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer une Voiture,est ce que tu es sur?",
+                    "Supprimer voiture", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
 
-                String requete = "delete from examen where idex = '" + test + "'";
+                String requete = "delete from voiture where matVoiture = '" + test + "'";
                 ps = conn.prepareStatement(requete);
 
                 ps.execute();
@@ -1362,16 +1362,16 @@ public void suppexamen() {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "erreur de supprimer \n" + e.getMessage());
         }
-         refreshExamen();
+         actualise();
 
     }
-public void refreshExamen(){
+public void actualise(){
     try {
 
-            String requete6 = "select idex as 'IdExamen' ,cincand as 'Cin_Candidat' ,cinmonite as 'Cin_Moniteur',dateex as 'Date_Examen' ,hdbex as 'Heure_Début' ,hfnex as 'Heure_Fin',typepermis as 'Type_permis' ,mtex as 'Montant_Examen' ,typeexamen as 'Type_Examen',numve as 'Numéro_Vehicule' ,etatex as 'Etat',idlec as 'IdLecon'from  examen where cincand='"+test+"' and typepermis='"+txtper.getText()+"'";
+            String requete6 = "SELECT  voiture.matVoiture AS 'Matricule', voiture.puissanceMax AS 'Vitesse',  marque.libMarque AS 'Marque',  boitevitesse.libBoiteV AS 'BoiteV', carburant.libCarburant AS 'Energie' FROM voiture INNER JOIN marque ON voiture.idMarque = marque.idMarque  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant WHERE voiture.matVoiture='"+test+"'";;
             ps = conn.prepareStatement(requete6);
             rs = ps.executeQuery();
-            Table2.setModel(DbUtils.resultSetToTableModel(rs));
+            table2.setModel(DbUtils.resultSetToTableModel(rs));
  
         } catch (Exception e) {
             System.out.println(e);
