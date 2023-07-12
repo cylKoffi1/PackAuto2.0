@@ -1347,7 +1347,7 @@ private int getIdFromDatabase(String id, String table, String columnName, String
     private void vitTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_vitTextActionPerformed
-public void suppexamen() {
+public void suppvoiture() {
         try {
             if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer une Voiture,est ce que tu es sur?",
                     "Supprimer voiture", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
@@ -1368,7 +1368,7 @@ public void suppexamen() {
 public void actualise(){
     try {
 
-            String requete6 = "SELECT  voiture.matVoiture AS 'Matricule', voiture.puissanceMax AS 'Vitesse',  marque.libMarque AS 'Marque',  boitevitesse.libBoiteV AS 'BoiteV', carburant.libCarburant AS 'Energie' FROM voiture INNER JOIN marque ON voiture.idMarque = marque.idMarque  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant WHERE voiture.matVoiture='"+test+"'";;
+            String requete6 = "SELECT  voiture.matVoiture AS 'Matricule', voiture.puissanceMax AS 'Vitesse',  marque.libMarque AS 'Marque',  boitevitesse.libBoiteV AS 'BoiteV', carburant.libCarburant AS 'Energie' FROM voiture INNER JOIN marque ON voiture.idMarque = marque.idMarque  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant ";;
             ps = conn.prepareStatement(requete6);
             rs = ps.executeQuery();
             table2.setModel(DbUtils.resultSetToTableModel(rs));
@@ -1377,8 +1377,21 @@ public void actualise(){
             System.out.println(e);
         }
 }
+
+public void actualiseTable1(){
+    try {
+
+            String requete6 = "SELECT voiture.matVoiture AS 'Matricule', voiture.nbrePlace AS 'Place',  voiture.puissanceMax AS 'Vitesse',  marque.libMarque AS 'Marque', boitevitesse.libBoiteV AS 'BoiteV',  carburant.libCarburant AS 'Energie', temperature.libTemperature AS 'temp', voiture.Date AS 'Date'FROM voiture  INNER JOIN marque ON voiture.idMarque = marque.idMarque INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature;";;
+            ps = conn.prepareStatement(requete6);
+            rs = ps.executeQuery();
+            table1.setModel(DbUtils.resultSetToTableModel(rs));
+ 
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+}
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+        suppvoiture();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void matTexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTexActionPerformed
@@ -1406,7 +1419,7 @@ public void actualise(){
     }//GEN-LAST:event_matriculeActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        actualiseTable1();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void table2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseReleased
