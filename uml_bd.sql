@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : jeu. 06 juil. 2023 à 21:22
--- Version du serveur : 8.0.30
--- Version de PHP : 8.2.8
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mer. 12 juil. 2023 à 09:14
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,13 +24,37 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `idAdmin` int NOT NULL AUTO_INCREMENT,
+  `nomAdmin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `loginAdmin` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `mdpAdmin` text COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idAdmin`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `admin`
+--
+
+INSERT INTO `admin` (`idAdmin`, `nomAdmin`, `loginAdmin`, `mdpAdmin`) VALUES
+(1, 'koffi', 'cylkoffi', 'betsa');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `boitevitesse`
 --
 
-CREATE TABLE `boitevitesse` (
-  `idBoiteV` int NOT NULL,
-  `libBoiteV` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `boitevitesse`;
+CREATE TABLE IF NOT EXISTS `boitevitesse` (
+  `idBoiteV` int NOT NULL AUTO_INCREMENT,
+  `libBoiteV` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idBoiteV`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `boitevitesse`
@@ -46,10 +70,12 @@ INSERT INTO `boitevitesse` (`idBoiteV`, `libBoiteV`) VALUES
 -- Structure de la table `carburant`
 --
 
-CREATE TABLE `carburant` (
-  `idCarburant` int NOT NULL,
-  `libCarburant` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `carburant`;
+CREATE TABLE IF NOT EXISTS `carburant` (
+  `idCarburant` int NOT NULL AUTO_INCREMENT,
+  `libCarburant` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idCarburant`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `carburant`
@@ -65,9 +91,11 @@ INSERT INTO `carburant` (`idCarburant`, `libCarburant`) VALUES
 -- Structure de la table `datecirculation`
 --
 
-CREATE TABLE `datecirculation` (
-  `idDate` int NOT NULL,
-  `libDate` date NOT NULL
+DROP TABLE IF EXISTS `datecirculation`;
+CREATE TABLE IF NOT EXISTS `datecirculation` (
+  `idDate` int NOT NULL AUTO_INCREMENT,
+  `libDate` date NOT NULL,
+  PRIMARY KEY (`idDate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -76,14 +104,16 @@ CREATE TABLE `datecirculation` (
 -- Structure de la table `enregistrementrespopark`
 --
 
-CREATE TABLE `enregistrementrespopark` (
-  `nomRP` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `prenomRP` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+DROP TABLE IF EXISTS `enregistrementrespopark`;
+CREATE TABLE IF NOT EXISTS `enregistrementrespopark` (
+  `nomRP` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `prenomRP` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `DateNaisseRP` date NOT NULL,
-  `LieuNaissRP` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
-  `MatriculeRP` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
-  `mailRP` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
-  `mdpRP` varchar(5) COLLATE utf8mb4_general_ci NOT NULL
+  `LieuNaissRP` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `MatriculeRP` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mailRP` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mdpRP` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`MatriculeRP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -92,10 +122,12 @@ CREATE TABLE `enregistrementrespopark` (
 -- Structure de la table `marque`
 --
 
-CREATE TABLE `marque` (
-  `idMarque` int NOT NULL,
-  `libMarque` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `marque`;
+CREATE TABLE IF NOT EXISTS `marque` (
+  `idMarque` int NOT NULL AUTO_INCREMENT,
+  `libMarque` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idMarque`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `marque`
@@ -115,10 +147,12 @@ INSERT INTO `marque` (`idMarque`, `libMarque`) VALUES
 -- Structure de la table `temperature`
 --
 
-CREATE TABLE `temperature` (
-  `idTemperature` int NOT NULL,
-  `libTemperature` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `temperature`;
+CREATE TABLE IF NOT EXISTS `temperature` (
+  `idTemperature` int NOT NULL AUTO_INCREMENT,
+  `libTemperature` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idTemperature`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `temperature`
@@ -135,98 +169,31 @@ INSERT INTO `temperature` (`idTemperature`, `libTemperature`) VALUES
 -- Structure de la table `voiture`
 --
 
-CREATE TABLE `voiture` (
-  `matVoiture` varchar(10) COLLATE utf8mb4_general_ci NOT NULL,
+DROP TABLE IF EXISTS `voiture`;
+CREATE TABLE IF NOT EXISTS `voiture` (
+  `idVoit` int NOT NULL AUTO_INCREMENT,
+  `matVoiture` text COLLATE utf8mb4_general_ci NOT NULL,
   `nbrePlace` int NOT NULL,
   `puissanceMax` int NOT NULL,
   `idMarque` int NOT NULL,
   `idBoiteV` int NOT NULL,
   `idCarburant` int NOT NULL,
   `idTemperature` int NOT NULL,
-  `idDate` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `Date` date NOT NULL,
+  `photoV` text COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`idVoit`),
+  KEY `idDate` (`Date`),
+  KEY `idMarque` (`idMarque`,`idBoiteV`,`idCarburant`,`idTemperature`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Index pour les tables déchargées
+-- Déchargement des données de la table `voiture`
 --
 
---
--- Index pour la table `boitevitesse`
---
-ALTER TABLE `boitevitesse`
-  ADD PRIMARY KEY (`idBoiteV`);
-
---
--- Index pour la table `carburant`
---
-ALTER TABLE `carburant`
-  ADD PRIMARY KEY (`idCarburant`);
-
---
--- Index pour la table `datecirculation`
---
-ALTER TABLE `datecirculation`
-  ADD PRIMARY KEY (`idDate`);
-
---
--- Index pour la table `enregistrementrespopark`
---
-ALTER TABLE `enregistrementrespopark`
-  ADD PRIMARY KEY (`MatriculeRP`);
-
---
--- Index pour la table `marque`
---
-ALTER TABLE `marque`
-  ADD PRIMARY KEY (`idMarque`);
-
---
--- Index pour la table `temperature`
---
-ALTER TABLE `temperature`
-  ADD PRIMARY KEY (`idTemperature`);
-
---
--- Index pour la table `voiture`
---
-ALTER TABLE `voiture`
-  ADD PRIMARY KEY (`matVoiture`),
-  ADD KEY `idDate` (`idDate`),
-  ADD KEY `idMarque` (`idMarque`,`idBoiteV`,`idCarburant`,`idTemperature`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `boitevitesse`
---
-ALTER TABLE `boitevitesse`
-  MODIFY `idBoiteV` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `carburant`
---
-ALTER TABLE `carburant`
-  MODIFY `idCarburant` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `datecirculation`
---
-ALTER TABLE `datecirculation`
-  MODIFY `idDate` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `marque`
---
-ALTER TABLE `marque`
-  MODIFY `idMarque` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT pour la table `temperature`
---
-ALTER TABLE `temperature`
-  MODIFY `idTemperature` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+INSERT INTO `voiture` (`idVoit`, `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`) VALUES
+(5, 'AB 123 CD', 4, 120, 4, 1, 1, 1, '2023-07-11', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\toyota bz4x.jpeg'),
+(6, 'AV 133 CI', 4, 125, 1, 1, 2, 2, '2023-07-11', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\Mercedes-Maybach_S_680_Haute_Voiture_concept_009.jpg'),
+(7, 'DC 843 CI', 2, 110, 1, 1, 2, 1, '2023-07-11', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\mercedes.jpeg');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
