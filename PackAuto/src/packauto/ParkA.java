@@ -6,6 +6,7 @@ package packauto;
 
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.sql.*;
@@ -41,6 +42,7 @@ public class ParkA extends javax.swing.JFrame {
         AfficheTableau();
         ComboxAff();
         efface();
+        add2();
     }
 
     
@@ -119,8 +121,8 @@ public class ParkA extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         recher = new javax.swing.JTextField();
         jButton11 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        supprbtn = new javax.swing.JButton();
+        modifbtn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -599,6 +601,11 @@ public class ParkA extends javax.swing.JFrame {
                 table2MouseReleased(evt);
             }
         });
+        table2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                table2KeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(table2);
 
         imgPath1.setBackground(new java.awt.Color(0, 0, 0));
@@ -743,23 +750,23 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
-        jButton14.setBackground(new java.awt.Color(255, 255, 255));
-        jButton14.setForeground(new java.awt.Color(0, 0, 0));
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
-        jButton14.setText("Supprimer");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        supprbtn.setBackground(new java.awt.Color(255, 255, 255));
+        supprbtn.setForeground(new java.awt.Color(0, 0, 0));
+        supprbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
+        supprbtn.setText("Supprimer");
+        supprbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                supprbtnActionPerformed(evt);
             }
         });
 
-        jButton15.setBackground(new java.awt.Color(255, 255, 255));
-        jButton15.setForeground(new java.awt.Color(0, 0, 0));
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
-        jButton15.setText("Modifier");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        modifbtn.setBackground(new java.awt.Color(255, 255, 255));
+        modifbtn.setForeground(new java.awt.Color(0, 0, 0));
+        modifbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
+        modifbtn.setText("Modifier");
+        modifbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                modifbtnActionPerformed(evt);
             }
         });
 
@@ -773,9 +780,9 @@ public class ParkA extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                 .addGap(92, 92, 92)
-                .addComponent(jButton14)
+                .addComponent(supprbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modifbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(113, 113, 113)
                 .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
@@ -788,8 +795,8 @@ public class ParkA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(supprbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(modifbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -984,7 +991,14 @@ public class ParkA extends javax.swing.JFrame {
        
                   
     }//GEN-LAST:event_jButton7ActionPerformed
-
+public void add(){
+    marqVoit.removeAllItems();
+    vitCom.removeAllItems();
+    carBCom.removeAllItems();
+    tempCom.removeAllItems();
+    add2();
+       
+}
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -1028,19 +1042,82 @@ public class ParkA extends javax.swing.JFrame {
 
         // Remplir les JComboBox avec les noms correspondants
         for (Map.Entry<Integer, String> entry : dataMap.entrySet()) {
+            marqVoit.addItem(entry.getValue());
             MarquVoit.addItem(entry.getValue());
+            
         }
 
         while (resultSets[1].next()) {
             BoiteVite.addItem(resultSets[1].getString("libBoiteV"));
+            vitCom.addItem(resultSets[1].getString("libBoiteV"));
         }
 
         while (resultSets[2].next()) {
             Temper.addItem(resultSets[2].getString("libTemperature"));
+            tempCom.addItem(resultSets[2].getString("libTemperature"));
         }
 
         while (resultSets[3].next()) {
             Energie.addItem(resultSets[3].getString("libCarburant"));
+            carBCom.addItem(resultSets[3].getString("libCarburant"));
+        }
+
+        // Fermer les ressources
+        for (ResultSet resultSet : resultSets) {
+            resultSet.close();
+        }
+
+        for (PreparedStatement statement : statements) {
+            statement.close();
+        }
+
+
+        ps.close();
+        rs.close();
+            
+           
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+   }
+      public void add2(){
+       try{    
+        String[] queries = {"SELECT * FROM marque", "SELECT * FROM boitevitesse", "SELECT * FROM temperature", "SELECT * FROM carburant"};
+        PreparedStatement[] statements = new PreparedStatement[queries.length];
+        ResultSet[] resultSets = new ResultSet[queries.length];
+
+        // Récupérer les données depuis votre base de données
+        for (int i = 0; i < queries.length; i++) {
+            statements[i] = conn.prepareStatement(queries[i]);
+            resultSets[i] = statements[i].executeQuery();
+        }
+
+        // Utilisez une Map pour associer les identifiants aux noms
+        Map<Integer, String> dataMap = new HashMap<>();
+
+        // Parcourir les données et ajouter-les à la Map
+        while (resultSets[0].next()) {
+            int id = resultSets[0].getInt("idMarque");
+            String nom = resultSets[0].getString("libMarque");
+            dataMap.put(id, nom);
+        }
+
+        // Remplir les JComboBox avec les noms correspondants
+        for (Map.Entry<Integer, String> entry : dataMap.entrySet()) {
+            marqVoit.addItem(entry.getValue());
+            
+        }
+
+        while (resultSets[1].next()) {
+            vitCom.addItem(resultSets[1].getString("libBoiteV"));
+        }
+
+        while (resultSets[2].next()) {
+            tempCom.addItem(resultSets[2].getString("libTemperature"));
+        }
+
+        while (resultSets[3].next()) {
+            carBCom.addItem(resultSets[3].getString("libCarburant"));
         }
 
         // Fermer les ressources
@@ -1178,6 +1255,7 @@ public class ParkA extends javax.swing.JFrame {
             vitCom.removeAllItems();
             carBCom.removeAllItems();
             tempCom.removeAllItems();
+            imgPath1.setText("");
 
 
             String t4 = rs.getString("libMarque");
@@ -1190,6 +1268,8 @@ public class ParkA extends javax.swing.JFrame {
             tempCom.addItem(t7);
             Date date = rs.getDate("Date");
             dateIm.setDate(date);
+            String t9 =rs.getString("photoV");
+            textPath1.setText(t9);
 
             String t8 = rs.getString("photoV");
             if (t8 == null || t8.equals("")) {
@@ -1209,6 +1289,7 @@ public class ParkA extends javax.swing.JFrame {
 
         ps.close();
         rs.close();
+        add2();
     } catch (Exception e) {
         System.out.println(e);
     }
@@ -1340,9 +1421,58 @@ private int getIdFromDatabase(String id, String table, String columnName, String
         imagee(225, 129, imgPath1, textPath1);
     }//GEN-LAST:event_jButton11ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    private void modifbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtnActionPerformed
+        try {
+            // Récupérer les valeurs sélectionnées dans les JComboBox
+            String selectedBoiteVite = (String) vitCom.getSelectedItem();
+            String selectedTemper = (String) tempCom.getSelectedItem();
+            String selectedEnergie = (String) carBCom.getSelectedItem();
+            String selectedMarquVoit = (String) marqVoit.getSelectedItem();
+            String selectedPlace = (String) nbPla.getSelectedItem();
+
+            // Récupérer les identifiants correspondants depuis la base de données
+            int idBoiteVite = getIdFromDatabase("idBoiteV", "boitevitesse", "libBoiteV", selectedBoiteVite);
+            int idTemper = getIdFromDatabase("idTemperature", "temperature", "libTemperature", selectedTemper);
+            int idCarburant = getIdFromDatabase("idCarburant", "carburant", "libCarburant", selectedEnergie);
+            int idMarque = getIdFromDatabase("idMarque", "marque", "libMarque", selectedMarquVoit);
+
+            String requete = "UPDATE `voiture` SET `matVoiture`=?,`nbrePlace`=?,`puissanceMax`=?,`idMarque`=?,`idBoiteV`=?,`idCarburant`=?,`idTemperature`=?,`Date`=?,`photoV`=? WHERE `matVoiture`='"+test+"'";
+            ps = conn.prepareStatement(requete);
+            ps.setString(1, matTex.getText());
+            ps.setString(2, selectedPlace);
+            ps.setString(3, vitText.getText());
+            ps.setInt(4, idMarque);
+            ps.setInt(5, idBoiteVite);
+            ps.setInt(6, idCarburant);
+            ps.setInt(7, idTemper);
+            java.util.Date date = dateIm.getDate(); // Récupérer la valeur du JDateChooser
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+            ps.setDate(8, sqlDate);
+            ps.setString(9, textPath1.getText());
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Modification réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableau();
+            efface();
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        finally {
+
+            try {
+                ps.close();
+                rs.close();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "erreur BD");
+            }
+        }
+    }//GEN-LAST:event_modifbtnActionPerformed
 
     private void vitTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitTextActionPerformed
         // TODO add your handling code here:
@@ -1390,9 +1520,9 @@ public void actualiseTable1(){
             System.out.println(e);
         }
 }
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+    private void supprbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtnActionPerformed
         suppvoiture();
-    }//GEN-LAST:event_jButton14ActionPerformed
+    }//GEN-LAST:event_supprbtnActionPerformed
 
     private void matTexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTexActionPerformed
         // TODO add your handling code here:
@@ -1437,6 +1567,10 @@ public void actualiseTable1(){
     private void recherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recherActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_recherActionPerformed
+
+    private void table2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table2KeyReleased
+       
+    }//GEN-LAST:event_table2KeyReleased
 
     /**
      * @param args the command line arguments
@@ -1490,8 +1624,6 @@ public void actualiseTable1(){
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
@@ -1540,10 +1672,12 @@ public void actualiseTable1(){
     private javax.swing.JComboBox<String> marqVoit;
     private javax.swing.JTextField matTex;
     private javax.swing.JTextField matricule;
+    private javax.swing.JButton modifbtn;
     private javax.swing.JComboBox<String> nbPla;
     private javax.swing.JComboBox<String> nombrePlace;
     private javax.swing.JLabel photoPP;
     private javax.swing.JTextField recher;
+    private javax.swing.JButton supprbtn;
     private javax.swing.JTable table1;
     private javax.swing.JTable table2;
     private javax.swing.JComboBox<String> tempCom;
