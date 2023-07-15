@@ -4,51 +4,19 @@
  */
 package packauto;
 
-import java.awt.HeadlessException;
-import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.sql.*;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-
-/** 
+/**
  *
  * @author cylko
  */
-public class ParkA extends javax.swing.JFrame {
-    Connection conn = null ;
-    ResultSet rs = null;
-    PreparedStatement ps = null;
-    public ImageIcon Format =null;
-    static String test;
-    public static String test3;
-    
+public class GestionChauffeur extends javax.swing.JFrame {
+
     /**
-     * Creates new form ParkA
+     * Creates new form GestionChauffeur
      */
-    public ParkA() {
-        
+    public GestionChauffeur() {
         initComponents();
-        
-        conn = ConexionBD.Conexion();
-        AfficheTableau();
-        ComboxAff();
-        efface();
-        add2();
-        recher.setText("Rechercher ");
-        rech.setText("Rechercher");
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,7 +26,6 @@ public class ParkA extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textPath1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -75,32 +42,41 @@ public class ParkA extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        DateImm = new com.toedter.calendar.JDateChooser();
-        nombrePlace = new javax.swing.JComboBox<>();
-        MarquVoit = new javax.swing.JComboBox<>();
-        BoiteVite = new javax.swing.JComboBox<>();
-        Energie = new javax.swing.JComboBox<>();
-        Temper = new javax.swing.JComboBox<>();
-        VitesseMax = new javax.swing.JTextField();
         matricule = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        nombrePlace1 = new javax.swing.JComboBox<>();
-        jLabel27 = new javax.swing.JLabel();
-        nombrePlace2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         textPhoto = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
         imagePhoto = new javax.swing.JLabel();
         ajouter = new javax.swing.JButton();
+        jLabel44 = new javax.swing.JLabel();
+        matricule1 = new javax.swing.JTextField();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        matricule2 = new javax.swing.JTextField();
+        matricule3 = new javax.swing.JTextField();
+        matricule4 = new javax.swing.JTextField();
+        matricule5 = new javax.swing.JTextField();
+        matricule6 = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        matricule7 = new javax.swing.JTextField();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        table5 = new javax.swing.JTable();
+        modifbtn3 = new javax.swing.JButton();
+        supprbtn3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -192,12 +168,6 @@ public class ParkA extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
 
-        textPath1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textPath1ActionPerformed(evt);
-            }
-        });
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
@@ -206,7 +176,7 @@ public class ParkA extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Gestion du Parc Auto ");
+        jLabel5.setText("Gestion chauffeur ");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -306,7 +276,7 @@ public class ParkA extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -321,7 +291,7 @@ public class ParkA extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(rech, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(330, Short.MAX_VALUE)))
+                    .addContainerGap(406, Short.MAX_VALUE)))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,78 +318,22 @@ public class ParkA extends javax.swing.JFrame {
 
         jPanel15.setBackground(new java.awt.Color(102, 0, 0));
 
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Nombre place :");
-
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Puissance :");
-
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Marque :");
-
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Information voiture");
+        jLabel11.setText("ajouter / modifier /supprimer chauffeur");
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Matricule :");
-
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Date D'immatriculation :");
-
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Température :");
-
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Boite vitesse :");
-
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Gamme :");
-
-        nombrePlace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        nombrePlace.setBorder(null);
-
-        MarquVoit.setBorder(null);
-
-        BoiteVite.setBorder(null);
-
-        Energie.setBorder(null);
-
-        Temper.setBorder(null);
-        Temper.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TemperActionPerformed(evt);
-            }
-        });
-
-        VitesseMax.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        VitesseMax.setBorder(null);
-        VitesseMax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VitesseMaxActionPerformed(evt);
-            }
-        });
+        jLabel12.setText("Nom :");
 
         matricule.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         matricule.setBorder(null);
+        matricule.setMinimumSize(new java.awt.Dimension(65, 22));
         matricule.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 matriculeActionPerformed(evt);
             }
         });
-
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Carburant :");
-
-        nombrePlace1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        nombrePlace1.setBorder(null);
-
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText("Assurance :");
-
-        nombrePlace2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        nombrePlace2.setBorder(null);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
@@ -432,28 +346,22 @@ public class ParkA extends javax.swing.JFrame {
         });
 
         imagePhoto.setBackground(new java.awt.Color(0, 0, 0));
-        imagePhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
+        imagePhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packauto/images.png"))); // NOI18N
         imagePhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel14Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(imagePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(imagePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 182, Short.MAX_VALUE)
-            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(imagePhoto)
-                    .addContainerGap()))
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(imagePhoto)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         ajouter.setBackground(new java.awt.Color(255, 255, 255));
@@ -469,134 +377,328 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
+        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel44.setText("Prénoms :");
+
+        matricule1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule1.setBorder(null);
+        matricule1.setMinimumSize(new java.awt.Dimension(65, 22));
+        matricule1.setName(""); // NOI18N
+        matricule1.setPreferredSize(new java.awt.Dimension(64, 22));
+        matricule1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matricule1ActionPerformed(evt);
+            }
+        });
+
+        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel46.setText("Adresse :");
+
+        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel47.setText("Ville :");
+
+        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel48.setText("Email :");
+
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Telephone :");
+
+        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel51.setText("Salaire :");
+
+        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel53.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel53.setText("Numéro permis :");
+
+        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel54.setText("Date obtention :");
+
+        jLabel55.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel55.setText("Date de validité :");
+
+        jLabel56.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel56.setText("Date emvauche :");
+
+        jLabel57.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel57.setText("Date fin contrat :");
+
+        matricule2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule2.setBorder(null);
+        matricule2.setMinimumSize(new java.awt.Dimension(65, 22));
+        matricule2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matricule2ActionPerformed(evt);
+            }
+        });
+
+        matricule3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule3.setBorder(null);
+        matricule3.setMinimumSize(new java.awt.Dimension(65, 22));
+        matricule3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matricule3ActionPerformed(evt);
+            }
+        });
+
+        matricule4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule4.setBorder(null);
+        matricule4.setMinimumSize(new java.awt.Dimension(65, 22));
+        matricule4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matricule4ActionPerformed(evt);
+            }
+        });
+
+        matricule5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule5.setBorder(null);
+        matricule5.setMinimumSize(new java.awt.Dimension(65, 22));
+        matricule5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matricule5ActionPerformed(evt);
+            }
+        });
+
+        matricule6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule6.setBorder(null);
+        matricule6.setMinimumSize(new java.awt.Dimension(65, 22));
+        matricule6.setPreferredSize(new java.awt.Dimension(65, 22));
+        matricule6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matricule6ActionPerformed(evt);
+            }
+        });
+
+        matricule7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        matricule7.setBorder(null);
+        matricule7.setMinimumSize(new java.awt.Dimension(65, 22));
+        matricule7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matricule7ActionPerformed(evt);
+            }
+        });
+
+        table5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Catégorie", "Marque", "Modèle", "Année"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table5MouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                table5MouseReleased(evt);
+            }
+        });
+        table5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                table5KeyReleased(evt);
+            }
+        });
+        jScrollPane6.setViewportView(table5);
+
+        modifbtn3.setBackground(new java.awt.Color(255, 255, 255));
+        modifbtn3.setForeground(new java.awt.Color(0, 0, 0));
+        modifbtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
+        modifbtn3.setText("Modifier");
+        modifbtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifbtn3ActionPerformed(evt);
+            }
+        });
+
+        supprbtn3.setBackground(new java.awt.Color(255, 255, 255));
+        supprbtn3.setForeground(new java.awt.Color(0, 0, 0));
+        supprbtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
+        supprbtn3.setText("Supprimer");
+        supprbtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprbtn3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14))
-                        .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Temper, javax.swing.GroupLayout.Alignment.LEADING, 0, 135, Short.MAX_VALUE)
-                        .addComponent(Energie, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BoiteVite, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(MarquVoit, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(VitesseMax, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nombrePlace, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(matricule, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(DateImm, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(54, 54, 54)
+                        .addComponent(supprbtn3)
+                        .addGap(95, 95, 95)
+                        .addComponent(modifbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(95, 95, 95)
+                        .addComponent(ajouter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel52))
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addContainerGap()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
                             .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel15Layout.createSequentialGroup()
-                                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombrePlace2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(matricule6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel44)
+                                                    .addComponent(jLabel46)
+                                                    .addComponent(jLabel12))
+                                                .addGap(42, 42, 42)
+                                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(matricule7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(matricule3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(matricule5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel47)
+                                                .addGap(39, 39, 39)
+                                                .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(jLabel48)
+                                                        .addGap(32, 32, 32)
+                                                        .addComponent(matricule1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                                .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jLabel49))
+                                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(jLabel51)))
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                            .addComponent(matricule4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addComponent(matricule2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addGap(29, 29, 29)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textPhoto)
                                     .addGroup(jPanel15Layout.createSequentialGroup()
-                                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombrePlace1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24))))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ajouter)
-                            .addComponent(jButton2))
-                        .addGap(82, 82, 82))))
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jButton2)))))))
+                .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26)
-                    .addComponent(nombrePlace2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(nombrePlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27)
-                    .addComponent(nombrePlace1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(VitesseMax, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(MarquVoit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BoiteVite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Energie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Temper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DateImm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel56)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(matricule5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel12)))
+                                .addGap(7, 7, 7)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel57)
+                                        .addComponent(matricule7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel48)
+                                    .addComponent(matricule1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addGap(4, 4, 4)
+                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabel54)
+                                                .addComponent(matricule3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel49)
+                                            .addComponent(matricule2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel46))))
+                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel47)
+                                .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel55)
+                                .addComponent(jLabel53)
+                                .addComponent(matricule6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel51)
+                                .addComponent(matricule4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel52)
+                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(modifbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(supprbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 896, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 408, Short.MAX_VALUE)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -604,7 +706,9 @@ public class ParkA extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -613,7 +717,7 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        ajouterVoiture.addTab("Ajouter Voiture", jPanel12);
+        ajouterVoiture.addTab("Ajouter/Modifier/Supprimer", jPanel12);
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -895,7 +999,7 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(recher, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addComponent(recher)
                 .addGap(62, 62, 62)
                 .addComponent(supprbtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -913,12 +1017,13 @@ public class ParkA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(supprbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modifbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(recher, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(recher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(supprbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(modifbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
 
@@ -926,13 +1031,13 @@ public class ParkA extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 826, Short.MAX_VALUE)
+            .addGap(0, 902, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGap(0, 448, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1196,7 +1301,7 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(recher1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addComponent(recher1)
                 .addGap(62, 62, 62)
                 .addComponent(supprbtn1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1214,12 +1319,13 @@ public class ParkA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(supprbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modifbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(recher1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
-                    .addComponent(ajouter1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(recher1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(supprbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(modifbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ajouter1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
 
@@ -1490,7 +1596,7 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(recher2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addComponent(recher2, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                 .addGap(56, 56, 56)
                 .addComponent(supprbtn2)
                 .addGap(18, 18, 18)
@@ -1508,12 +1614,13 @@ public class ParkA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(supprbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(modifbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(recher2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5)
-                    .addComponent(ajouter2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(recher2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(supprbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(modifbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ajouter2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
 
@@ -1523,10 +1630,10 @@ public class ParkA extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addComponent(ajouterVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(ajouterVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1535,8 +1642,6 @@ public class ParkA extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ajouterVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        ajouterVoiture.getAccessibleContext().setAccessibleName("Acceuil");
 
         jPanel5.setBackground(new java.awt.Color(102, 0, 0));
         jPanel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -1673,8 +1778,7 @@ public class ParkA extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1688,17 +1792,9 @@ public class ParkA extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       
-                  
+
     }//GEN-LAST:event_jButton7ActionPerformed
-public void add(){
-    marqVoit.removeAllItems();
-    vitCom.removeAllItems();
-    carBCom.removeAllItems();
-    tempCom.removeAllItems();
-    add2();
-       
-}
+
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -1711,570 +1807,117 @@ public void add(){
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ajouter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-   public void ComboxAff(){
-       try{    
-        String[] queries = {"SELECT * FROM marque", "SELECT * FROM boitevitesse", "SELECT * FROM temperature", "SELECT * FROM carburant"};
-        PreparedStatement[] statements = new PreparedStatement[queries.length];
-        ResultSet[] resultSets = new ResultSet[queries.length];
+    }//GEN-LAST:event_ajouter2ActionPerformed
 
-        // Récupérer les données depuis votre base de données
-        for (int i = 0; i < queries.length; i++) {
-            statements[i] = conn.prepareStatement(queries[i]);
-            resultSets[i] = statements[i].executeQuery();
-        }
-
-        // Utilisez une Map pour associer les identifiants aux noms
-        Map<Integer, String> dataMap = new HashMap<>();
-
-        // Parcourir les données et ajouter-les à la Map
-        while (resultSets[0].next()) {
-            int id = resultSets[0].getInt("idMarque");
-            String nom = resultSets[0].getString("libMarque");
-            dataMap.put(id, nom);
-        }
-
-        // Remplir les JComboBox avec les noms correspondants
-        for (Map.Entry<Integer, String> entry : dataMap.entrySet()) {
-            marqVoit.addItem(entry.getValue());
-            MarquVoit.addItem(entry.getValue());
-            
-        }
-
-        while (resultSets[1].next()) {
-            BoiteVite.addItem(resultSets[1].getString("libBoiteV"));
-            vitCom.addItem(resultSets[1].getString("libBoiteV"));
-        }
-
-        while (resultSets[2].next()) {
-            Temper.addItem(resultSets[2].getString("libTemperature"));
-            tempCom.addItem(resultSets[2].getString("libTemperature"));
-        }
-
-        while (resultSets[3].next()) {
-            Energie.addItem(resultSets[3].getString("libCarburant"));
-            carBCom.addItem(resultSets[3].getString("libCarburant"));
-        }
-
-        // Fermer les ressources
-        for (ResultSet resultSet : resultSets) {
-            resultSet.close();
-        }
-
-        for (PreparedStatement statement : statements) {
-            statement.close();
-        }
-
-
-        ps.close();
-        rs.close();
-            
-           
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-   }
-      public void add2(){
-       try{    
-        String[] queries = {"SELECT * FROM marque", "SELECT * FROM boitevitesse", "SELECT * FROM temperature", "SELECT * FROM carburant"};
-        PreparedStatement[] statements = new PreparedStatement[queries.length];
-        ResultSet[] resultSets = new ResultSet[queries.length];
-
-        // Récupérer les données depuis votre base de données
-        for (int i = 0; i < queries.length; i++) {
-            statements[i] = conn.prepareStatement(queries[i]);
-            resultSets[i] = statements[i].executeQuery();
-        }
-
-        // Utilisez une Map pour associer les identifiants aux noms
-        Map<Integer, String> dataMap = new HashMap<>();
-
-        // Parcourir les données et ajouter-les à la Map
-        while (resultSets[0].next()) {
-            int id = resultSets[0].getInt("idMarque");
-            String nom = resultSets[0].getString("libMarque");
-            dataMap.put(id, nom);
-        }
-
-        // Remplir les JComboBox avec les noms correspondants
-        for (Map.Entry<Integer, String> entry : dataMap.entrySet()) {
-            marqVoit.addItem(entry.getValue());
-            
-        }
-
-        while (resultSets[1].next()) {
-            vitCom.addItem(resultSets[1].getString("libBoiteV"));
-        }
-
-        while (resultSets[2].next()) {
-            tempCom.addItem(resultSets[2].getString("libTemperature"));
-        }
-
-        while (resultSets[3].next()) {
-            carBCom.addItem(resultSets[3].getString("libCarburant"));
-        }
-
-        // Fermer les ressources
-        for (ResultSet resultSet : resultSets) {
-            resultSet.close();
-        }
-
-        for (PreparedStatement statement : statements) {
-            statement.close();
-        }
-
-
-        ps.close();
-        rs.close();
-            
-           
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-   }
-    
-    public void AfficheTableau() {
-    try {
-        String sql1 = "SELECT\n" +
-                "  voiture.matVoiture AS 'Matricule',\n" +
-                "  voiture.nbrePlace AS 'Place',\n" +
-                "  voiture.puissanceMax AS 'Vitesse',\n" +
-                "  marque.libMarque AS 'Marque',\n" +
-                "  boitevitesse.libBoiteV AS 'BoiteV',\n" +
-                "  carburant.libCarburant AS 'Energie',\n" +
-                "  temperature.libTemperature AS 'temp',\n" +
-                "  voiture.Date AS 'Date'\n" +
-                "FROM\n" +
-                "  voiture\n" +
-                "  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
-                "  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
-                "  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
-                "  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature;";
-        String sql2 = "SELECT\n" +
-                "  voiture.matVoiture AS 'Matricule',\n" +
-                "  voiture.puissanceMax AS 'Vitesse',\n" +
-                "  marque.libMarque AS 'Marque',\n" +
-                "  boitevitesse.libBoiteV AS 'BoiteV',\n" +
-                "  carburant.libCarburant AS 'Energie'\n" +
-                "FROM\n" +
-                "  voiture\n" +
-                "  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
-                "  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
-                "  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant;";
-
-        PreparedStatement ps1 = conn.prepareStatement(sql1);
-        PreparedStatement ps2 = conn.prepareStatement(sql2);
-        ResultSet rs1 = ps1.executeQuery();
-        ResultSet rs2 = ps2.executeQuery();
-
-        table1.setModel(DbUtils.resultSetToTableModel(rs1));
-        table2.setModel(DbUtils.resultSetToTableModel(rs2));
-
-        ps1.close();
-        rs1.close();
-        ps2.close();
-        rs2.close();
-    } catch (Exception e) {
-        System.out.println(e);
-    }
-}
-     public void DeplaceP() {
-    try {
-        int row = table1.getSelectedRow();
-        this.test = (table1.getModel().getValueAt(row, 0).toString());
-        String requet = "SELECT voiture.photoV FROM voiture INNER JOIN marque ON voiture.idMarque = marque.idMarque INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature WHERE voiture.matVoiture = '" + test + "'";
-
-        ps = conn.prepareStatement(requet);
-        rs = ps.executeQuery();
-
-        if (rs.next()) {
-            
-            String t8 = rs.getString("photoV");
-            if (t8 == null || t8.equals("")) {
-                ImageIcon imgIcon = new ImageIcon(getClass().getResource("voiture.png"));
-                Image img = imgIcon.getImage();
-                Image resizedImg = img.getScaledInstance(300, 125, Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(resizedImg);
-                photoPP.setIcon(imageIcon);
-            } else {
-                ImageIcon imageIcon = new ImageIcon(t8);
-                Image img = imageIcon.getImage();
-                Image resizedImg = img.getScaledInstance(300, 125, Image.SCALE_SMOOTH);
-                ImageIcon resizedImageIcon = new ImageIcon(resizedImg);
-                photoPP.setIcon(resizedImageIcon);
-            }
-        }
-
-        ps.close();
-        rs.close();
-    } catch (Exception e) {
-        System.out.println(e);
-    }
-}
-    public void Deplace() {
-    try {
-        int row = table2.getSelectedRow();
-        this.test = (table2.getModel().getValueAt(row, 0).toString());
-        String requet = "SELECT\n" +
-                "  voiture.matVoiture,\n" +
-                "  voiture.nbrePlace,\n" +
-                "  voiture.puissanceMax ,\n" +
-                "  marque.libMarque,\n" +
-                "  boitevitesse.libBoiteV,\n" +
-                "  carburant.libCarburant ,\n" +
-                "  temperature.libTemperature,\n" +
-                "  voiture.Date,\n" +
-                "  voiture.photoV \n" +
-                "FROM\n" +
-                "  voiture\n" +
-                "  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
-                "  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
-                "  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
-                "  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature\n" +
-                "WHERE voiture.matVoiture = '" + test + "' ";
-        ps = conn.prepareStatement(requet);
-        rs = ps.executeQuery();
-
-        if (rs.next()) {
-            // Actualiser les champs
-            String t1 = rs.getString("matVoiture");
-            matTex.setText(t1);
-            String t2 = rs.getString("nbrePlace");
-            nbPla.setSelectedItem(t2);
-            String t3 = rs.getString("puissanceMax");
-            vitText.setText(t3);
-            
-// Effacer les anciennes données des combobox
-            marqVoit.removeAllItems();
-            vitCom.removeAllItems();
-            carBCom.removeAllItems();
-            tempCom.removeAllItems();
-            imgPath1.setText("");
-
-
-            String t4 = rs.getString("libMarque");
-            marqVoit.addItem(t4);
-            String t5 = rs.getString("libBoiteV");
-            vitCom.addItem(t5);
-            String t6 = rs.getString("libCarburant");
-            carBCom.addItem(t6);
-            String t7 = rs.getString("libTemperature");
-            tempCom.addItem(t7);
-            Date date = rs.getDate("Date");
-            dateIm.setDate(date);
-            String t9 =rs.getString("photoV");
-            textPath1.setText(t9);
-
-            String t8 = rs.getString("photoV");
-            if (t8 == null || t8.equals("")) {
-                ImageIcon imgIcon = new ImageIcon(getClass().getResource("voiture.png"));
-                Image img = imgIcon.getImage();
-                Image resizedImg = img.getScaledInstance(231, 252, Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(resizedImg);
-                imgPath1.setIcon(imageIcon);
-            } else {
-                ImageIcon imageIcon = new ImageIcon(t8);
-                Image img = imageIcon.getImage();
-                Image resizedImg = img.getScaledInstance(231, 252, Image.SCALE_SMOOTH);
-                ImageIcon resizedImageIcon = new ImageIcon(resizedImg);
-                imgPath1.setIcon(resizedImageIcon);
-            }
-        }
-
-        ps.close();
-        rs.close();
-        add2();
-    } catch (Exception e) {
-        System.out.println(e);
-    }
-}
-
-
-    public void efface() {
-        try {
-    ImageIcon img01 = new ImageIcon(getClass().getResource("voiture.png"));
-       imgPath1.setIcon(img01);
-            matTex.setText("");
-            vitText.setText("");
-            textPath1.setText("");
-            nbPla.setSelectedIndex(0);
-            marqVoit.removeAllItems();
-            vitCom.removeAllItems();
-            carBCom.removeAllItems();
-            tempCom.removeAllItems();;
-            
-            dateIm.setDate(null);
-            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-public void imagee(int maxWidth, int maxHeight, JLabel label, JTextField textLabel) {
-    ConexionBD v = new ConexionBD();
-    v.filen();
-    String vpath = v.getp();
-    
-    try {
-        if (vpath == null) {
-            // Faire quelque chose si le chemin de l'image est nul
-        } else {
-            // Charger l'image
-            BufferedImage image = ImageIO.read(new File(vpath));
-
-            // Redimensionner l'image
-            int imageWidth = image.getWidth();
-            int imageHeight = image.getHeight();
-
-            double widthScale = (double) maxWidth / imageWidth;
-            double heightScale = (double) maxHeight / imageHeight;
-            double scale = Math.min(widthScale, heightScale);
-
-            int scaledWidth = (int) (scale * imageWidth);
-            int scaledHeight = (int) (scale * imageHeight);
-
-            Image resizedImage = image.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
-
-            // Mettre à jour l'icône du JLabel avec l'image redimensionnée
-            ImageIcon imageIcon = new ImageIcon(resizedImage);
-            label.setIcon(imageIcon);
-            textLabel.setText(vpath);
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
-}
-
-private int getIdFromDatabase(String id, String table, String columnName, String value) throws SQLException {
-    
-    String query = "SELECT "+id+" FROM " + table + " WHERE " + columnName + " = ?";
-    PreparedStatement statement = conn.prepareStatement(query);
-    statement.setString(1, value);
-    ResultSet resultSet = statement.executeQuery();
-
-    int ids = -1; // Valeur par défaut si aucune correspondance n'est trouvée
-
-    if (resultSet.next()) {
-        ids = resultSet.getInt(id);
-    }
-
-    // Fermer les ressources
-    resultSet.close();
-    statement.close();
-
-    return ids;
-}
-    private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
-         
-        try {
-            // Récupérer les valeurs sélectionnées dans les JComboBox
-            String selectedBoiteVite = (String) BoiteVite.getSelectedItem();
-            String selectedTemper = (String) Temper.getSelectedItem();
-            String selectedEnergie = (String) Energie.getSelectedItem();
-            String selectedMarquVoit = (String) MarquVoit.getSelectedItem();
-            String selectedPlace = (String) nombrePlace.getSelectedItem();
-
-            // Récupérer les identifiants correspondants depuis la base de données
-            int idBoiteVite = getIdFromDatabase("idBoiteV", "boitevitesse", "libBoiteV", selectedBoiteVite);
-            int idTemper = getIdFromDatabase("idTemperature", "temperature", "libTemperature", selectedTemper);
-            int idCarburant = getIdFromDatabase("idCarburant", "carburant", "libCarburant", selectedEnergie);
-            int idMarque = getIdFromDatabase("idMarque", "marque", "libMarque", selectedMarquVoit);
-
-            String requete = "INSERT INTO voiture(matVoiture, nbrePlace, puissanceMax, idMarque, idBoiteV, idCarburant, idTemperature, Date, photoV) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            ps = conn.prepareStatement(requete);
-            ps.setString(1, matricule.getText());
-            ps.setString(2, selectedPlace);
-            ps.setString(3, VitesseMax.getText());
-            ps.setInt(4, idMarque);
-            ps.setInt(5, idBoiteVite);
-            ps.setInt(6, idCarburant);
-            ps.setInt(7, idTemper);
-            java.util.Date date = DateImm.getDate(); // Récupérer la valeur du JDateChooser
-            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            ps.setDate(8, sqlDate);
-            ps.setString(9, textPhoto.getText());
-            ps.execute();
-
-            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
-            ps.close();
-
-            // Actualiser la table
-            AfficheTableau();
-            efface();
-
-        } catch (HeadlessException | SQLException e) {
-            System.out.println("--> SQLException : " + e);
-            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
-        }
-    }//GEN-LAST:event_ajouterActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        imagee(225, 129, imgPath1, textPath1);
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void modifbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtnActionPerformed
-        try {
-            // Récupérer les valeurs sélectionnées dans les JComboBox
-            String selectedBoiteVite = (String) vitCom.getSelectedItem();
-            String selectedTemper = (String) tempCom.getSelectedItem();
-            String selectedEnergie = (String) carBCom.getSelectedItem();
-            String selectedMarquVoit = (String) marqVoit.getSelectedItem();
-            String selectedPlace = (String) nbPla.getSelectedItem();
-
-            // Récupérer les identifiants correspondants depuis la base de données
-            int idBoiteVite = getIdFromDatabase("idBoiteV", "boitevitesse", "libBoiteV", selectedBoiteVite);
-            int idTemper = getIdFromDatabase("idTemperature", "temperature", "libTemperature", selectedTemper);
-            int idCarburant = getIdFromDatabase("idCarburant", "carburant", "libCarburant", selectedEnergie);
-            int idMarque = getIdFromDatabase("idMarque", "marque", "libMarque", selectedMarquVoit);
-
-            String requete = "UPDATE `voiture` SET `matVoiture`=?,`nbrePlace`=?,`puissanceMax`=?,`idMarque`=?,`idBoiteV`=?,`idCarburant`=?,`idTemperature`=?,`Date`=?,`photoV`=? WHERE `matVoiture`='"+test+"'";
-            ps = conn.prepareStatement(requete);
-            ps.setString(1, matTex.getText());
-            ps.setString(2, selectedPlace);
-            ps.setString(3, vitText.getText());
-            ps.setInt(4, idMarque);
-            ps.setInt(5, idBoiteVite);
-            ps.setInt(6, idCarburant);
-            ps.setInt(7, idTemper);
-            java.util.Date date = dateIm.getDate(); // Récupérer la valeur du JDateChooser
-            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            ps.setDate(8, sqlDate);
-            ps.setString(9, textPath1.getText());
-            ps.execute();
-
-            JOptionPane.showMessageDialog(null, "Modification réussi");
-            ps.close();
-
-            // Actualiser la table
-            AfficheTableau();
-            efface();
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        
-        finally {
-
-            try {
-                ps.close();
-                rs.close();
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "erreur BD");
-            }
-        }
-    }//GEN-LAST:event_modifbtnActionPerformed
-
-    private void vitTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitTextActionPerformed
+    private void recher2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_vitTextActionPerformed
-public void suppvoiture() {
-        try {
-            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer une Voiture,est ce que tu es sur?",
-                    "Supprimer voiture", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+    }//GEN-LAST:event_recher2ActionPerformed
 
-                String requete = "delete from voiture where matVoiture = '" + test + "'";
-                ps = conn.prepareStatement(requete);
-
-                ps.execute();
-
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, "erreur de supprimer \n" + e.getMessage());
-        }
-         actualise();
-
-    }
-public void actualise(){
-    try {
-
-            String requete6 = "SELECT  voiture.matVoiture AS 'Matricule', voiture.puissanceMax AS 'Vitesse',  marque.libMarque AS 'Marque',  boitevitesse.libBoiteV AS 'BoiteV', carburant.libCarburant AS 'Energie' FROM voiture INNER JOIN marque ON voiture.idMarque = marque.idMarque  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant ";;
-            ps = conn.prepareStatement(requete6);
-            rs = ps.executeQuery();
-            table2.setModel(DbUtils.resultSetToTableModel(rs));
- 
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-}
-
-public void actualiseTable1(){
-    try {
-
-            String requete6 = "SELECT voiture.matVoiture AS 'Matricule', voiture.nbrePlace AS 'Place',  voiture.puissanceMax AS 'Vitesse',  marque.libMarque AS 'Marque', boitevitesse.libBoiteV AS 'BoiteV',  carburant.libCarburant AS 'Energie', temperature.libTemperature AS 'temp', voiture.Date AS 'Date'FROM voiture  INNER JOIN marque ON voiture.idMarque = marque.idMarque INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature;";;
-            ps = conn.prepareStatement(requete6);
-            rs = ps.executeQuery();
-            table1.setModel(DbUtils.resultSetToTableModel(rs));
- 
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-}
-    private void supprbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtnActionPerformed
-        suppvoiture();
-    }//GEN-LAST:event_supprbtnActionPerformed
-
-    private void matTexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTexActionPerformed
+    private void recher2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher2MouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_matTexActionPerformed
+    }//GEN-LAST:event_recher2MouseReleased
 
-    private void nbPlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbPlaActionPerformed
-        
-    }//GEN-LAST:event_nbPlaActionPerformed
-
-    private void marqVoitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marqVoitActionPerformed
-    
-    }//GEN-LAST:event_marqVoitActionPerformed
-
-    private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
-        Deplace();
-    }//GEN-LAST:event_table2MouseClicked
-
-    private void VitesseMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VitesseMaxActionPerformed
+    private void recher2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_VitesseMaxActionPerformed
+    }//GEN-LAST:event_recher2MouseClicked
 
-    private void matriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeActionPerformed
+    private void modifbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matriculeActionPerformed
+    }//GEN-LAST:event_modifbtn2ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        actualiseTable1();
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void table2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseReleased
-
-    }//GEN-LAST:event_table2MouseReleased
-
-    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
-        DeplaceP();
-    }//GEN-LAST:event_table1MouseClicked
-
-    private void tempComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempComActionPerformed
+    private void supprbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tempComActionPerformed
+    }//GEN-LAST:event_supprbtn2ActionPerformed
 
-    private void table2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table2KeyReleased
-       
-    }//GEN-LAST:event_table2KeyReleased
-
-    private void rechMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rechMouseClicked
-        rech.setText("");
-    }//GEN-LAST:event_rechMouseClicked
-
-    private void textPath1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPath1ActionPerformed
+    private void vitText5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textPath1ActionPerformed
+    }//GEN-LAST:event_vitText5ActionPerformed
 
-    private void TemperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TemperActionPerformed
+    private void matTex3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TemperActionPerformed
+    }//GEN-LAST:event_matTex3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        imagee(300, 300, imagePhoto, textPhoto);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void vitText4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vitText4ActionPerformed
+
+    private void matTex2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_matTex2ActionPerformed
+
+    private void table4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table4KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table4KeyReleased
+
+    private void table4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table4MouseReleased
+
+    private void table4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table4MouseClicked
+
+    private void vitText3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vitText3ActionPerformed
+
+    private void ajouter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ajouter1ActionPerformed
+
+    private void recher1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher1ActionPerformed
+
+    private void recher1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher1MouseReleased
+
+    private void recher1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher1MouseClicked
+
+    private void modifbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifbtn1ActionPerformed
+
+    private void supprbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supprbtn1ActionPerformed
+
+    private void vitText2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vitText2ActionPerformed
+
+    private void matTex1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_matTex1ActionPerformed
+
+    private void table3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table3KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table3KeyReleased
+
+    private void table3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table3MouseReleased
+
+    private void table3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table3MouseClicked
+
+    private void tempCom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempCom2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tempCom2ActionPerformed
+
+    private void vitText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vitText1ActionPerformed
+
+    private void nbPla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbPla1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nbPla1ActionPerformed
 
     private void recherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recherActionPerformed
         // TODO add your handling code here:
@@ -2288,121 +1931,129 @@ public void actualiseTable1(){
         recher.setText("");
     }//GEN-LAST:event_recherMouseClicked
 
+    private void modifbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtnActionPerformed
+    
+    }//GEN-LAST:event_modifbtnActionPerformed
+
+    private void supprbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtnActionPerformed
+        
+    }//GEN-LAST:event_supprbtnActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+       
+    }//GEN-LAST:event_jButton11ActionPerformed
+
     private void tempCom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempCom1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tempCom1ActionPerformed
 
-    private void nbPla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbPla1ActionPerformed
+    private void matTexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTexActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nbPla1ActionPerformed
+    }//GEN-LAST:event_matTexActionPerformed
 
-    private void vitText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText1ActionPerformed
+    private void table2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table2KeyReleased
 
-    private void tempCom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempCom2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tempCom2ActionPerformed
+    }//GEN-LAST:event_table2KeyReleased
 
-    private void table3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table3MouseClicked
+    private void table2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseReleased
 
-    private void table3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table3MouseReleased
+    }//GEN-LAST:event_table2MouseReleased
 
-    private void table3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table3KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table3KeyReleased
+    private void table2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table2MouseClicked
+      
+    }//GEN-LAST:event_table2MouseClicked
 
-    private void matTex1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_matTex1ActionPerformed
+    private void marqVoitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marqVoitActionPerformed
 
-    private void supprbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_supprbtn1ActionPerformed
+    }//GEN-LAST:event_marqVoitActionPerformed
 
-    private void modifbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn1ActionPerformed
+    private void tempComActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tempComActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_modifbtn1ActionPerformed
+    }//GEN-LAST:event_tempComActionPerformed
 
-    private void recher1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher1MouseClicked
+    private void vitTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_recher1MouseClicked
+    }//GEN-LAST:event_vitTextActionPerformed
 
-    private void recher1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher1MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher1MouseReleased
+    private void nbPlaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nbPlaActionPerformed
 
-    private void recher1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher1ActionPerformed
+    }//GEN-LAST:event_nbPlaActionPerformed
 
-    private void vitText2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText2ActionPerformed
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+     
+    }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void vitText3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText3ActionPerformed
+    private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
+       
+    }//GEN-LAST:event_table1MouseClicked
 
-    private void table4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table4MouseClicked
+    private void rechMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rechMouseClicked
+        rech.setText("");
+    }//GEN-LAST:event_rechMouseClicked
 
-    private void table4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseReleased
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_table4MouseReleased
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void table4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table4KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table4KeyReleased
+    private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
 
-    private void matTex2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_matTex2ActionPerformed
+    }//GEN-LAST:event_ajouterActionPerformed
 
-    private void vitText4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText4ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-    private void supprbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_supprbtn2ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void modifbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn2ActionPerformed
+    private void matricule4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_modifbtn2ActionPerformed
+    }//GEN-LAST:event_matricule4ActionPerformed
 
-    private void recher2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher2MouseClicked
+    private void matriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_recher2MouseClicked
+    }//GEN-LAST:event_matriculeActionPerformed
 
-    private void recher2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher2MouseReleased
+    private void matricule1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_recher2MouseReleased
+    }//GEN-LAST:event_matricule1ActionPerformed
 
-    private void recher2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher2ActionPerformed
+    private void matricule2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_recher2ActionPerformed
+    }//GEN-LAST:event_matricule2ActionPerformed
 
-    private void matTex3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex3ActionPerformed
+    private void matricule7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matTex3ActionPerformed
+    }//GEN-LAST:event_matricule7ActionPerformed
 
-    private void vitText5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText5ActionPerformed
+    private void matricule3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_vitText5ActionPerformed
+    }//GEN-LAST:event_matricule3ActionPerformed
 
-    private void ajouter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter1ActionPerformed
+    private void matricule5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ajouter1ActionPerformed
+    }//GEN-LAST:event_matricule5ActionPerformed
 
-    private void ajouter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter2ActionPerformed
+    private void matricule6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ajouter2ActionPerformed
+    }//GEN-LAST:event_matricule6ActionPerformed
+
+    private void table5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table5MouseClicked
+
+    private void table5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table5MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table5MouseReleased
+
+    private void table5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table5KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_table5KeyReleased
+
+    private void modifbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modifbtn3ActionPerformed
+
+    private void supprbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supprbtn3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2421,31 +2072,25 @@ public void actualiseTable1(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ParkA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionChauffeur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ParkA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionChauffeur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ParkA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionChauffeur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ParkA.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionChauffeur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ParkA().setVisible(true);
+                new GestionChauffeur().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> BoiteVite;
-    private com.toedter.calendar.JDateChooser DateImm;
-    private javax.swing.JComboBox<String> Energie;
-    private javax.swing.JComboBox<String> MarquVoit;
-    private javax.swing.JComboBox<String> Temper;
-    private javax.swing.JTextField VitesseMax;
     private javax.swing.JButton ajouter;
     private javax.swing.JButton ajouter1;
     private javax.swing.JButton ajouter2;
@@ -2471,13 +2116,12 @@ public void actualiseTable1(){
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel10;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateChooser4;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2487,8 +2131,6 @@ public void actualiseTable1(){
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
@@ -2507,10 +2149,20 @@ public void actualiseTable1(){
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2534,6 +2186,7 @@ public void actualiseTable1(){
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JComboBox<String> marqVoit;
     private javax.swing.JTextField matTex;
@@ -2541,14 +2194,19 @@ public void actualiseTable1(){
     private javax.swing.JTextField matTex2;
     private javax.swing.JTextField matTex3;
     private javax.swing.JTextField matricule;
+    private javax.swing.JTextField matricule1;
+    private javax.swing.JTextField matricule2;
+    private javax.swing.JTextField matricule3;
+    private javax.swing.JTextField matricule4;
+    private javax.swing.JTextField matricule5;
+    private javax.swing.JTextField matricule6;
+    private javax.swing.JTextField matricule7;
     private javax.swing.JButton modifbtn;
     private javax.swing.JButton modifbtn1;
     private javax.swing.JButton modifbtn2;
+    private javax.swing.JButton modifbtn3;
     private javax.swing.JComboBox<String> nbPla;
     private javax.swing.JComboBox<String> nbPla1;
-    private javax.swing.JComboBox<String> nombrePlace;
-    private javax.swing.JComboBox<String> nombrePlace1;
-    private javax.swing.JComboBox<String> nombrePlace2;
     private javax.swing.JLabel photoPP;
     private javax.swing.JTextField rech;
     private javax.swing.JTextField recher;
@@ -2557,14 +2215,15 @@ public void actualiseTable1(){
     private javax.swing.JButton supprbtn;
     private javax.swing.JButton supprbtn1;
     private javax.swing.JButton supprbtn2;
+    private javax.swing.JButton supprbtn3;
     private javax.swing.JTable table1;
     private javax.swing.JTable table2;
     private javax.swing.JTable table3;
     private javax.swing.JTable table4;
+    private javax.swing.JTable table5;
     private javax.swing.JComboBox<String> tempCom;
     private javax.swing.JComboBox<String> tempCom1;
     private javax.swing.JComboBox<String> tempCom2;
-    private javax.swing.JTextField textPath1;
     private javax.swing.JTextField textPhoto;
     private javax.swing.JComboBox<String> vitCom;
     private javax.swing.JTextField vitText;
