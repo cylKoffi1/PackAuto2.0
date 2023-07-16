@@ -469,21 +469,21 @@
                                           </Group>
                                       </Group>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="matricule" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="nombrePlace" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="VitesseMax" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="MarquVoit" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="GamVoit" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="ModVoit" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="Temper" max="32767" attributes="0"/>
-                                          <Component id="DateImm" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="matricule1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="nombrePlace1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="VitesseMax1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="marque1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="gam1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="modele1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="Tempe1" max="32767" attributes="0"/>
+                                          <Component id="DateImm1" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel27" min="-2" pref="90" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="ass" min="-2" pref="89" max="-2" attributes="0"/>
+                                              <Component id="assurance1" min="-2" pref="89" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
@@ -504,12 +504,12 @@
                                                   <Group type="102" alignment="1" attributes="0">
                                                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                                                      <Component id="BoiteVite" min="-2" pref="89" max="-2" attributes="0"/>
+                                                      <Component id="BoiteVite1" min="-2" pref="89" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" attributes="0">
                                                       <Component id="jLabel26" min="-2" pref="90" max="-2" attributes="0"/>
                                                       <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="Energie" min="-2" pref="89" max="-2" attributes="0"/>
+                                                      <Component id="carburant1" min="-2" pref="89" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -539,22 +539,22 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="matricule" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                          <Component id="matricule1" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                                           <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="Energie" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="carburant1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="nombrePlace" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nombrePlace1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ass" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="assurance1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="VitesseMax" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                              <Component id="BoiteVite" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="VitesseMax1" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="BoiteVite1" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -562,26 +562,26 @@
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="MarquVoit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="marque1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="GamVoit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="gam1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel44" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="ModVoit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="modele1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="Temper" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Tempe1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="DateImm" min="-2" max="-2" attributes="0"/>
+                                          <Component id="DateImm1" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -668,9 +668,9 @@
                                 <Property name="text" type="java.lang.String" value="Gamme :"/>
                               </Properties>
                             </Component>
-                            <Component class="com.toedter.calendar.JDateChooser" name="DateImm">
+                            <Component class="com.toedter.calendar.JDateChooser" name="DateImm1">
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="nombrePlace">
+                            <Component class="javax.swing.JComboBox" name="nombrePlace1">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="15">
@@ -699,7 +699,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="MarquVoit">
+                            <Component class="javax.swing.JComboBox" name="marque1">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -709,7 +709,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="BoiteVite">
+                            <Component class="javax.swing.JComboBox" name="BoiteVite1">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -722,7 +722,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="Energie">
+                            <Component class="javax.swing.JComboBox" name="carburant1">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -732,26 +732,26 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EnergieActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="carburant1ActionPerformed"/>
                               </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="Temper">
+                            <Component class="javax.swing.JComboBox" name="Tempe1">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TemperActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tempe1ActionPerformed"/>
                               </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="VitesseMax">
+                            <Component class="javax.swing.JTextField" name="VitesseMax1">
                               <Properties>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -759,10 +759,10 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VitesseMaxActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VitesseMax1ActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="matricule">
+                            <Component class="javax.swing.JTextField" name="matricule1">
                               <Properties>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -770,7 +770,7 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="matriculeActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="matricule1ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel26">
@@ -781,7 +781,7 @@
                                 <Property name="text" type="java.lang.String" value="Carburant :"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="ass">
+                            <Component class="javax.swing.JComboBox" name="assurance1">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="0"/>
@@ -790,6 +790,9 @@
                                   <Border info="null"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assurance1ActionPerformed"/>
+                              </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
@@ -830,7 +833,7 @@
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="imagePhoto" min="-2" pref="288" max="-2" attributes="0"/>
+                                              <Component id="imagePhoto1" min="-2" pref="288" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -842,7 +845,7 @@
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="imagePhoto" min="-2" max="-2" attributes="0"/>
+                                              <Component id="imagePhoto1" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -850,7 +853,7 @@
                                 </DimensionLayout>
                               </Layout>
                               <SubComponents>
-                                <Component class="javax.swing.JLabel" name="imagePhoto">
+                                <Component class="javax.swing.JLabel" name="imagePhoto1">
                                   <Properties>
                                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                       <Color blue="0" green="0" red="0" type="rgb"/>
@@ -897,7 +900,7 @@
                                 <Property name="text" type="java.lang.String" value="Mod&#xe8;le :"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="GamVoit">
+                            <Component class="javax.swing.JComboBox" name="gam1">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -907,7 +910,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="ModVoit">
+                            <Component class="javax.swing.JComboBox" name="modele1">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -964,21 +967,8 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="recher" pref="187" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                                  <Component id="supprbtn" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="modifbtn" min="-2" pref="142" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton11" min="-2" pref="132" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanel18" max="32767" attributes="0"/>
+                                  <Component id="jPanel18" pref="820" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -987,18 +977,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel18" min="-2" pref="340" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="recher" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="jButton3" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jButton11" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Component id="supprbtn" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                                          <Component id="modifbtn" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="jPanel18" pref="408" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1017,69 +996,111 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jScrollPane2" min="-2" pref="510" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="imgPath1" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="vitText" max="32767" attributes="0"/>
-                                                          <Component id="nbPla" alignment="0" pref="105" max="32767" attributes="0"/>
-                                                          <Component id="matTex" alignment="1" max="32767" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="carBCom" min="-2" pref="103" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="vitCom" min="-2" pref="103" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="0" attributes="0">
-                                                              <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="marqVoit" min="-2" pref="103" max="-2" attributes="0"/>
-                                                          </Group>
+                                                          <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jLabel18" alignment="1" min="-2" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
                                                       <Group type="103" groupAlignment="1" attributes="0">
                                                           <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
                                                       <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="tempCom1" alignment="1" max="32767" attributes="0"/>
-                                                          <Component id="tempCom" alignment="1" max="32767" attributes="0"/>
                                                           <Group type="102" attributes="0">
-                                                              <EmptySpace min="0" pref="3" max="32767" attributes="0"/>
-                                                              <Component id="dateIm" min="-2" pref="135" max="-2" attributes="0"/>
+                                                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                          </Group>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                                  <Component id="assurance2" min="-2" pref="106" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                      <Component id="VitesseMax2" max="32767" attributes="0"/>
+                                                                      <Component id="nombrePlace2" alignment="0" pref="105" max="32767" attributes="0"/>
+                                                                      <Component id="matricule2" alignment="1" max="32767" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                                      <Group type="102" alignment="1" attributes="0">
+                                                                          <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                                                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                                          <Component id="carburant2" min="-2" pref="103" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <Group type="102" alignment="1" attributes="0">
+                                                                          <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
+                                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                                          <Component id="BoiteVite2" min="-2" pref="103" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <Group type="102" alignment="0" attributes="0">
+                                                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                                          <Component id="marque2" min="-2" pref="103" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                  </Group>
+                                                                  <Group type="102" alignment="1" attributes="0">
+                                                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                                      <Component id="Tempe2" min="-2" pref="104" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                                  <Group type="102" alignment="0" attributes="0">
+                                                                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+                                                                      <Component id="imagePhoto2" max="32767" attributes="0"/>
+                                                                  </Group>
+                                                                  <Group type="102" alignment="1" attributes="0">
+                                                                      <EmptySpace max="32767" attributes="0"/>
+                                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                                          <Component id="jLabel46" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                          <Component id="jLabel47" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                                      </Group>
+                                                                      <EmptySpace min="213" pref="213" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
                                                           </Group>
                                                       </Group>
-                                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="recher" min="-2" pref="129" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="supprbtn" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="modifbtn" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jScrollPane2" min="-2" pref="510" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="473" max="-2" attributes="0"/>
+                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="gam2" max="32767" attributes="0"/>
+                                          <Component id="DateImm2" max="32767" attributes="0"/>
+                                          <Component id="modele2" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -1088,50 +1109,64 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="supprbtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="modifbtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="recher" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="assurance2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="Tempe2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="DateImm2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="marqVoit" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="matTex" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tempCom" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="marque2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="matricule2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                          <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="gam2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="nbPla" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="103" groupAlignment="3" attributes="0">
-                                                      <Component id="vitCom" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="carBCom" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="vitText" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                                                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                              <Component id="nombrePlace2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="tempCom1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="dateIm" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                              <Component id="BoiteVite2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="modele2" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane2" min="-2" pref="179" max="-2" attributes="0"/>
-                                          <Component id="imgPath1" min="-2" pref="162" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="carburant2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="VitesseMax2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                                                  <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jScrollPane2" min="-2" pref="179" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="imagePhoto2" min="-2" pref="162" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jButton11" min="-2" pref="47" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -1152,7 +1187,7 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="Vitesse maximale :"/>
+                                <Property name="text" type="java.lang.String" value="Puissance :"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel19">
@@ -1160,7 +1195,7 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="Mod&#xe8;le de voiture :"/>
+                                <Property name="text" type="java.lang.String" value="Marque de voiture :"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel20">
@@ -1206,7 +1241,7 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                                 </Property>
-                                <Property name="text" type="java.lang.String" value="Energie :"/>
+                                <Property name="text" type="java.lang.String" value="Carburant :"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel25">
@@ -1217,9 +1252,9 @@
                                 <Property name="text" type="java.lang.String" value="Bo&#xee;te de vitesse :"/>
                               </Properties>
                             </Component>
-                            <Component class="com.toedter.calendar.JDateChooser" name="dateIm">
+                            <Component class="com.toedter.calendar.JDateChooser" name="DateImm2">
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="nbPla">
+                            <Component class="javax.swing.JComboBox" name="nombrePlace2">
                               <Properties>
                                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                                   <StringArray count="14">
@@ -1244,49 +1279,49 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nbPlaActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombrePlace2ActionPerformed"/>
                               </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="vitText">
+                            <Component class="javax.swing.JTextField" name="VitesseMax2">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vitTextActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VitesseMax2ActionPerformed"/>
                               </Events>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="tempCom">
+                            <Component class="javax.swing.JComboBox" name="assurance2">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tempComActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assurance2ActionPerformed"/>
                               </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="marqVoit">
+                            <Component class="javax.swing.JComboBox" name="marque2">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marqVoitActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="marque2ActionPerformed"/>
                               </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="vitCom">
+                            <Component class="javax.swing.JComboBox" name="BoiteVite2">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -1296,7 +1331,7 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                               </AuxValues>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="carBCom">
+                            <Component class="javax.swing.JComboBox" name="carburant2">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
@@ -1359,7 +1394,7 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="javax.swing.JLabel" name="imgPath1">
+                            <Component class="javax.swing.JLabel" name="imagePhoto2">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1374,14 +1409,14 @@
                                 </Property>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="matTex">
+                            <Component class="javax.swing.JTextField" name="matricule2">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="matTexActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="matricule2ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JLabel" name="jLabel28">
@@ -1392,14 +1427,135 @@
                                 <Property name="text" type="java.lang.String" value="Assurance :"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="tempCom1">
+                            <Component class="javax.swing.JComboBox" name="Tempe2">
                               <Properties>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tempCom1ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Tempe2ActionPerformed"/>
+                              </Events>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton3">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/image/IconeRecerche.png"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JTextField" name="recher">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="horizontalAlignment" type="int" value="0"/>
+                                <Property name="text" type="java.lang.String" value="Rechercher"/>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="null"/>
+                                </Property>
+                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[64, 31]"/>
+                                </Property>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[64, 31]"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="supprbtn">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/image/suppression.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Supprimer"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="modifbtn">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/image/modification.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Modifier"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton11">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="0" green="0" red="0" type="rgb"/>
+                                </Property>
+                                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                                  <Image iconType="3" name="/image/explorateur.png"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Choisir"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+                              </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel46">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Gamme de voiture :"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel47">
+                              <Properties>
+                                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Mod&#xe8;le de voiture :"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="gam2">
+                              <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="null"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gam2ActionPerformed"/>
+                              </Events>
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                              </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JComboBox" name="modele2">
+                              <Properties>
+                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                  <Border info="null"/>
+                                </Property>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modele2ActionPerformed"/>
                               </Events>
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1407,90 +1563,6 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JButton" name="jButton11">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/explorateur.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Choisir"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="supprbtn">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/suppression.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Supprimer"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="supprbtnActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="modifbtn">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/modification.png"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Modifier"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifbtnActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="recher">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="horizontalAlignment" type="int" value="0"/>
-                            <Property name="text" type="java.lang.String" value="Rechercher"/>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="null"/>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="recherMouseClicked"/>
-                            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="recherMouseReleased"/>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recherActionPerformed"/>
-                          </Events>
-                        </Component>
-                        <Component class="javax.swing.JButton" name="jButton3">
-                          <Properties>
-                            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="0" green="0" red="0" type="rgb"/>
-                            </Property>
-                            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                            </Property>
-                            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/image/IconeRecerche.png"/>
-                            </Property>
-                          </Properties>
-                        </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
@@ -1533,11 +1605,13 @@
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="modifierAssurance" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="supprimerAssurance" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ajouterAssurance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="recher1" alignment="0" pref="39" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="modifierAssurance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="supprimerAssurance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="ajouterAssurance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <Component id="jButton4" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -1624,7 +1698,6 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                                   <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
