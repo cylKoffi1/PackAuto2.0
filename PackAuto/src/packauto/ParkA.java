@@ -35,6 +35,7 @@ public class ParkA extends javax.swing.JFrame {
     public ImageIcon Format =null;
     static String test;
     static int idAss;
+    static int idE;
     public static String test3;
     
     /**
@@ -48,6 +49,7 @@ public class ParkA extends javax.swing.JFrame {
         AfficheTableau();
         AfficheTableauAss();
         ComboxAff();
+        ComboboxMatri();
         efface();
         add2();
         recher.setText("Rechercher ");
@@ -109,6 +111,8 @@ public class ParkA extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         gam1 = new javax.swing.JComboBox<>();
         modele1 = new javax.swing.JComboBox<>();
+        jLabel48 = new javax.swing.JLabel();
+        kilometrage1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -143,6 +147,8 @@ public class ParkA extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         gam2 = new javax.swing.JComboBox<>();
         modele2 = new javax.swing.JComboBox<>();
+        jLabel49 = new javax.swing.JLabel();
+        kilometrage2 = new javax.swing.JTextField();
         jPanel17 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
@@ -175,19 +181,21 @@ public class ParkA extends javax.swing.JFrame {
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
-        vitText3 = new javax.swing.JTextField();
+        kilometrageE = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
         table4 = new javax.swing.JTable();
-        imgPath3 = new javax.swing.JLabel();
-        matTex2 = new javax.swing.JTextField();
-        dateIm4 = new com.toedter.calendar.JDateChooser();
-        vitText4 = new javax.swing.JTextField();
-        matTex3 = new javax.swing.JTextField();
+        imgPathE = new javax.swing.JLabel();
+        dateE = new com.toedter.calendar.JDateChooser();
+        compagniE = new javax.swing.JTextField();
+        numéroE = new javax.swing.JTextField();
         jLabel45 = new javax.swing.JLabel();
-        vitText5 = new javax.swing.JTextField();
+        coutE = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        DescriptionE = new javax.swing.JTextArea();
         jLabel43 = new javax.swing.JLabel();
+        matriculeE = new javax.swing.JComboBox<>();
+        dateProch = new com.toedter.calendar.JDateChooser();
+        jLabel50 = new javax.swing.JLabel();
         ajouter2 = new javax.swing.JButton();
         modifbtn2 = new javax.swing.JButton();
         supprbtn2 = new javax.swing.JButton();
@@ -202,6 +210,7 @@ public class ParkA extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        testesIma = new javax.swing.JTextField();
 
         textPath1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +326,7 @@ public class ParkA extends javax.swing.JFrame {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 839, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -332,7 +341,7 @@ public class ParkA extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(rech, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(330, Short.MAX_VALUE)))
+                    .addContainerGap(355, Short.MAX_VALUE)))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,6 +504,17 @@ public class ParkA extends javax.swing.JFrame {
 
         modele1.setBorder(null);
 
+        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel48.setText("Kilométrage :");
+
+        kilometrage1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        kilometrage1.setBorder(null);
+        kilometrage1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kilometrage1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -506,131 +526,136 @@ public class ParkA extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel15Layout.createSequentialGroup()
-                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel12)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel10)
-                                .addComponent(jLabel16)
-                                .addComponent(jLabel14))
-                            .addGap(39, 39, 39))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                            .addComponent(jLabel13)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(jLabel44)
-                        .addGap(89, 89, 89)))
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel44)
+                    .addComponent(jLabel48))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(matricule1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombrePlace1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(VitesseMax1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(marque1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(gam1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(modele1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Tempe1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DateImm1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DateImm1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kilometrage1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(assurance1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ajouter)
-                                    .addComponent(jButton2))
-                                .addGap(76, 76, 76))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(25, 25, 25)
-                                .addComponent(BoiteVite1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel15Layout.createSequentialGroup()
-                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel15))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(carburant1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BoiteVite1, 0, 143, Short.MAX_VALUE)
+                                    .addComponent(assurance1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(nombrePlace1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(carburant1, 0, 143, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ajouter)
+                        .addGap(78, 78, 78))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-            .addGroup(jPanel15Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(matricule1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26)
-                    .addComponent(carburant1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(nombrePlace1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel27)
-                    .addComponent(assurance1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(VitesseMax1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BoiteVite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel15))
-                    .addComponent(jLabel9))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(marque1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(gam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel44)
-                    .addComponent(modele1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Tempe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DateImm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(matricule1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel48)
+                            .addComponent(kilometrage1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(VitesseMax1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(marque1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(gam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel44)
+                            .addComponent(modele1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Tempe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DateImm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13)))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombrePlace1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel26)
+                            .addComponent(carburant1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel27)
+                            .addComponent(assurance1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BoiteVite1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))))
+                .addGap(0, 76, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 7, Short.MAX_VALUE))
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 408, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -642,8 +667,8 @@ public class ParkA extends javax.swing.JFrame {
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         ajouterVoiture.addTab("Ajouter Voiture", jPanel12);
@@ -785,11 +810,21 @@ public class ParkA extends javax.swing.JFrame {
         supprbtn.setForeground(new java.awt.Color(0, 0, 0));
         supprbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
         supprbtn.setText("Supprimer");
+        supprbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprbtnActionPerformed(evt);
+            }
+        });
 
         modifbtn.setBackground(new java.awt.Color(255, 255, 255));
         modifbtn.setForeground(new java.awt.Color(0, 0, 0));
         modifbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
         modifbtn.setText("Modifier");
+        modifbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifbtnActionPerformed(evt);
+            }
+        });
 
         jButton11.setBackground(new java.awt.Color(255, 255, 255));
         jButton11.setForeground(new java.awt.Color(0, 0, 0));
@@ -821,6 +856,16 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Kilometrage :");
+
+        kilometrage2.setBorder(null);
+        kilometrage2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kilometrage2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -843,10 +888,17 @@ public class ParkA extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel22)
                                     .addGroup(jPanel18Layout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(recher, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton11)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(supprbtn)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel18Layout.createSequentialGroup()
                                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(assurance2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -873,38 +925,28 @@ public class ParkA extends javax.swing.JFrame {
                                                 .addComponent(jLabel23)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(Tempe2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(57, 57, 57)
                                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel18Layout.createSequentialGroup()
-                                                .addGap(67, 67, 67)
-                                                .addComponent(imagePhoto2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.TRAILING))
-                                                .addGap(213, 213, 213)))))
-                                .addContainerGap())
+                                            .addComponent(jLabel46)
+                                            .addComponent(jLabel47)
+                                            .addComponent(jLabel49)))
+                                    .addComponent(jLabel20))
+                                .addGap(22, 22, 22)))
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(modifbtn)
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addComponent(recher, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(supprbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(modifbtn)
-                                .addGap(63, 63, 63))))
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DateImm2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gam2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(modele2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(kilometrage2))))
+                        .addGap(49, 49, 49))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton11)
-                        .addGap(86, 86, 86))))
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(473, 473, 473)
-                .addComponent(jLabel22)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(gam2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DateImm2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(modele2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imagePhoto2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -912,11 +954,13 @@ public class ParkA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(supprbtn)
-                    .addComponent(modifbtn)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
-                    .addComponent(recher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(recher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(supprbtn)
+                        .addComponent(modifbtn)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -944,21 +988,19 @@ public class ParkA extends javax.swing.JFrame {
                         .addComponent(jLabel25)
                         .addComponent(jLabel47)
                         .addComponent(modele2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(carburant2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(VitesseMax2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18)
-                            .addComponent(jLabel24))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(imagePhoto2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel24)
+                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(carburant2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(VitesseMax2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel18)
+                        .addComponent(jLabel49)
+                        .addComponent(kilometrage2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagePhoto2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -967,31 +1009,32 @@ public class ParkA extends javax.swing.JFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 820, Short.MAX_VALUE)
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 408, Short.MAX_VALUE))
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 826, Short.MAX_VALUE)
+            .addGap(0, 851, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGap(0, 430, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         ajouterVoiture.addTab("Modifier / Supprimer", jPanel2);
@@ -1125,7 +1168,7 @@ public class ParkA extends javax.swing.JFrame {
                                         .addComponent(jLabel30)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(dateExpi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                    .addComponent(dateExpi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                                     .addComponent(contact, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(montant, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(63, 63, 63)
@@ -1143,6 +1186,7 @@ public class ParkA extends javax.swing.JFrame {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1175,7 +1219,7 @@ public class ParkA extends javax.swing.JFrame {
                         .addGap(44, 44, 44)
                         .addComponent(jLabel35)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1232,7 +1276,7 @@ public class ParkA extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(recher1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ajouterAssurance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1246,16 +1290,15 @@ public class ParkA extends javax.swing.JFrame {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(recher1, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(modifierAssurance)
-                            .addComponent(supprimerAssurance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ajouterAssurance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(modifierAssurance)
+                        .addComponent(supprimerAssurance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ajouterAssurance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recher1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton4))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ajouterVoiture.addTab("Assurance", jPanel17);
@@ -1271,7 +1314,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel37.setText("Kilometrage :");
 
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Matricule :");
+        jLabel39.setText("Compagnie :");
 
         jLabel40.setBackground(new java.awt.Color(255, 255, 255));
         jLabel40.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
@@ -1279,15 +1322,15 @@ public class ParkA extends javax.swing.JFrame {
         jLabel40.setText("Entretiens voiture");
 
         jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("Compagnie :");
+        jLabel41.setText("Matricule :");
 
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("Date entretien :");
 
-        vitText3.setBorder(null);
-        vitText3.addActionListener(new java.awt.event.ActionListener() {
+        kilometrageE.setBorder(null);
+        kilometrageE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vitText3ActionPerformed(evt);
+                kilometrageEActionPerformed(evt);
             }
         });
 
@@ -1325,47 +1368,54 @@ public class ParkA extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(table4);
 
-        imgPath3.setBackground(new java.awt.Color(0, 0, 0));
-        imgPath3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
-        imgPath3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        imgPathE.setBackground(new java.awt.Color(0, 0, 0));
+        imgPathE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
+        imgPathE.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        matTex2.setBorder(null);
-        matTex2.addActionListener(new java.awt.event.ActionListener() {
+        compagniE.setBorder(null);
+        compagniE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matTex2ActionPerformed(evt);
+                compagniEActionPerformed(evt);
             }
         });
 
-        vitText4.setBorder(null);
-        vitText4.addActionListener(new java.awt.event.ActionListener() {
+        numéroE.setBorder(null);
+        numéroE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vitText4ActionPerformed(evt);
-            }
-        });
-
-        matTex3.setBorder(null);
-        matTex3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matTex3ActionPerformed(evt);
+                numéroEActionPerformed(evt);
             }
         });
 
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
         jLabel45.setText("Coût :");
 
-        vitText5.setBorder(null);
-        vitText5.addActionListener(new java.awt.event.ActionListener() {
+        coutE.setBorder(null);
+        coutE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vitText5ActionPerformed(evt);
+                coutEActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        DescriptionE.setColumns(20);
+        DescriptionE.setRows(5);
+        jScrollPane1.setViewportView(DescriptionE);
 
         jLabel43.setForeground(new java.awt.Color(255, 255, 255));
         jLabel43.setText("Description");
+
+        matriculeE.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                matriculeEMouseClicked(evt);
+            }
+        });
+        matriculeE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matriculeEActionPerformed(evt);
+            }
+        });
+
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("Date prochaine visite :");
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -1384,79 +1434,85 @@ public class ParkA extends javax.swing.JFrame {
                             .addComponent(jLabel42, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(matTex3)
-                            .addComponent(dateIm4, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addComponent(matTex2))
+                            .addComponent(numéroE)
+                            .addComponent(dateE, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(matriculeE, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel21Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
                                 .addComponent(jLabel39)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(vitText4, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
+                                .addComponent(compagniE, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
                             .addGroup(jPanel21Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel37)
                                     .addComponent(jLabel45))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(vitText3)
-                                    .addComponent(vitText5))))
-                        .addGap(67, 67, 67))
+                                    .addComponent(coutE)
+                                    .addComponent(kilometrageE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateProch, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel43)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(imgPathE, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel40)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                        .addComponent(jLabel43)
-                        .addGap(120, 120, 120))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(imgPath3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1))
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                .addGap(26, 26, 26))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel40)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel39)
+                    .addComponent(compagniE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(matriculeE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel50))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(numéroE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kilometrageE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37))
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel40)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel41)
-                            .addComponent(jLabel39)
-                            .addComponent(matTex2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vitText4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel36)
-                            .addComponent(matTex3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vitText3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel37))
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel42))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateIm4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel45)
-                                    .addComponent(vitText5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel42))
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel45)
+                            .addComponent(coutE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel43)
+                            .addComponent(dateE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(11, 11, 11)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(dateProch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imgPath3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(imgPathE, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         ajouter2.setBackground(new java.awt.Color(255, 255, 255));
@@ -1466,16 +1522,31 @@ public class ParkA extends javax.swing.JFrame {
         ajouter2.setText("Ajouter");
         ajouter2.setAlignmentX(0.5F);
         ajouter2.setAlignmentY(0.0F);
+        ajouter2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajouter2ActionPerformed(evt);
+            }
+        });
 
         modifbtn2.setBackground(new java.awt.Color(255, 255, 255));
         modifbtn2.setForeground(new java.awt.Color(0, 0, 0));
         modifbtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
         modifbtn2.setText("Modifier");
+        modifbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifbtn2ActionPerformed(evt);
+            }
+        });
 
         supprbtn2.setBackground(new java.awt.Color(255, 255, 255));
         supprbtn2.setForeground(new java.awt.Color(0, 0, 0));
         supprbtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
         supprbtn2.setText("Supprimer");
+        supprbtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprbtn2ActionPerformed(evt);
+            }
+        });
 
         recher2.setBackground(new java.awt.Color(0, 0, 0));
         recher2.setForeground(new java.awt.Color(255, 255, 255));
@@ -1519,7 +1590,7 @@ public class ParkA extends javax.swing.JFrame {
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(recher2)
                             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -1539,7 +1610,8 @@ public class ParkA extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ajouterVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ajouterVoiture, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         ajouterVoiture.getAccessibleContext().setAccessibleName("Acceuil");
@@ -1673,6 +1745,13 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        testesIma.setBorder(null);
+        testesIma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testesImaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1681,6 +1760,11 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(459, 459, 459)
+                    .addComponent(testesIma, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addGap(460, 460, 460)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1688,6 +1772,11 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(268, 268, 268)
+                    .addComponent(testesIma, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(269, Short.MAX_VALUE)))
         );
 
         pack();
@@ -1787,7 +1876,7 @@ public void add(){
         for (ResultSet resultSet : resultSets) {
             resultSet.close();
         }
-
+ 
         for (PreparedStatement statement : statements) {
             statement.close();
         }
@@ -2119,23 +2208,28 @@ gam2.addActionListener(new ActionListener() {
     try {
         int row = table2.getSelectedRow();
         this.test = (table2.getModel().getValueAt(row, 0).toString());
-        String requet = "SELECT\n" +
-                "  voiture.matVoiture,\n" +
-                "  voiture.nbrePlace,\n" +
-                "  voiture.puissanceMax ,\n" +
-                "  marque.libMarque,\n" +
-                "  boitevitesse.libBoiteV,\n" +
-                "  carburant.libCarburant ,\n" +
-                "  temperature.libTemperature,\n" +
-                "  voiture.Date,\n" +
-                "  voiture.photoV \n" +
-                "FROM\n" +
-                "  voiture\n" +
-                "  INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
-                "  INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
-                "  INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
-                "  INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature\n" +
-                "WHERE voiture.matVoiture = '" + test + "' ";
+        String requet = "SELECT voiture.matVoiture, \n" +
+"       voiture.nbrePlace, \n" +
+"       voiture.puissanceMax,\n" +
+"       marque.libMarque,\n" +
+"       modele.libModele,\n" +
+"       gamme.libGamme,\n" +
+"       assurance.compagnie,\n" +
+"       voiture.kilometrage,\n" +
+"       boitevitesse.libBoiteV,\n" +
+"       carburant.libCarburant,\n" +
+"       temperature.libTemperature,\n" +
+"       voiture.Date,\n" +
+"       voiture.photoV \n" +
+"FROM voiture\n" +
+"INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
+"INNER JOIN modele ON voiture.idModele = modele.idModele\n" +
+"INNER JOIN gamme ON voiture.idGamme = gamme.idGamme\n" +
+"INNER JOIN assurance ON voiture.idAss = assurance.idAss\n" +
+"INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV\n" +
+"INNER JOIN carburant ON voiture.idCarburant = carburant.idCarburant\n" +
+"INNER JOIN temperature ON voiture.idTemperature = temperature.idTemperature\n" +
+"WHERE voiture.matVoiture = '" + test + "' ";
         ps = conn.prepareStatement(requet);
         rs = ps.executeQuery();
 
@@ -2153,6 +2247,8 @@ gam2.addActionListener(new ActionListener() {
             BoiteVite2.removeAllItems();
             carburant2.removeAllItems();
             assurance2.removeAllItems();
+            modele2.removeAllItems();
+            gam2.removeAllItems();
             imagePhoto2.setText("");
 
 
@@ -2163,11 +2259,19 @@ gam2.addActionListener(new ActionListener() {
             String t6 = rs.getString("libCarburant");
             carburant2.addItem(t6);
             String t7 = rs.getString("libTemperature");
-            assurance2.addItem(t7);
+            Tempe2.addItem(t7);
             Date date = rs.getDate("Date");
             DateImm2.setDate(date);
             String t9 =rs.getString("photoV");
             textPath1.setText(t9);
+            String t10 = rs.getString("libGamme");
+            gam2.addItem(t10);
+            String t11 = rs.getString("libModele");
+            modele2.addItem(t11);
+            String t13 = rs.getString("compagnie");
+            assurance2.addItem(t13);
+            String t12 = rs.getString("kilometrage");
+            kilometrage2.setText(t12);
 
             String t8 = rs.getString("photoV");
             if (t8 == null || t8.equals("")) {
@@ -2202,6 +2306,8 @@ gam2.addActionListener(new ActionListener() {
             VitesseMax2.setText("");
             textPath1.setText("");
             nombrePlace2.setSelectedIndex(0);
+            gam2.removeAllItems();
+            modele2.removeAllItems();
             marque2.removeAllItems();
             BoiteVite2.removeAllItems();
             carburant2.removeAllItems();
@@ -2276,26 +2382,36 @@ private int getIdFromDatabase(String id, String table, String columnName, String
             String selectedEnergie = (String) carburant1.getSelectedItem();
             String selectedMarquVoit = (String) marque1.getSelectedItem();
             String selectedPlace = (String) nombrePlace1.getSelectedItem();
+            String selectedModel = (String) modele1.getSelectedItem();
+            String selectedGam = (String) gam1.getSelectedItem();
+            String selectedAss = (String) assurance1.getSelectedItem();
 
             // Récupérer les identifiants correspondants depuis la base de données
             int idBoiteVite = getIdFromDatabase("idBoiteV", "boitevitesse", "libBoiteV", selectedBoiteVite);
             int idTemper = getIdFromDatabase("idTemperature", "temperature", "libTemperature", selectedTemper);
             int idCarburant = getIdFromDatabase("idCarburant", "carburant", "libCarburant", selectedEnergie);
             int idMarque = getIdFromDatabase("idMarque", "marque", "libMarque", selectedMarquVoit);
-
-            String requete = "INSERT INTO voiture(matVoiture, nbrePlace, puissanceMax, idMarque, idBoiteV, idCarburant, idTemperature, Date, photoV) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            int idModele = getIdFromDatabase("idModele","modele","libModele",selectedModel);
+            int idGamme = getIdFromDatabase("idGamme","gamme","libGamme",selectedGam);
+            int idAss = getIdFromDatabase("idAss","assurance","compagnie",selectedAss);
+            
+            String requete = "INSERT INTO `voiture`( `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idModele`, `idGamme`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`, `idAss`, `kilometrage`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(requete);
             ps.setString(1, matricule1.getText());
             ps.setString(2, selectedPlace);
             ps.setString(3, VitesseMax1.getText());
             ps.setInt(4, idMarque);
-            ps.setInt(5, idBoiteVite);
-            ps.setInt(6, idCarburant);
-            ps.setInt(7, idTemper);
+            ps.setInt(5, idModele);
+            ps.setInt(6, idGamme);
+            ps.setInt(7, idBoiteVite);
+            ps.setInt(8, idCarburant);
+            ps.setInt(9, idTemper);
             java.util.Date date = DateImm1.getDate(); // Récupérer la valeur du JDateChooser
             java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-            ps.setDate(8, sqlDate);
-            ps.setString(9, textPhoto.getText());
+            ps.setDate(10, sqlDate);
+            ps.setString(11, textPhoto.getText());
+            ps.setInt(12, idAss);
+            ps.setString(13, kilometrage1.getText());
             ps.execute();
 
             JOptionPane.showMessageDialog(null, "Enregistrement réussi");
@@ -2421,12 +2537,12 @@ public void actualiseTable1(){
         // TODO add your handling code here:
     }//GEN-LAST:event_Tempe2ActionPerformed
 
-    private void vitText3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText3ActionPerformed
+    private void kilometrageEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kilometrageEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_vitText3ActionPerformed
+    }//GEN-LAST:event_kilometrageEActionPerformed
 
     private void table4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseClicked
-        // TODO add your handling code here:
+        DeplaceE();
     }//GEN-LAST:event_table4MouseClicked
 
     private void table4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseReleased
@@ -2437,21 +2553,17 @@ public void actualiseTable1(){
         // TODO add your handling code here:
     }//GEN-LAST:event_table4KeyReleased
 
-    private void matTex2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex2ActionPerformed
+    private void compagniEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compagniEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matTex2ActionPerformed
+    }//GEN-LAST:event_compagniEActionPerformed
 
-    private void vitText4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText4ActionPerformed
+    private void numéroEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numéroEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_vitText4ActionPerformed
+    }//GEN-LAST:event_numéroEActionPerformed
 
-    private void matTex3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex3ActionPerformed
+    private void coutEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coutEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matTex3ActionPerformed
-
-    private void vitText5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText5ActionPerformed
+    }//GEN-LAST:event_coutEActionPerformed
 
     private void carburant1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carburant1ActionPerformed
         // TODO add your handling code here:
@@ -2664,6 +2776,298 @@ public void actualiseAss(){
         imagee(300, 300, imagePhoto2, textPath1);
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    private void kilometrage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kilometrage1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kilometrage1ActionPerformed
+
+    private void kilometrage2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kilometrage2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kilometrage2ActionPerformed
+public void ComboboxMatri() {
+    try {
+        String sql = "SELECT matVoiture FROM voiture";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        matriculeE.removeAllItems();
+        while (rs.next()) {
+            String matricule = rs.getString("matVoiture");
+            matriculeE.addItem(matricule);
+        }
+        rs.close();
+        ps.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
+    public void AfficheTableauE() {
+    try {
+        String sql1é = "SELECT `idEntretien` as 'id', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";
+
+        PreparedStatement ps1é = conn.prepareStatement(sql1é);
+        ResultSet rs1é = ps1é.executeQuery();
+
+        table4.setModel(DbUtils.resultSetToTableModel(rs1é));
+
+        ps1é.close();
+        rs1é.close();
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
+public void effaceE() {
+        try {
+            matriculeE.removeAllItems();
+            coutE.setText("");
+            compagniE.setText("");
+            DescriptionE.setText("");
+            kilometrageE.setText("");
+            numéroE.setText("");
+            dateE.setDate(null);
+            
+                        
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+private void afficherImageVoiture(String matriculeE) {
+    try {
+
+        // Remplacez "your_table_name" par le nom de votre table contenant les informations sur les voitures
+        String query = "SELECT * FROM voiture WHERE matVoiture = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, matriculeE);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String lienPhoto = rs.getString("photoV");
+            int kilo = rs.getInt("kilometrage");
+            
+            ImageIcon imageIcon = new ImageIcon(lienPhoto);
+            imgPathE.setIcon(imageIcon);
+            
+            kilometrageE.setText(String.valueOf(kilo));
+        } else {
+            // Si le matricule n'est pas trouvé dans la base de données, afficher une image par défaut ou un message d'erreur
+            ImageIcon defaultImage = new ImageIcon("voiture.png");
+            imgPathE.setIcon(defaultImage);
+            
+            kilometrageE.setText("");
+        }
+
+        // Fermer les ressources
+        rs.close();
+        ps.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+   
+}
+
+
+public void actualiseE(){
+    try {
+
+            String requete6 = "SELECT `idEntretien` as 'id', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";            ps = conn.prepareStatement(requete6);
+            rs = ps.executeQuery();
+            table4.setModel(DbUtils.resultSetToTableModel(rs));
+ 
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+}
+  public void DeplaceE() {
+    try {
+        int row = table4.getSelectedRow();
+        this.test = (table4.getModel().getValueAt(row, 0).toString());
+        String requet = "SELECT * FROM `entretien` WHERE `matVoiture`='"+test+"'";
+        ps = conn.prepareStatement(requet);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            // Actualiser les champs
+            matriculeE.removeAllItems();
+            String a = rs.getString("compagni");
+            compagniE.setText(a);
+            String b = rs.getString("numero");
+            numéroE.setText(b);
+            Date c = rs.getDate("dateEntretien");
+            dateE.setDate(c);
+            Date mat = rs.getDate("prochainVisite");
+            dateProch.setDate(mat);
+            String kil = rs.getString("kilometrage");
+            kilometrageE.setText(kil);
+            String cout =rs.getString("coutEntretien");
+            coutE.setText(cout);
+            String des = rs.getString("DescEntretien");
+            DescriptionE.setText(des);
+            
+            
+            
+        }
+        ps.close();
+        rs.close();
+    } catch (Exception e) {
+        System.out.println(e);
+    }}
+    private void modifbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtnActionPerformed
+        try {
+             if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier une voiture,est ce que tu es sur?",
+                    "modiffier voiture", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+            // Récupérer les valeurs sélectionnées dans les JComboBox
+            String selectedBoiteVite = (String) BoiteVite1.getSelectedItem();
+            String selectedTemper = (String) Tempe1.getSelectedItem();
+            String selectedEnergie = (String) carburant1.getSelectedItem();
+            String selectedMarquVoit = (String) marque1.getSelectedItem();
+            String selectedPlace = (String) nombrePlace1.getSelectedItem();
+            String selectedModel = (String) modele1.getSelectedItem();
+            String selectedGam = (String) gam1.getSelectedItem();
+            String selectedAss = (String) assurance1.getSelectedItem();
+
+            // Récupérer les identifiants correspondants depuis la base de données
+            int idBoiteVite = getIdFromDatabase("idBoiteV", "boitevitesse", "libBoiteV", selectedBoiteVite);
+            int idTemper = getIdFromDatabase("idTemperature", "temperature", "libTemperature", selectedTemper);
+            int idCarburant = getIdFromDatabase("idCarburant", "carburant", "libCarburant", selectedEnergie);
+            int idMarque = getIdFromDatabase("idMarque", "marque", "libMarque", selectedMarquVoit);
+            int idModele = getIdFromDatabase("idModele","modele","libModele",selectedModel);
+            int idGamme = getIdFromDatabase("idGamme","gamme","libGamme",selectedGam);
+            int idAss = getIdFromDatabase("idAss","assurance","compagnie",selectedAss);
+            
+            String requete = "UPDATE `voiture` SET `matVoiture`=?,`nbrePlace`=?,`puissanceMax`=?,`idMarque`=?,`idModele`=?,`idGamme`=?,`idBoiteV`=?,`idCarburant`=?,`idTemperature`=?,`Date`=?,`photoV`=?,`idAss`=?,`kilometrage`=? WHERE matVoiture='"+test+"'";
+            ps = conn.prepareStatement(requete);
+            ps.setString(1, matricule1.getText());
+            ps.setString(2, selectedPlace);
+            ps.setString(3, VitesseMax1.getText());
+            ps.setInt(4, idMarque);
+            ps.setInt(5, idModele);
+            ps.setInt(6, idGamme);
+            ps.setInt(7, idBoiteVite);
+            ps.setInt(8, idCarburant);
+            ps.setInt(9, idTemper);
+            java.util.Date date = DateImm1.getDate(); // Récupérer la valeur du JDateChooser
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+            ps.setDate(10, sqlDate);
+            ps.setString(11, textPhoto.getText());
+            ps.setInt(12, idAss);
+            ps.setString(13, kilometrage1.getText());
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Modification réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableau();
+            efface();
+             }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_modifbtnActionPerformed
+
+    private void supprbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtnActionPerformed
+        suppvoiture();
+    }//GEN-LAST:event_supprbtnActionPerformed
+
+    private void ajouter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter2ActionPerformed
+        java.util.Date dateEt = dateE.getDate(); 
+        java.sql.Date sqlDateF = new java.sql.Date(dateEt.getTime());
+        java.util.Date dateVisite = dateProch.getDate(); 
+        java.sql.Date sqlDateV = new java.sql.Date(dateVisite.getTime());
+        String selectedMat = (String) matriculeE.getSelectedItem();
+        String requette = "INSERT INTO `entretien`(`dateEntretien`, `compagni`, `DescEntretien`, `coutEntretien`, `matVoiture`, `numero`, `kilometrage`, `prochainVisite`) VALUES (?,?,?,?,?,?,?,?)";
+        try {
+            ps = conn.prepareStatement(requette);
+            ps.setDate(1, sqlDateF);
+            ps.setString(2, compagniE.getText());
+            ps.setString(3, DescriptionE.getText());
+            ps.setString(4, coutE.getText());
+            ps.setString(5, selectedMat);
+            ps.setString(6, numéroE.getText());
+            ps.setString(7, kilometrageE.getText());
+            ps.setDate(8, sqlDateV);
+            ps.execute();
+       
+
+            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableauE();
+            effaceE();
+
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_ajouter2ActionPerformed
+
+    private void testesImaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testesImaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_testesImaActionPerformed
+
+    private void matriculeEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_matriculeEMouseClicked
+        
+    }//GEN-LAST:event_matriculeEMouseClicked
+
+    private void matriculeEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeEActionPerformed
+        String matriculeSelected = (String) matriculeE.getSelectedItem();
+        afficherImageVoiture(matriculeSelected);
+    }//GEN-LAST:event_matriculeEActionPerformed
+
+    private void modifbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn2ActionPerformed
+        try {
+             if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier un entretien ,est ce que tu es sur?",
+                    "modiffier entretien", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+            java.util.Date date = dateE.getDate(); 
+            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+            java.util.Date dateFV = dateProch.getDate(); 
+            java.sql.Date sqlDateFV = new java.sql.Date(dateFV.getTime());
+            String requete = "UPDATE `entretien` SET `dateEntretien`=?,`compagni`=?,`DescEntretien`=?,`coutEntretien`=?,`numero`=?,`kilometrage`=?,`prochainVisite`=? WHERE matVoiture ='"+test+"'";
+            ps = conn.prepareStatement(requete);
+
+            ps.setDate(1, sqlDate);
+            ps.setString(2, compagniE.getText());
+            ps.setString(3,DescriptionE.getText());
+            ps.setString(4,coutE.getText());
+            ps.setString(5, numéroE.getText());
+            ps.setString(6, kilometrageE.getText());
+            ps.setDate(7,sqlDateFV);
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Modification réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableauE();
+            effaceE();
+             }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }        
+    }//GEN-LAST:event_modifbtn2ActionPerformed
+
+    private void supprbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn2ActionPerformed
+         try {
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer un entretien,est ce que tu es sur?",
+                    "Supprimer entretien", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+
+                String requete = "DELETE FROM `entretien` WHERE `idAss` = '" + test + "'";
+                ps = conn.prepareStatement(requete);
+
+                ps.execute();
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "erreur de supprimer \n" + e.getMessage());
+        }
+         actualiseE();
+    }//GEN-LAST:event_supprbtn2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2705,6 +3109,7 @@ public void actualiseAss(){
     private com.toedter.calendar.JDateChooser DateDebut;
     private com.toedter.calendar.JDateChooser DateImm1;
     private com.toedter.calendar.JDateChooser DateImm2;
+    private javax.swing.JTextArea DescriptionE;
     private javax.swing.JComboBox<String> Tempe1;
     private javax.swing.JComboBox<String> Tempe2;
     private javax.swing.JTextField VitesseMax1;
@@ -2718,14 +3123,17 @@ public void actualiseAss(){
     private javax.swing.JComboBox<String> carburant1;
     private javax.swing.JComboBox<String> carburant2;
     private javax.swing.JTextField comp;
+    private javax.swing.JTextField compagniE;
     private javax.swing.JTextField contact;
+    private javax.swing.JTextField coutE;
+    private com.toedter.calendar.JDateChooser dateE;
     private com.toedter.calendar.JDateChooser dateExpi;
-    private com.toedter.calendar.JDateChooser dateIm4;
+    private com.toedter.calendar.JDateChooser dateProch;
     private javax.swing.JComboBox<String> gam1;
     private javax.swing.JComboBox<String> gam2;
     private javax.swing.JLabel imagePhoto1;
     private javax.swing.JLabel imagePhoto2;
-    private javax.swing.JLabel imgPath3;
+    private javax.swing.JLabel imgPathE;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -2778,7 +3186,10 @@ public void actualiseAss(){
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -2804,13 +3215,14 @@ public void actualiseAss(){
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField kilometrage1;
+    private javax.swing.JTextField kilometrage2;
+    private javax.swing.JTextField kilometrageE;
     private javax.swing.JComboBox<String> marque1;
     private javax.swing.JComboBox<String> marque2;
-    private javax.swing.JTextField matTex2;
-    private javax.swing.JTextField matTex3;
     private javax.swing.JTextField matricule1;
     private javax.swing.JTextField matricule2;
+    private javax.swing.JComboBox<String> matriculeE;
     private javax.swing.JComboBox<String> modele1;
     private javax.swing.JComboBox<String> modele2;
     private javax.swing.JButton modifbtn;
@@ -2820,6 +3232,7 @@ public void actualiseAss(){
     private javax.swing.JComboBox<String> nombrePlace1;
     private javax.swing.JComboBox<String> nombrePlace2;
     private javax.swing.JTextField numP;
+    private javax.swing.JTextField numéroE;
     private javax.swing.JLabel photoPP;
     private javax.swing.JTextField rech;
     private javax.swing.JTextField recher;
@@ -2832,11 +3245,9 @@ public void actualiseAss(){
     private javax.swing.JTable table2;
     private javax.swing.JTable table4;
     private javax.swing.JTable tableAss;
+    private javax.swing.JTextField testesIma;
     private javax.swing.JTextField textPath1;
     private javax.swing.JTextField textPhoto;
     private javax.swing.JComboBox<String> typeAss;
-    private javax.swing.JTextField vitText3;
-    private javax.swing.JTextField vitText4;
-    private javax.swing.JTextField vitText5;
     // End of variables declaration//GEN-END:variables
 }
