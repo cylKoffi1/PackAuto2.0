@@ -47,6 +47,7 @@ public class ParkA extends javax.swing.JFrame {
         
         conn = ConexionBD.Conexion();
         AfficheTableau();
+        AfficheTableauE();
         AfficheTableauAss();
         ComboxAff();
         ComboboxMatri();
@@ -714,6 +715,7 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
+        VitesseMax2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         VitesseMax2.setBorder(null);
         VitesseMax2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -777,6 +779,7 @@ public class ParkA extends javax.swing.JFrame {
         imagePhoto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
         imagePhoto2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        matricule2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         matricule2.setBorder(null);
         matricule2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -859,6 +862,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("Kilometrage :");
 
+        kilometrage2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         kilometrage2.setBorder(null);
         kilometrage2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1066,6 +1070,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Date début :");
 
+        montant.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         montant.setBorder(null);
         montant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1107,6 +1112,7 @@ public class ParkA extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tableAss);
 
+        comp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         comp.setBorder(null);
         comp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1117,6 +1123,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel38.setForeground(new java.awt.Color(255, 255, 255));
         jLabel38.setText("type assurance :");
 
+        contact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         contact.setBorder(null);
         contact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1124,6 +1131,7 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
+        numP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         numP.setBorder(null);
         numP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1327,6 +1335,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("Date entretien :");
 
+        kilometrageE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         kilometrageE.setBorder(null);
         kilometrageE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1372,6 +1381,7 @@ public class ParkA extends javax.swing.JFrame {
         imgPathE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
         imgPathE.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        compagniE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         compagniE.setBorder(null);
         compagniE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1379,6 +1389,7 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
+        numéroE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         numéroE.setBorder(null);
         numéroE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1389,6 +1400,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel45.setForeground(new java.awt.Color(255, 255, 255));
         jLabel45.setText("Coût :");
 
+        coutE.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         coutE.setBorder(null);
         coutE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2795,6 +2807,7 @@ public void ComboboxMatri() {
         }
         rs.close();
         ps.close();
+        
     } catch (SQLException e) {
         e.printStackTrace();
     }
@@ -2802,7 +2815,7 @@ public void ComboboxMatri() {
 
     public void AfficheTableauE() {
     try {
-        String sql1é = "SELECT `idEntretien` as 'id', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";
+        String sql1é = "SELECT `idEntretien` as 'id',`matVoiture` as 'matricule', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";
 
         PreparedStatement ps1é = conn.prepareStatement(sql1é);
         ResultSet rs1é = ps1é.executeQuery();
@@ -2866,11 +2879,35 @@ private void afficherImageVoiture(String matriculeE) {
    
 }
 
+public void ComboboxMatriadd() {
+    try {
+        String sql = "SELECT matVoiture FROM voiture";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String selectedMatricule = (String) matriculeE.getSelectedItem();
 
+         matriculeE.removeAllItems();
+        // Ajouter l'élément sélectionné en premier dans la combobox
+        matriculeE.addItem(selectedMatricule);
+
+        // Ajouter les autres éléments normaux à partir de la liste
+        while (rs.next()) {
+            String matricule = rs.getString("matVoiture");
+            if (!matricule.equals(selectedMatricule)) {
+                matriculeE.addItem(matricule);
+            }
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 public void actualiseE(){
     try {
 
-            String requete6 = "SELECT `idEntretien` as 'id', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";            ps = conn.prepareStatement(requete6);
+            String requete6 = "SELECT `idEntretien` as 'id', `matVoiture` as 'matricule', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";            ps = conn.prepareStatement(requete6);
             rs = ps.executeQuery();
             table4.setModel(DbUtils.resultSetToTableModel(rs));
  
@@ -2881,7 +2918,7 @@ public void actualiseE(){
   public void DeplaceE() {
     try {
         int row = table4.getSelectedRow();
-        this.test = (table4.getModel().getValueAt(row, 0).toString());
+        this.test = (table4.getModel().getValueAt(row, 1).toString());
         String requet = "SELECT * FROM `entretien` WHERE `matVoiture`='"+test+"'";
         ps = conn.prepareStatement(requet);
         rs = ps.executeQuery();
@@ -2889,6 +2926,9 @@ public void actualiseE(){
         if (rs.next()) {
             // Actualiser les champs
             matriculeE.removeAllItems();
+            String mm = rs.getString("matVoiture");
+            matriculeE.addItem(mm);
+            ComboboxMatriadd();
             String a = rs.getString("compagni");
             compagniE.setText(a);
             String b = rs.getString("numero");
@@ -2909,6 +2949,7 @@ public void actualiseE(){
         }
         ps.close();
         rs.close();
+        
     } catch (Exception e) {
         System.out.println(e);
     }}
@@ -3055,7 +3096,7 @@ public void actualiseE(){
             if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer un entretien,est ce que tu es sur?",
                     "Supprimer entretien", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
 
-                String requete = "DELETE FROM `entretien` WHERE `idAss` = '" + test + "'";
+                String requete = "DELETE FROM `entretien` WHERE `matVoiture` = '" + test + "'";
                 ps = conn.prepareStatement(requete);
 
                 ps.execute();
