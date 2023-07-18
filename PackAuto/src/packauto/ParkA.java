@@ -2907,7 +2907,8 @@ public void ComboboxMatriadd() {
 public void actualiseE(){
     try {
 
-            String requete6 = "SELECT `idEntretien` as 'id', `matVoiture` as 'matricule', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";            ps = conn.prepareStatement(requete6);
+            String requete6 = "SELECT `idEntretien` as 'id', `matVoiture` as 'matricule', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";            
+            ps = conn.prepareStatement(requete6);
             rs = ps.executeQuery();
             table4.setModel(DbUtils.resultSetToTableModel(rs));
  

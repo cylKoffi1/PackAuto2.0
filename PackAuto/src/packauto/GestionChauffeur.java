@@ -4,6 +4,14 @@
  */
 package packauto;
 
+import java.awt.HeadlessException;
+import java.sql.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author cylko
@@ -13,8 +21,20 @@ public class GestionChauffeur extends javax.swing.JFrame {
     /**
      * Creates new form GestionChauffeur
      */
+    public static String num;
+    Connection conn = null ;
+    ResultSet rs = null;
+    PreparedStatement ps = null;
+    public String dispo;
     public GestionChauffeur() {
         initComponents();
+        conn = ConexionBD.Conexion();
+        buttonGroup1.add(oui);
+        buttonGroup1.add(non);
+        recuperRadioBtn();
+        AfficheTableau();
+        
+        deplace();
     }
 
     /**
@@ -26,6 +46,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -44,10 +65,9 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jPanel15 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        matricule = new javax.swing.JTextField();
-        textPhoto = new javax.swing.JTextField();
+        textPhotoC = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
-        matricule1 = new javax.swing.JTextField();
+        emailC = new javax.swing.JTextField();
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -59,22 +79,23 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
-        matricule2 = new javax.swing.JTextField();
-        matricule3 = new javax.swing.JTextField();
-        matricule4 = new javax.swing.JTextField();
-        matricule5 = new javax.swing.JTextField();
-        matricule6 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
-        matricule7 = new javax.swing.JTextField();
+        telephoneC = new javax.swing.JTextField();
+        adresseC = new javax.swing.JTextField();
+        salaireC = new javax.swing.JTextField();
+        nomC = new javax.swing.JTextField();
+        numPC = new javax.swing.JTextField();
+        dateEmbC = new com.toedter.calendar.JDateChooser();
+        dateFinC = new com.toedter.calendar.JDateChooser();
+        DateValiC = new com.toedter.calendar.JDateChooser();
+        dateObenC = new com.toedter.calendar.JDateChooser();
+        prenomC = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
-        table5 = new javax.swing.JTable();
+        tableC = new javax.swing.JTable();
         jLabel58 = new javax.swing.JLabel();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        imagePhoto = new javax.swing.JLabel();
+        photoC = new javax.swing.JLabel();
+        villeC = new javax.swing.JComboBox<>();
+        oui = new javax.swing.JRadioButton();
+        non = new javax.swing.JRadioButton();
         jButton2 = new javax.swing.JButton();
         ajouter = new javax.swing.JButton();
         modifbtn3 = new javax.swing.JButton();
@@ -190,7 +211,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
         });
 
         photoPP.setBackground(new java.awt.Color(0, 0, 0));
-        photoPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
+        photoPP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packauto/images.png"))); // NOI18N
         photoPP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -264,7 +285,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(rech, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(406, Short.MAX_VALUE)))
+                    .addContainerGap(407, Short.MAX_VALUE)))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,26 +320,23 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Nom :");
 
-        matricule.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule.setBorder(null);
-        matricule.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule.addActionListener(new java.awt.event.ActionListener() {
+        textPhotoC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matriculeActionPerformed(evt);
+                textPhotoCActionPerformed(evt);
             }
         });
 
         jLabel44.setForeground(new java.awt.Color(255, 255, 255));
         jLabel44.setText("Prénoms :");
 
-        matricule1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule1.setBorder(null);
-        matricule1.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule1.setName(""); // NOI18N
-        matricule1.setPreferredSize(new java.awt.Dimension(64, 22));
-        matricule1.addActionListener(new java.awt.event.ActionListener() {
+        emailC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        emailC.setBorder(null);
+        emailC.setMinimumSize(new java.awt.Dimension(65, 22));
+        emailC.setName(""); // NOI18N
+        emailC.setPreferredSize(new java.awt.Dimension(64, 22));
+        emailC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricule1ActionPerformed(evt);
+                emailCActionPerformed(evt);
             }
         });
 
@@ -349,67 +367,67 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jLabel55.setText("Date de validité :");
 
         jLabel56.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel56.setText("Date emvauche :");
+        jLabel56.setText("Date embauche :");
 
         jLabel57.setForeground(new java.awt.Color(255, 255, 255));
         jLabel57.setText("Date fin contrat :");
 
-        matricule2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule2.setBorder(null);
-        matricule2.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule2.addActionListener(new java.awt.event.ActionListener() {
+        telephoneC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        telephoneC.setBorder(null);
+        telephoneC.setMinimumSize(new java.awt.Dimension(65, 22));
+        telephoneC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricule2ActionPerformed(evt);
+                telephoneCActionPerformed(evt);
             }
         });
 
-        matricule3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule3.setBorder(null);
-        matricule3.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule3.addActionListener(new java.awt.event.ActionListener() {
+        adresseC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        adresseC.setBorder(null);
+        adresseC.setMinimumSize(new java.awt.Dimension(65, 22));
+        adresseC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricule3ActionPerformed(evt);
+                adresseCActionPerformed(evt);
             }
         });
 
-        matricule4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule4.setBorder(null);
-        matricule4.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule4.addActionListener(new java.awt.event.ActionListener() {
+        salaireC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        salaireC.setBorder(null);
+        salaireC.setMinimumSize(new java.awt.Dimension(65, 22));
+        salaireC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricule4ActionPerformed(evt);
+                salaireCActionPerformed(evt);
             }
         });
 
-        matricule5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule5.setBorder(null);
-        matricule5.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule5.addActionListener(new java.awt.event.ActionListener() {
+        nomC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nomC.setBorder(null);
+        nomC.setMinimumSize(new java.awt.Dimension(65, 22));
+        nomC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricule5ActionPerformed(evt);
+                nomCActionPerformed(evt);
             }
         });
 
-        matricule6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule6.setBorder(null);
-        matricule6.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule6.setPreferredSize(new java.awt.Dimension(65, 22));
-        matricule6.addActionListener(new java.awt.event.ActionListener() {
+        numPC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        numPC.setBorder(null);
+        numPC.setMinimumSize(new java.awt.Dimension(65, 22));
+        numPC.setPreferredSize(new java.awt.Dimension(65, 22));
+        numPC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricule6ActionPerformed(evt);
+                numPCActionPerformed(evt);
             }
         });
 
-        matricule7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        matricule7.setBorder(null);
-        matricule7.setMinimumSize(new java.awt.Dimension(65, 22));
-        matricule7.addActionListener(new java.awt.event.ActionListener() {
+        prenomC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        prenomC.setBorder(null);
+        prenomC.setMinimumSize(new java.awt.Dimension(65, 22));
+        prenomC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matricule7ActionPerformed(evt);
+                prenomCActionPerformed(evt);
             }
         });
 
-        table5.setModel(new javax.swing.table.DefaultTableModel(
+        tableC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -428,43 +446,47 @@ public class GestionChauffeur extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        table5.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table5MouseClicked(evt);
+                tableCMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                table5MouseReleased(evt);
+                tableCMouseReleased(evt);
             }
         });
-        table5.addKeyListener(new java.awt.event.KeyAdapter() {
+        tableC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                table5KeyReleased(evt);
+                tableCKeyReleased(evt);
             }
         });
-        jScrollPane6.setViewportView(table5);
+        jScrollPane6.setViewportView(tableC);
 
         jLabel58.setForeground(new java.awt.Color(255, 255, 255));
         jLabel58.setText("Disponibilté :");
 
-        jCheckBox3.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox3.setText("Oui");
-        jCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+        photoC.setBackground(new java.awt.Color(0, 0, 0));
+        photoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packauto/images.png"))); // NOI18N
+        photoC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        villeC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Abidjan", "Yamoussoukro", "Bouaké", "Daloa", "San Pedro", "Korhogo", "Man", "Abengourou", "Gagnoa", "Divo", "Anyama", "Agboville", "Grand-Bassam", "Bingerville", "Séguela", "Toumodi", "Bondoukou", "Odienne", "Ferkessédougou", "Odienné" }));
+
+        oui.setBackground(new java.awt.Color(0, 0, 0));
+        oui.setForeground(new java.awt.Color(255, 255, 255));
+        oui.setText("oui");
+        oui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox3ActionPerformed(evt);
+                ouiActionPerformed(evt);
             }
         });
 
-        jCheckBox4.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox4.setText("Non");
-        jCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+        non.setBackground(new java.awt.Color(0, 0, 0));
+        non.setForeground(new java.awt.Color(255, 255, 255));
+        non.setText("non");
+        non.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox4ActionPerformed(evt);
+                nonActionPerformed(evt);
             }
         });
-
-        imagePhoto.setBackground(new java.awt.Color(0, 0, 0));
-        imagePhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packauto/images.png"))); // NOI18N
-        imagePhoto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -473,39 +495,34 @@ public class GestionChauffeur extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(661, 661, 661)
-                        .addComponent(jLabel52))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel15Layout.createSequentialGroup()
-                                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(matricule6, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
                                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel44)
                                             .addComponent(jLabel46)
                                             .addComponent(jLabel12))
                                         .addGap(42, 42, 42)
                                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(matricule7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(matricule3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(matricule5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(prenomC, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(adresseC, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(nomC, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(numPC, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel15Layout.createSequentialGroup()
                                         .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(dateEmbC, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel47)
-                                        .addGap(39, 39, 39)
-                                        .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(174, 174, 174))
                                     .addGroup(jPanel15Layout.createSequentialGroup()
                                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -515,39 +532,48 @@ public class GestionChauffeur extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel15Layout.createSequentialGroup()
-                                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel48)
-                                                .addGap(32, 32, 32)
-                                                .addComponent(matricule1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel15Layout.createSequentialGroup()
                                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel15Layout.createSequentialGroup()
-                                                        .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(dateObenC, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(jLabel49))
                                                     .addGroup(jPanel15Layout.createSequentialGroup()
-                                                        .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(DateValiC, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                         .addComponent(jLabel51)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(matricule4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(matricule2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addGap(29, 29, 29)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
-                                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel58)
+                                                    .addComponent(salaireC, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(telephoneC, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                                .addComponent(dateFinC, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel48)
+                                                .addGap(32, 32, 32)
+                                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(villeC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(emailC, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))))))
+                            .addComponent(jScrollPane6))
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel58)
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
                                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox3)
-                                            .addComponent(jCheckBox4)))
-                                    .addGap(38, 38, 38)))
-                            .addComponent(imagePhoto))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(non, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(oui)))))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(photoC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textPhotoC)))))
+                    .addComponent(jLabel11)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(661, 661, 661)
+                        .addComponent(jLabel52)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,60 +587,60 @@ public class GestionChauffeur extends javax.swing.JFrame {
                             .addComponent(jLabel56)
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateEmbC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(matricule5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(nomC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel12)))
                                 .addGap(7, 7, 7)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel57)
-                                        .addComponent(matricule7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(prenomC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateFinC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel48)
-                                    .addComponent(matricule1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(emailC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel15Layout.createSequentialGroup()
                                         .addGap(4, 4, 4)
                                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(dateObenC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(jLabel54)
-                                                .addComponent(matricule3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(adresseC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jLabel49)
-                                            .addComponent(matricule2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(telephoneC, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel15Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel46))))
                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel47)
-                                .addComponent(matricule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(villeC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel58)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox3)
+                        .addComponent(oui)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox4)
+                        .addComponent(non)
                         .addGap(28, 28, 28)))
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addComponent(imagePhoto)
+                        .addComponent(photoC)
                         .addGap(8, 8, 8)
-                        .addComponent(textPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(textPhotoC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(77, 77, 77))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateValiC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel55)
                                 .addComponent(jLabel53)
-                                .addComponent(matricule6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(numPC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel51)
-                                .addComponent(matricule4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(salaireC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -636,17 +662,32 @@ public class GestionChauffeur extends javax.swing.JFrame {
         ajouter.setAlignmentX(0.5F);
         ajouter.setAlignmentY(0.0F);
         ajouter.setPreferredSize(new java.awt.Dimension(133, 47));
+        ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajouterActionPerformed(evt);
+            }
+        });
 
         modifbtn3.setBackground(new java.awt.Color(255, 255, 255));
         modifbtn3.setForeground(new java.awt.Color(0, 0, 0));
         modifbtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
         modifbtn3.setText("Modifier");
+        modifbtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifbtn3ActionPerformed(evt);
+            }
+        });
 
         supprbtn3.setBackground(new java.awt.Color(255, 255, 255));
         supprbtn3.setForeground(new java.awt.Color(0, 0, 0));
         supprbtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
         supprbtn3.setText("Supprimer");
         supprbtn3.setPreferredSize(new java.awt.Dimension(133, 47));
+        supprbtn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprbtn3ActionPerformed(evt);
+            }
+        });
 
         recher3.setBackground(new java.awt.Color(0, 0, 0));
         recher3.setForeground(new java.awt.Color(255, 255, 255));
@@ -675,7 +716,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 896, Short.MAX_VALUE)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addComponent(jButton13)
                 .addGap(18, 18, 18)
@@ -700,12 +741,11 @@ public class GestionChauffeur extends javax.swing.JFrame {
                         .addComponent(supprbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(modifbtn3)
                         .addComponent(ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(recher3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                            .addGap(2, 2, 2)
-                            .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recher3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 4, Short.MAX_VALUE))
         );
 
@@ -1447,7 +1487,110 @@ public class GestionChauffeur extends javax.swing.JFrame {
         ParkA pa = new ParkA();
         pa.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+    public void recuperRadioBtn(){
+        try{
+            String req = "SELECT * FROM chauffeur where numéroPermis='"+num+"'";
+        
+        ps=conn.prepareStatement(req);
+        rs = ps.executeQuery();
+        if(rs.next()){
+            String t1 = rs.getString("numéroPermis");
+            
+            if (t1.equals("oui")) {
+                    oui.setSelected(true);
+                     dispo = "Disponible";
+                } else if (t1.equals("non")) {
+                    non.setSelected(true);
+                     dispo = "Nom disponible";
+                }
+        }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }
+    public void AfficheTableau(){
+        try{
+            String req = "SELECT `id` as 'id', `nom`as 'nom', `prenom`as 'prenom', `adresse`as'adresse', `numéroPermis`as'numéro de permis', `dateEmbauche`as'embauche', `dateFinContrat`as 'fin contract', `dateValiditéPermis`as'validité', `disponibilité`as 'disponibilité' FROM `chauffeur`";
+            ps = conn.prepareStatement(req);
+            rs = ps.executeQuery();
+            tableC.setModel(DbUtils.resultSetToTableModel(rs));
+            table1.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            ps.close();
+            rs.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+            
+    }
+    
+    public void efface(){
+        try{
+        nomC.setText("");
+        prenomC.setText("");
+        salaireC.setText("");
+        villeC.removeAllItems();
+        adresseC.setText("");
+        numPC.setText("");
+        emailC.setText("");
+        telephoneC.setText("");
+        DateValiC.setDate(null);
+        dateEmbC.setDate(null);
+        dateFinC.setDate(null);
+        dateObenC.setDate(null);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+    }
+    public void deplace(){
+        try {
+        int row = tableC.getSelectedRow();
+        this.num = (tableC.getModel().getValueAt(row, 4).toString());
+        String requet = "SELECT * FROM `chauffeur` WHERE numéroPermis='"+num+"'";
+        ps = conn.prepareStatement(requet);
+        rs = ps.executeQuery();
 
+        if (rs.next()) {
+            // Actualiser les champs
+            String nom = rs.getString("nom");
+            nomC.setText(nom);
+            String prenom = rs.getString("prenom");
+            prenomC.setText(prenom);
+            String addre = rs.getString("adresse");
+            adresseC.setText(addre);
+            String numé = rs.getString("numéroPermis");
+            numPC.setText(numé);
+            String ville = rs.getString("ville");
+            villeC.addItem(ville);
+            String em = rs.getString("email");
+            emailC.setText(em);
+            String tel = rs.getString("telephone");
+            telephoneC.setText(tel);
+            String sal = rs.getString("salaire");
+            salaireC.setText(sal);
+            Date embauche = rs.getDate("dateEmbauche");
+            dateEmbC.setDate(embauche);
+            Date contra = rs.getDate("dateFinContrat");
+            dateFinC.setDate(contra);
+            Date ob = rs.getDate("dateObtentionPermis");
+            dateObenC.setDate(ob);
+            Date vali = rs.getDate("dateValiditéPermis");
+            DateValiC.setDate(vali);
+            String disponibilite = rs.getString("disponibilite");
+            if (disponibilite.equals("oui")) {
+                oui.setSelected(true);
+            } else if (disponibilite.equals("non")) {
+                non.setSelected(true);
+            }
+        }
+        ps.close();
+        rs.close();
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+    }
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -1568,57 +1711,45 @@ public class GestionChauffeur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void matricule4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule4ActionPerformed
+    private void salaireCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaireCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matricule4ActionPerformed
+    }//GEN-LAST:event_salaireCActionPerformed
 
-    private void matriculeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeActionPerformed
+    private void emailCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matriculeActionPerformed
+    }//GEN-LAST:event_emailCActionPerformed
 
-    private void matricule1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule1ActionPerformed
+    private void telephoneCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telephoneCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matricule1ActionPerformed
+    }//GEN-LAST:event_telephoneCActionPerformed
 
-    private void matricule2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule2ActionPerformed
+    private void prenomCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matricule2ActionPerformed
+    }//GEN-LAST:event_prenomCActionPerformed
 
-    private void matricule7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule7ActionPerformed
+    private void adresseCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adresseCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matricule7ActionPerformed
+    }//GEN-LAST:event_adresseCActionPerformed
 
-    private void matricule3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule3ActionPerformed
+    private void nomCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matricule3ActionPerformed
+    }//GEN-LAST:event_nomCActionPerformed
 
-    private void matricule5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule5ActionPerformed
+    private void numPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matricule5ActionPerformed
+    }//GEN-LAST:event_numPCActionPerformed
 
-    private void matricule6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matricule6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_matricule6ActionPerformed
+    private void tableCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCMouseClicked
+        deplace();
+    }//GEN-LAST:event_tableCMouseClicked
 
-    private void table5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table5MouseClicked
+    private void tableCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_table5MouseClicked
+    }//GEN-LAST:event_tableCMouseReleased
 
-    private void table5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table5MouseReleased
+    private void tableCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableCKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_table5MouseReleased
-
-    private void table5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table5KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table5KeyReleased
-
-    private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox3ActionPerformed
-
-    private void jCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox4ActionPerformed
+    }//GEN-LAST:event_tableCKeyReleased
 
     private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
         // TODO add your handling code here:
@@ -1635,6 +1766,120 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private void recher3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_recher3ActionPerformed
+
+    private void ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ouiActionPerformed
+        dispo="disponible";
+    }//GEN-LAST:event_ouiActionPerformed
+
+    private void textPhotoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPhotoCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPhotoCActionPerformed
+
+    private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
+        String selectedVille = (String) villeC.getSelectedItem();
+        java.util.Date dateEm = dateEmbC.getDate(); 
+        java.sql.Date sqlDateEm = new java.sql.Date(dateEm.getTime());
+        java.util.Date dateFC = dateFinC.getDate(); 
+        java.sql.Date sqlDateFC = new java.sql.Date(dateFC.getTime()); 
+        java.util.Date dateOb = dateObenC.getDate(); 
+        java.sql.Date sqlDateOb = new java.sql.Date(dateOb.getTime());
+        java.util.Date dateVa = DateValiC.getDate(); 
+        java.sql.Date sqlDateVa = new java.sql.Date(dateVa.getTime());
+        String requette = "INSERT INTO `chauffeur`( `nom`, `prenom`, `adresse`, `numéroPermis`, `dateEmbauche`, `dateFinContrat`, `dateObtentionPermis`, `dateValiditéPermis`, `ville`, `email`, `telephone`, `salaire`, `disponibilité`, `photoChauf`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try{
+        ps = conn.prepareStatement(requette);
+        ps.setString(1, nomC.getText());
+        ps.setString(2, prenomC.getText());
+        ps.setString(3, adresseC.getText());
+        ps.setString(4,numPC.getText());
+        ps.setDate(5, sqlDateEm);
+        ps.setDate(6, sqlDateFC);
+        ps.setDate(7, sqlDateOb);
+        ps.setDate(8, sqlDateVa);
+        ps.setString(9,selectedVille);
+        ps.setString(10,emailC.getText());
+        ps.setString(11, telephoneC.getText());
+        ps.setString(12, salaireC.getText());
+        ps.setString(13, dispo);
+        ps.setString(14, textPhotoC.getText());
+        ps.execute();
+        
+        JOptionPane.showMessageDialog(null, "Enregistrement réussi");
+        ps.close();
+        
+        AfficheTableau();
+        efface();
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_ajouterActionPerformed
+
+    private void modifbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn3ActionPerformed
+        try {
+             if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier un entretien ,est ce que tu es sur?",
+                    "modiffier entretien", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+           String selectedVille = (String) villeC.getSelectedItem();
+        java.util.Date dateEm = dateEmbC.getDate(); 
+        java.sql.Date sqlDateEm = new java.sql.Date(dateEm.getTime());
+        java.util.Date dateFC = dateFinC.getDate(); 
+        java.sql.Date sqlDateFC = new java.sql.Date(dateFC.getTime()); 
+        java.util.Date dateOb = dateObenC.getDate(); 
+        java.sql.Date sqlDateOb = new java.sql.Date(dateOb.getTime());
+        java.util.Date dateVa = DateValiC.getDate(); 
+        java.sql.Date sqlDateVa = new java.sql.Date(dateVa.getTime());
+            String requete = "UPDATE `chauffeur` SET `nom`=?,`prenom`=?,`adresse`=?,`numéroPermis`=?,`dateEmbauche`=?,`dateFinContrat`=?,`dateObtentionPermis`=?,`dateValiditéPermis`=?,`ville`=?,`email`=?,`telephone`=?,`salaire`=?,`disponibilité`=?,`photoChauf`=? WHERE numéroPermis ='"+num+"'";
+            ps = conn.prepareStatement(requete);
+
+            ps.setString(1, nomC.getText());
+        ps.setString(2, prenomC.getText());
+        ps.setString(3, adresseC.getText());
+        ps.setString(4,numPC.getText());
+        ps.setDate(5, sqlDateEm);
+        ps.setDate(6, sqlDateFC);
+        ps.setDate(7, sqlDateOb);
+        ps.setDate(8, sqlDateVa);
+        ps.setString(9,selectedVille);
+        ps.setString(10,emailC.getText());
+        ps.setString(11, telephoneC.getText());
+        ps.setString(12, salaireC.getText());
+        ps.setString(13, dispo);
+        ps.setString(14, textPhotoC.getText());
+        ps.execute();
+            JOptionPane.showMessageDialog(null, "Modification réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableau();
+            efface();
+             }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }   
+    }//GEN-LAST:event_modifbtn3ActionPerformed
+
+    private void supprbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn3ActionPerformed
+        try {
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer un chauffeur,est ce que tu es sur?",
+                    "Supprimer chauffeur", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+
+                String requete = "DELETE FROM `chauffeur` WHERE numéroPermis='"+num+"'";
+                ps = conn.prepareStatement(requete);
+
+                ps.execute();
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "erreur de supprimer \n" + e.getMessage());
+        }
+         AfficheTableau();
+    }//GEN-LAST:event_supprbtn3ActionPerformed
+
+    private void nonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nonActionPerformed
+        dispo="Non disponible";
+    }//GEN-LAST:event_nonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1672,12 +1917,18 @@ public class GestionChauffeur extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DateValiC;
+    private javax.swing.JTextField adresseC;
     private javax.swing.JButton ajouter;
     private javax.swing.JButton ajouter1;
     private javax.swing.JButton ajouter2;
     private javax.swing.JTabbedPane ajouterVoiture;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private com.toedter.calendar.JDateChooser dateEmbC;
+    private com.toedter.calendar.JDateChooser dateFinC;
     private com.toedter.calendar.JDateChooser dateIm4;
-    private javax.swing.JLabel imagePhoto;
+    private com.toedter.calendar.JDateChooser dateObenC;
+    private javax.swing.JTextField emailC;
     private javax.swing.JLabel imgPath2;
     private javax.swing.JLabel imgPath3;
     private javax.swing.JButton jButton1;
@@ -1691,16 +1942,10 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBox jCheckBox6;
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
     private com.toedter.calendar.JDateChooser jDateChooser5;
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private javax.swing.JLabel jLabel11;
@@ -1759,30 +2004,31 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField matTex2;
     private javax.swing.JTextField matTex3;
-    private javax.swing.JTextField matricule;
-    private javax.swing.JTextField matricule1;
-    private javax.swing.JTextField matricule2;
-    private javax.swing.JTextField matricule3;
-    private javax.swing.JTextField matricule4;
-    private javax.swing.JTextField matricule5;
-    private javax.swing.JTextField matricule6;
-    private javax.swing.JTextField matricule7;
     private javax.swing.JButton modifbtn1;
     private javax.swing.JButton modifbtn2;
     private javax.swing.JButton modifbtn3;
+    private javax.swing.JTextField nomC;
+    private javax.swing.JRadioButton non;
+    private javax.swing.JTextField numPC;
+    private javax.swing.JRadioButton oui;
+    private javax.swing.JLabel photoC;
     private javax.swing.JLabel photoPP;
+    private javax.swing.JTextField prenomC;
     private javax.swing.JTextField rech;
     private javax.swing.JTextField recher1;
     private javax.swing.JTextField recher2;
     private javax.swing.JTextField recher3;
+    private javax.swing.JTextField salaireC;
     private javax.swing.JButton supprbtn1;
     private javax.swing.JButton supprbtn2;
     private javax.swing.JButton supprbtn3;
     private javax.swing.JTable table1;
     private javax.swing.JTable table3;
     private javax.swing.JTable table4;
-    private javax.swing.JTable table5;
-    private javax.swing.JTextField textPhoto;
+    private javax.swing.JTable tableC;
+    private javax.swing.JTextField telephoneC;
+    private javax.swing.JTextField textPhotoC;
+    private javax.swing.JComboBox<String> villeC;
     private javax.swing.JTextField vitText3;
     private javax.swing.JTextField vitText4;
     private javax.swing.JTextField vitText5;
