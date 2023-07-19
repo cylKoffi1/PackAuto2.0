@@ -5,11 +5,18 @@
 package packauto;
 
 import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.sql.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -33,7 +40,8 @@ public class GestionChauffeur extends javax.swing.JFrame {
         buttonGroup1.add(non);
         recuperRadioBtn();
         AfficheTableau();
-        
+        ComboboxVille();
+        deplaceI();
         deplace();
     }
 
@@ -59,7 +67,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         photoPP = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         table1 = new javax.swing.JTable();
-        jButton12 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
@@ -222,10 +229,9 @@ public class GestionChauffeur extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(photoPP, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addComponent(photoPP, javax.swing.GroupLayout.PREFERRED_SIZE, 131, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         table1.setModel(new javax.swing.table.DefaultTableModel(
@@ -254,16 +260,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(table1);
 
-        jButton12.setBackground(new java.awt.Color(153, 153, 153));
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/actualiser.png"))); // NOI18N
-        jButton12.setText("Actualiser");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -274,36 +270,31 @@ public class GestionChauffeur extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(107, 107, 107))
-            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel11Layout.createSequentialGroup()
-                    .addGap(189, 189, 189)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel11Layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addGap(18, 18, 18)
-                            .addComponent(rech, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(407, Short.MAX_VALUE)))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(rech, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(33, 33, 33)))
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(404, 404, 404))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jButton12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(rech, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
-            .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rech, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(270, 270, 270)))
         );
 
         ajouterVoiture.addTab("Accueil", jPanel11);
@@ -320,6 +311,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Nom :");
 
+        textPhotoC.setMaximumSize(new java.awt.Dimension(68, 26));
         textPhotoC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPhotoCActionPerformed(evt);
@@ -468,8 +460,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         photoC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packauto/images.png"))); // NOI18N
         photoC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        villeC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Abidjan", "Yamoussoukro", "Bouaké", "Daloa", "San Pedro", "Korhogo", "Man", "Abengourou", "Gagnoa", "Divo", "Anyama", "Agboville", "Grand-Bassam", "Bingerville", "Séguela", "Toumodi", "Bondoukou", "Odienne", "Ferkessédougou", "Odienné" }));
-
         oui.setBackground(new java.awt.Color(0, 0, 0));
         oui.setForeground(new java.awt.Color(255, 255, 255));
         oui.setText("oui");
@@ -568,7 +558,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(photoC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(textPhotoC)))))
+                                    .addComponent(textPhotoC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addComponent(jLabel11)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(661, 661, 661)
@@ -653,6 +643,11 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/explorateur.png"))); // NOI18N
         jButton2.setText("Choisir");
         jButton2.setPreferredSize(new java.awt.Dimension(133, 47));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         ajouter.setBackground(new java.awt.Color(255, 255, 255));
         ajouter.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -1514,11 +1509,15 @@ public class GestionChauffeur extends javax.swing.JFrame {
             String req = "SELECT `id` as 'id', `nom`as 'nom', `prenom`as 'prenom', `adresse`as'adresse', `numéroPermis`as'numéro de permis', `dateEmbauche`as'embauche', `dateFinContrat`as 'fin contract', `dateValiditéPermis`as'validité', `disponibilité`as 'disponibilité' FROM `chauffeur`";
             ps = conn.prepareStatement(req);
             rs = ps.executeQuery();
+            PreparedStatement ps1 = conn.prepareStatement(req);
+            ResultSet rs1 = ps1.executeQuery();
             tableC.setModel(DbUtils.resultSetToTableModel(rs));
-            table1.setModel(DbUtils.resultSetToTableModel(rs));
+            table1.setModel(DbUtils.resultSetToTableModel(rs1));
             
             ps.close();
             rs.close();
+            ps1.close();
+            rs1.close();
         }catch(Exception e){
             System.out.println(e);
         }
@@ -1544,10 +1543,145 @@ public class GestionChauffeur extends javax.swing.JFrame {
         }
         
     }
+    public void ComboboxVille() {
+    try {
+        String sql = "SELECT`libVille` FROM `ville`";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        villeC.removeAllItems();
+        while (rs.next()) {
+            String ville = rs.getString("libVille");
+            villeC.addItem(ville);
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    public void ComboboVilleadd() {
+    try {
+        String sql = "SELECT libVille FROM ville";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String selectedVille = (String) villeC.getSelectedItem();
+
+         villeC.removeAllItems();
+        // Ajouter l'élément sélectionné en premier dans la combobox
+        villeC.addItem(selectedVille);
+
+        // Ajouter les autres éléments normaux à partir de la liste
+        while (rs.next()) {
+            String ville = rs.getString("libVille");
+            if (!ville.equals(selectedVille)) {
+                villeC.addItem(ville);
+            }
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+    public void deplaceI(){
+        try {
+        int row = table1.getSelectedRow();
+        this.num = (table1.getModel().getValueAt(row, 4).toString());
+        
+        String requet = "SELECT * FROM `chauffeur` WHERE numéroPermis='"+num+"'";
+        ps = conn.prepareStatement(requet);
+        rs = ps.executeQuery();
+        afficherImageChauffI();
+        ps.close();
+        rs.close();
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+    }
+   public void afficherImageChauff() {
+    try {
+        // Remplacez "your_table_name" par le nom de votre table contenant les informations sur les chauffeurs
+        String query = "SELECT * FROM chauffeur WHERE numéroPermis = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, num);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String lienPhoto = rs.getString("photoChauf");
+
+            ImageIcon imageIcon = new ImageIcon(lienPhoto);
+            
+            // Redimensionner l'image pour fixer la longueur et la largeur
+            Image image = imageIcon.getImage();
+            Image newImage = image.getScaledInstance(144, 144, Image.SCALE_SMOOTH); // Remplacez 200 et 150 par les dimensions souhaitées
+            imageIcon = new ImageIcon(newImage);
+            
+            photoC.setIcon(imageIcon);
+        } else {
+            // Si le chauffeur n'est pas trouvé dans la base de données, afficher une image par défaut ou un message d'erreur
+            ImageIcon defaultImage = new ImageIcon("images.png");
+            
+            // Redimensionner l'image par défaut
+            Image image = defaultImage.getImage();
+            Image newImage = image.getScaledInstance(144, 144, Image.SCALE_SMOOTH); // Remplacez 200 et 150 par les dimensions souhaitées
+            defaultImage = new ImageIcon(newImage);
+            
+            photoC.setIcon(defaultImage);
+        }
+
+        // Fermer les ressources
+        rs.close();
+        ps.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+}
+    public void afficherImageChauffI() {
+    try {
+        // Remplacez "your_table_name" par le nom de votre table contenant les informations sur les chauffeurs
+        String query = "SELECT * FROM chauffeur WHERE numéroPermis = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, num);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String lienPhoto = rs.getString("photoChauf");
+
+            ImageIcon imageIcon = new ImageIcon(lienPhoto);
+            
+            // Redimensionner l'image pour fixer la longueur et la largeur
+            Image image = imageIcon.getImage();
+            Image newImage = image.getScaledInstance(144, 144, Image.SCALE_SMOOTH); // Remplacez 200 et 150 par les dimensions souhaitées
+            imageIcon = new ImageIcon(newImage);
+            
+            photoPP.setIcon(imageIcon);
+        } else {
+            // Si le chauffeur n'est pas trouvé dans la base de données, afficher une image par défaut ou un message d'erreur
+            ImageIcon defaultImage = new ImageIcon("images.png");
+            
+            // Redimensionner l'image par défaut
+            Image image = defaultImage.getImage();
+            Image newImage = image.getScaledInstance(144, 144, Image.SCALE_SMOOTH); // Remplacez 200 et 150 par les dimensions souhaitées
+            defaultImage = new ImageIcon(newImage);
+            
+            photoPP.setIcon(defaultImage);
+        }
+
+        // Fermer les ressources
+        rs.close();
+        ps.close();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+}
+
     public void deplace(){
         try {
         int row = tableC.getSelectedRow();
         this.num = (tableC.getModel().getValueAt(row, 4).toString());
+        
         String requet = "SELECT * FROM `chauffeur` WHERE numéroPermis='"+num+"'";
         ps = conn.prepareStatement(requet);
         rs = ps.executeQuery();
@@ -1562,8 +1696,11 @@ public class GestionChauffeur extends javax.swing.JFrame {
             adresseC.setText(addre);
             String numé = rs.getString("numéroPermis");
             numPC.setText(numé);
+            villeC.removeAllItems();
             String ville = rs.getString("ville");
+            
             villeC.addItem(ville);
+            ComboboVilleadd();
             String em = rs.getString("email");
             emailC.setText(em);
             String tel = rs.getString("telephone");
@@ -1578,12 +1715,18 @@ public class GestionChauffeur extends javax.swing.JFrame {
             dateObenC.setDate(ob);
             Date vali = rs.getDate("dateValiditéPermis");
             DateValiC.setDate(vali);
-            String disponibilite = rs.getString("disponibilite");
-            if (disponibilite.equals("oui")) {
+            String disponibilite = rs.getString("disponibilité");
+            String pho = rs.getString("photoChauf");
+            textPhotoC.setText(pho);
+            // Cocher le radiobouton approprié en fonction de la disponibilité
+            if ("disponible".equalsIgnoreCase(disponibilite)) {
                 oui.setSelected(true);
-            } else if (disponibilite.equals("non")) {
+                non.setSelected(false);
+            } else {
+                oui.setSelected(false);
                 non.setSelected(true);
             }
+            afficherImageChauff();
         }
         ps.close();
         rs.close();
@@ -1591,6 +1734,40 @@ public class GestionChauffeur extends javax.swing.JFrame {
         System.out.println(e);
     }
     }
+    public void imagee(int maxWidth, int maxHeight, JLabel label, JTextField textLabel) {
+    ConexionBD v = new ConexionBD();
+    v.filen();
+    String vpath = v.getp();
+    
+    try {
+        if (vpath == null) {
+            // Faire quelque chose si le chemin de l'image est nul
+        } else {
+            // Charger l'image
+            BufferedImage image = ImageIO.read(new File(vpath));
+
+            // Redimensionner l'image
+            int imageWidth = image.getWidth();
+            int imageHeight = image.getHeight();
+
+            double widthScale = (double) maxWidth / imageWidth;
+            double heightScale = (double) maxHeight / imageHeight;
+            double scale = Math.min(widthScale, heightScale);
+
+            int scaledWidth = (int) (scale * imageWidth);
+            int scaledHeight = (int) (scale * imageHeight);
+
+            Image resizedImage = image.getScaledInstance(scaledWidth, scaledHeight, Image.SCALE_SMOOTH);
+
+            // Mettre à jour l'icône du JLabel avec l'image redimensionnée
+            ImageIcon imageIcon = new ImageIcon(resizedImage);
+            label.setIcon(imageIcon);
+            textLabel.setText(vpath);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -1695,12 +1872,8 @@ public class GestionChauffeur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_table3MouseClicked
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-     
-    }//GEN-LAST:event_jButton12ActionPerformed
-
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
-       
+        deplaceI();
     }//GEN-LAST:event_table1MouseClicked
 
     private void rechMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rechMouseClicked
@@ -1881,6 +2054,10 @@ public class GestionChauffeur extends javax.swing.JFrame {
         dispo="Non disponible";
     }//GEN-LAST:event_nonActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        imagee(144, 144, photoC, textPhotoC);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1933,7 +2110,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private javax.swing.JLabel imgPath3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
