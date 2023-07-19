@@ -742,8 +742,8 @@ public class GestionChauffeur extends javax.swing.JFrame {
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addComponent(jButton13)
                 .addGap(18, 18, 18)
-                .addComponent(recher3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(recher3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addComponent(modifbtn3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1469,8 +1469,8 @@ public class GestionChauffeur extends javax.swing.JFrame {
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addComponent(jButton14)
                 .addGap(18, 18, 18)
-                .addComponent(recher4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(recher4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 149, Short.MAX_VALUE)
                 .addComponent(modifbtn4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ajouter3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1801,11 +1801,12 @@ public class GestionChauffeur extends javax.swing.JFrame {
         String selectedVilleD = (String) villeD.getSelectedItem();
 
          villeC.removeAllItems();
-         villeA.removeAllItems();villeD.removeAllItems();
+         villeA.removeAllItems();
+         villeD.removeAllItems();
         // Ajouter l'élément sélectionné en premier dans la combobox
         villeC.addItem(selectedVille);
-        villeA.addItem(selectedVille);
-        villeD.addItem(selectedVille);
+        villeA.addItem(selectedVilleA);
+        villeD.addItem(selectedVilleD);
 
         // Ajouter les autres éléments normaux à partir de la liste
         while (rs.next()) {
@@ -2074,7 +2075,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
         int idChauffeur = -1;
 
         try {
-            String query = "SELECT id FROM chzuffeur WHERE CONCAT(nom, ' ', prenom) = ?";
+            String query = "SELECT id FROM chauffeur WHERE CONCAT(nom, ' ', prenom) = ?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, nomPrenom);
             ResultSet rs = ps.executeQuery();
@@ -2433,18 +2434,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_supprbtn4ActionPerformed
 
-    private void recher4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher4MouseClicked
-
-    private void recher4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher4MouseReleased
-
-    private void recher4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher4ActionPerformed
-
     private void tableEVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableEVKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_tableEVKeyReleased
@@ -2509,6 +2498,18 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private void nomChActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomChActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nomChActionPerformed
+
+    private void recher4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4ActionPerformed
+
+    private void recher4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4MouseReleased
+
+    private void recher4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4MouseClicked
 
     /**
      * @param args the command line arguments

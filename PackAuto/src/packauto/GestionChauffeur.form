@@ -344,8 +344,8 @@
                               <Group type="102" attributes="0">
                                   <Component id="jButton13" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="recher3" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="recher3" min="-2" pref="135" max="-2" attributes="0"/>
+                                  <EmptySpace pref="129" max="32767" attributes="0"/>
                                   <Component id="modifbtn3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="ajouter" min="-2" max="-2" attributes="0"/>
@@ -1495,8 +1495,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jButton14" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="recher4" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="recher4" min="-2" pref="121" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" pref="149" max="32767" attributes="0"/>
                               <Component id="modifbtn4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="ajouter3" min="-2" max="-2" attributes="0"/>
