@@ -6,12 +6,16 @@ package packauto;
 
 import java.awt.HeadlessException;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.sql.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -33,16 +37,22 @@ public class GestionChauffeur extends javax.swing.JFrame {
     ResultSet rs = null;
     PreparedStatement ps = null;
     public String dispo;
+    public int idEv;
+    
     public GestionChauffeur() {
         initComponents();
         conn = ConexionBD.Conexion();
         buttonGroup1.add(oui);
         buttonGroup1.add(non);
+        
         recuperRadioBtn();
         AfficheTableau();
         ComboboxVille();
         deplaceI();
         deplace();
+        ChauffeurComboBox();
+        ClientComboBox();
+        AfficheTableauEv();
     }
 
     /**
@@ -133,32 +143,50 @@ public class GestionChauffeur extends javax.swing.JFrame {
         recher1 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         ajouter1 = new javax.swing.JButton();
-        jPanel20 = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
-        jLabel36 = new javax.swing.JLabel();
-        jLabel37 = new javax.swing.JLabel();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        vitText3 = new javax.swing.JTextField();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        table4 = new javax.swing.JTable();
-        imgPath3 = new javax.swing.JLabel();
-        matTex2 = new javax.swing.JTextField();
-        dateIm4 = new com.toedter.calendar.JDateChooser();
-        vitText4 = new javax.swing.JTextField();
-        matTex3 = new javax.swing.JTextField();
-        jLabel45 = new javax.swing.JLabel();
-        vitText5 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel43 = new javax.swing.JLabel();
-        supprbtn2 = new javax.swing.JButton();
-        modifbtn2 = new javax.swing.JButton();
-        recher2 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        ajouter2 = new javax.swing.JButton();
+        jPanel14 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        durée = new javax.swing.JTextField();
+        conduite = new javax.swing.JTextField();
+        courtoisie = new javax.swing.JTextField();
+        DateEvaluation = new com.toedter.calendar.JDateChooser();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tableEV = new javax.swing.JTable();
+        villeD = new javax.swing.JComboBox<>();
+        jLabel70 = new javax.swing.JLabel();
+        jLabel71 = new javax.swing.JLabel();
+        ponctualité = new javax.swing.JTextField();
+        jLabel72 = new javax.swing.JLabel();
+        sécuriité = new javax.swing.JTextField();
+        jLabel73 = new javax.swing.JLabel();
+        itinéraire = new javax.swing.JTextField();
+        jLabel74 = new javax.swing.JLabel();
+        villeA = new javax.swing.JComboBox<>();
+        jLabel75 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        nomCh = new javax.swing.JComboBox<>();
+        nomCl = new javax.swing.JComboBox<>();
+        note = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        commentaire = new javax.swing.JTextArea();
+        ajouter3 = new javax.swing.JButton();
+        modifbtn4 = new javax.swing.JButton();
+        supprbtn4 = new javax.swing.JButton();
+        recher4 = new javax.swing.JTextField();
+        jButton14 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -311,7 +339,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Nom :");
 
-        textPhotoC.setMaximumSize(new java.awt.Dimension(68, 26));
         textPhotoC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPhotoCActionPerformed(evt);
@@ -558,7 +585,7 @@ public class GestionChauffeur extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(photoC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(textPhotoC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(textPhotoC)))))
                     .addComponent(jLabel11)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(661, 661, 661)
@@ -730,7 +757,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(supprbtn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -848,6 +874,11 @@ public class GestionChauffeur extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(imgPath2)
+                        .addGap(17, 17, 17))
+                    .addGroup(jPanel19Layout.createSequentialGroup()
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel33)
                             .addComponent(jLabel29)
@@ -867,16 +898,11 @@ public class GestionChauffeur extends javax.swing.JFrame {
                                 .addComponent(jCheckBox7)
                                 .addGap(29, 29, 29)
                                 .addComponent(jLabel38)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(89, Short.MAX_VALUE))
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imgPath2)
-                        .addGap(17, 17, 17))))
+                        .addGap(45, 45, 45))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(204, Short.MAX_VALUE)
                 .addComponent(jLabel32)
                 .addGap(243, 243, 243))
         );
@@ -885,33 +911,38 @@ public class GestionChauffeur extends javax.swing.JFrame {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                        .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel19Layout.createSequentialGroup()
-                                .addComponent(jCheckBox5)
-                                .addGap(12, 12, 12)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                                .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel19Layout.createSequentialGroup()
+                                        .addComponent(jCheckBox5)
+                                        .addGap(12, 12, 12)
+                                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jCheckBox7)
+                                            .addComponent(jLabel31)
+                                            .addComponent(jLabel38)))
+                                    .addGroup(jPanel19Layout.createSequentialGroup()
+                                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel34)
+                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(16, 16, 16)
+                                        .addComponent(jLabel33)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCheckBox7)
-                                    .addComponent(jLabel31)
-                                    .addComponent(jLabel38)))
-                            .addGroup(jPanel19Layout.createSequentialGroup()
-                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel34)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel33)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jCheckBox6)
-                            .addComponent(jLabel29)))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCheckBox6)
+                                    .addComponent(jLabel29))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(imgPath2))
@@ -1017,38 +1048,79 @@ public class GestionChauffeur extends javax.swing.JFrame {
 
         ajouterVoiture.addTab("Assignation", jPanel17);
 
-        jPanel20.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel21.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel16.setBackground(new java.awt.Color(102, 0, 0));
 
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("Numéro de police:");
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Evaluation chauffeur");
 
-        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("Kilometrage :");
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Nom Chauffeur:");
 
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setText("Matricule :");
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("Nom client :");
 
-        jLabel40.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel40.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setText("Evaluation chauffeur");
+        jLabel59.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel59.setText("note conduite :");
 
-        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("Compagnie :");
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel60.setText("Départ :");
 
-        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel42.setText("Date entretien :");
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel61.setText("Arrivée :");
 
-        vitText3.setBorder(null);
-        vitText3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel62.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel62.setText("Durée :");
+
+        jLabel64.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel65.setText("courtoisie :");
+
+        jLabel66.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel66.setText("Itinéraire :");
+
+        jLabel67.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel67.setText("Date evaluation :");
+
+        jLabel68.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel68.setText("Ponctualité :");
+
+        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel69.setText("Sécurité :");
+
+        durée.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        durée.setBorder(null);
+        durée.setMinimumSize(new java.awt.Dimension(65, 22));
+        durée.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vitText3ActionPerformed(evt);
+                duréeActionPerformed(evt);
             }
         });
 
-        table4.setModel(new javax.swing.table.DefaultTableModel(
+        conduite.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        conduite.setBorder(null);
+        conduite.setMinimumSize(new java.awt.Dimension(65, 22));
+        conduite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conduiteActionPerformed(evt);
+            }
+        });
+
+        courtoisie.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        courtoisie.setBorder(null);
+        courtoisie.setMinimumSize(new java.awt.Dimension(65, 22));
+        courtoisie.setPreferredSize(new java.awt.Dimension(65, 22));
+        courtoisie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                courtoisieActionPerformed(evt);
+            }
+        });
+
+        tableEV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1067,250 +1139,362 @@ public class GestionChauffeur extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        table4.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableEV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table4MouseClicked(evt);
+                tableEVMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                table4MouseReleased(evt);
+                tableEVMouseReleased(evt);
             }
         });
-        table4.addKeyListener(new java.awt.event.KeyAdapter() {
+        tableEV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                table4KeyReleased(evt);
+                tableEVKeyReleased(evt);
             }
         });
-        jScrollPane5.setViewportView(table4);
+        jScrollPane8.setViewportView(tableEV);
 
-        imgPath3.setBackground(new java.awt.Color(0, 0, 0));
-        imgPath3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
-        imgPath3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel70.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel70.setText("/10");
 
-        matTex2.setBorder(null);
-        matTex2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel71.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel71.setText("/10");
+
+        ponctualité.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ponctualité.setBorder(null);
+        ponctualité.setMinimumSize(new java.awt.Dimension(65, 22));
+        ponctualité.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matTex2ActionPerformed(evt);
+                ponctualitéActionPerformed(evt);
             }
         });
 
-        vitText4.setBorder(null);
-        vitText4.addActionListener(new java.awt.event.ActionListener() {
+        jLabel72.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel72.setText("/10");
+
+        sécuriité.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        sécuriité.setBorder(null);
+        sécuriité.setMinimumSize(new java.awt.Dimension(65, 22));
+        sécuriité.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vitText4ActionPerformed(evt);
+                sécuriitéActionPerformed(evt);
             }
         });
 
-        matTex3.setBorder(null);
-        matTex3.addActionListener(new java.awt.event.ActionListener() {
+        jLabel73.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel73.setText("/10");
+
+        itinéraire.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        itinéraire.setBorder(null);
+        itinéraire.setMinimumSize(new java.awt.Dimension(65, 22));
+        itinéraire.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matTex3ActionPerformed(evt);
+                itinéraireActionPerformed(evt);
             }
         });
 
-        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel45.setText("Coût :");
+        jLabel74.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel74.setText("/10");
 
-        vitText5.setBorder(null);
-        vitText5.addActionListener(new java.awt.event.ActionListener() {
+        jLabel75.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel75.setText("Moyenne Générale");
+
+        jButton3.setText("Donner note");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vitText5ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        nomCh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomChActionPerformed(evt);
+            }
+        });
 
-        jLabel43.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel43.setText("Description");
+        note.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); // NOI18N
+        note.setForeground(new java.awt.Color(255, 255, 255));
+        note.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
+        jLabel76.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel76.setText("Commentaire :");
+
+        commentaire.setColumns(20);
+        commentaire.setRows(5);
+        jScrollPane10.setViewportView(commentaire);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel41, javax.swing.GroupLayout.Alignment.TRAILING)))
-                            .addComponent(jLabel42, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel50)
+                                            .addComponent(jLabel59)
+                                            .addComponent(jLabel14))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addComponent(jLabel65, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                        .addGap(4, 4, 4)))
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addComponent(courtoisie, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel71, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addComponent(conduite, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel70, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(nomCh, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nomCl, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(378, 378, 378))
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                                        .addComponent(itinéraire, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(26, 26, 26)
+                                                        .addComponent(jLabel62))
+                                                    .addComponent(DateEvaluation, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(38, 38, 38)
+                                                .addComponent(durée, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                                        .addComponent(sécuriité, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(26, 26, 26)
+                                                        .addComponent(jLabel61))
+                                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                                        .addComponent(ponctualité, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jLabel60)))
+                                                .addGap(32, 32, 32)
+                                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(villeD, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(villeA, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                            .addComponent(jScrollPane8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(matTex3)
-                            .addComponent(dateIm4, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addComponent(matTex2))
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel39)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(vitText4, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel37)
-                                    .addComponent(jLabel45))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(vitText3)
-                                    .addComponent(vitText5))))
-                        .addGap(67, 67, 67)))
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                        .addComponent(jLabel43)
-                        .addGap(120, 120, 120))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(imgPath3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1))
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                                        .addComponent(jButton3)
+                                        .addGap(30, 30, 30))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel76)
+                                            .addComponent(jLabel75))
+                                        .addGap(29, 29, 29))))
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(note, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 10, Short.MAX_VALUE)))
+                                .addContainerGap())))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addGap(661, 661, 661)
+                                .addComponent(jLabel64))
+                            .addComponent(jLabel13))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(293, 293, 293)
-                .addComponent(jLabel40)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel40)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel41)
-                            .addComponent(jLabel39)
-                            .addComponent(matTex2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vitText4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel36)
-                            .addComponent(matTex3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(vitText3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel37))
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jLabel42))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dateIm4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel45)
-                                    .addComponent(vitText5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel43)
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel76))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel68)
+                                        .addComponent(ponctualité, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel72))
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addGap(3, 3, 3)
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel14)
+                                            .addComponent(nomCh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(2, 2, 2)
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabel69)
+                                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(sécuriité, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel73)
+                                                .addComponent(nomCl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabel61)
+                                                .addComponent(villeA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(4, 4, 4)
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                                .addGap(1, 1, 1)
+                                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel66)
+                                                        .addComponent(conduite, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel70)
+                                                        .addComponent(itinéraire, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel74))
+                                                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel62)
+                                                        .addComponent(durée, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(jLabel59))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(DateEvaluation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel67)
+                                        .addComponent(jLabel65)
+                                        .addComponent(courtoisie, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel71))))
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel60)
+                                    .addComponent(villeD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane10)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imgPath3, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addComponent(jLabel75)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(note, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel64)
+                .addGap(68, 68, 68))
         );
 
-        supprbtn2.setBackground(new java.awt.Color(255, 255, 255));
-        supprbtn2.setForeground(new java.awt.Color(0, 0, 0));
-        supprbtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
-        supprbtn2.setText("Supprimer");
-        supprbtn2.addActionListener(new java.awt.event.ActionListener() {
+        ajouter3.setBackground(new java.awt.Color(255, 255, 255));
+        ajouter3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ajouter3.setForeground(new java.awt.Color(0, 0, 0));
+        ajouter3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ajouter.png"))); // NOI18N
+        ajouter3.setText("Ajouter");
+        ajouter3.setAlignmentX(0.5F);
+        ajouter3.setAlignmentY(0.0F);
+        ajouter3.setPreferredSize(new java.awt.Dimension(133, 47));
+        ajouter3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                supprbtn2ActionPerformed(evt);
+                ajouter3ActionPerformed(evt);
             }
         });
 
-        modifbtn2.setBackground(new java.awt.Color(255, 255, 255));
-        modifbtn2.setForeground(new java.awt.Color(0, 0, 0));
-        modifbtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
-        modifbtn2.setText("Modifier");
-        modifbtn2.addActionListener(new java.awt.event.ActionListener() {
+        modifbtn4.setBackground(new java.awt.Color(255, 255, 255));
+        modifbtn4.setForeground(new java.awt.Color(0, 0, 0));
+        modifbtn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
+        modifbtn4.setText("Modifier");
+        modifbtn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifbtn2ActionPerformed(evt);
+                modifbtn4ActionPerformed(evt);
             }
         });
 
-        recher2.setBackground(new java.awt.Color(0, 0, 0));
-        recher2.setForeground(new java.awt.Color(255, 255, 255));
-        recher2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        recher2.setText("Rechercher");
-        recher2.setBorder(null);
-        recher2.addMouseListener(new java.awt.event.MouseAdapter() {
+        supprbtn4.setBackground(new java.awt.Color(255, 255, 255));
+        supprbtn4.setForeground(new java.awt.Color(0, 0, 0));
+        supprbtn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
+        supprbtn4.setText("Supprimer");
+        supprbtn4.setPreferredSize(new java.awt.Dimension(133, 47));
+        supprbtn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprbtn4ActionPerformed(evt);
+            }
+        });
+
+        recher4.setBackground(new java.awt.Color(0, 0, 0));
+        recher4.setForeground(new java.awt.Color(255, 255, 255));
+        recher4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        recher4.setText("Rechercher");
+        recher4.setBorder(null);
+        recher4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                recher2MouseClicked(evt);
+                recher4MouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                recher2MouseReleased(evt);
+                recher4MouseReleased(evt);
             }
         });
-        recher2.addActionListener(new java.awt.event.ActionListener() {
+        recher4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recher2ActionPerformed(evt);
+                recher4ActionPerformed(evt);
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/IconeRecerche.png"))); // NOI18N
+        jButton14.setBackground(new java.awt.Color(0, 0, 0));
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/IconeRecerche.png"))); // NOI18N
 
-        ajouter2.setBackground(new java.awt.Color(255, 255, 255));
-        ajouter2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ajouter2.setForeground(new java.awt.Color(0, 0, 0));
-        ajouter2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ajouter.png"))); // NOI18N
-        ajouter2.setText("Ajouter");
-        ajouter2.setAlignmentX(0.5F);
-        ajouter2.setAlignmentY(0.0F);
-        ajouter2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ajouter2ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
-        jPanel20.setLayout(jPanel20Layout);
-        jPanel20Layout.setHorizontalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(recher2, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                .addGap(56, 56, 56)
-                .addComponent(supprbtn2)
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(jButton14)
                 .addGap(18, 18, 18)
-                .addComponent(modifbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ajouter2)
-                .addGap(45, 45, 45))
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel20Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(recher4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(recher2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(supprbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(modifbtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ajouter2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
+                .addComponent(modifbtn4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ajouter3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(supprbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(supprbtn4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(modifbtn4)
+                        .addComponent(ajouter3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(recher4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
-        ajouterVoiture.addTab("Evaluation", jPanel20);
+        ajouterVoiture.addTab("Evaluation ", jPanel14);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1524,6 +1708,28 @@ public class GestionChauffeur extends javax.swing.JFrame {
             
     }
     
+    public void AfficheTableauEv(){
+        try{
+            String req = "SELECT evaluation.idEvaluation as 'id', chauffeur.nom as 'nom Chauffeur', client.nomCl as 'non client', evaluation.note as 'note', evaluation.dateEvaluation as 'date evaluation', evaluation.pointDepart as 'point de départ', evaluation.pointArrivee as \"point d'arrivée\" \n" +
+"FROM evaluation \n" +
+"INNER JOIN chauffeur ON chauffeur.id = evaluation.idChauffeur \n" +
+"INNER JOIN client ON client.idClient = evaluation.idClient;";
+            ps = conn.prepareStatement(req);
+            rs = ps.executeQuery();
+            PreparedStatement ps1 = conn.prepareStatement(req);
+            ResultSet rs1 = ps1.executeQuery();
+            tableEV.setModel(DbUtils.resultSetToTableModel(rs));
+            
+            ps.close();
+            rs.close();
+            ps1.close();
+            rs1.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+            
+    }
+    
     public void efface(){
         try{
         nomC.setText("");
@@ -1543,15 +1749,40 @@ public class GestionChauffeur extends javax.swing.JFrame {
         }
         
     }
+    public void effaceEv(){
+        try{
+        nomCh.removeAllItems();
+        nomCl.removeAllItems();
+        conduite.setText("");
+        courtoisie.setText("");
+        adresseC.setText("");
+        ponctualité.setText("");
+        sécuriité.setText("");
+        itinéraire.setText("");
+        DateEvaluation.setDate(null);
+        villeA.removeAllItems();
+        villeD.removeAllItems();
+        durée.setText("");
+        commentaire.setText("");
+        note.setText("");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+    }
     public void ComboboxVille() {
     try {
         String sql = "SELECT`libVille` FROM `ville`";
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         villeC.removeAllItems();
+        villeA.removeAllItems();
+        villeD.removeAllItems();
         while (rs.next()) {
             String ville = rs.getString("libVille");
             villeC.addItem(ville);
+            villeA.addItem(ville);
+            villeD.addItem(ville);
         }
         rs.close();
         ps.close();
@@ -1566,16 +1797,25 @@ public class GestionChauffeur extends javax.swing.JFrame {
         PreparedStatement ps = conn.prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         String selectedVille = (String) villeC.getSelectedItem();
+        String selectedVilleA = (String) villeA.getSelectedItem();
+        String selectedVilleD = (String) villeD.getSelectedItem();
 
          villeC.removeAllItems();
+         villeA.removeAllItems();villeD.removeAllItems();
         // Ajouter l'élément sélectionné en premier dans la combobox
         villeC.addItem(selectedVille);
+        villeA.addItem(selectedVille);
+        villeD.addItem(selectedVille);
 
         // Ajouter les autres éléments normaux à partir de la liste
         while (rs.next()) {
             String ville = rs.getString("libVille");
             if (!ville.equals(selectedVille)) {
                 villeC.addItem(ville);
+            }else if (!ville.equals(selectedVilleA)) {
+                villeA.addItem(ville);
+            }else if (!ville.equals(selectedVilleD)) {
+                villeD.addItem(ville);
             }
         }
         rs.close();
@@ -1768,6 +2008,110 @@ public class GestionChauffeur extends javax.swing.JFrame {
         e.printStackTrace();
     }
 }
+    public void ChauffeurComboBox() {
+        
+        try {
+           
+            String query = "SELECT `id`, `nom`, `prenom` FROM `chauffeur` ";
+             ps = conn.prepareStatement(query);
+            
+             rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String nomPrenom = rs.getString("nom") + " " + rs.getString("prenom");
+                nomCh.addItem(nomPrenom);
+            }
+
+            ps.close();
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        nomCh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Récupérer l'ID du chauffeur sélectionné
+                String selectedNomPrenom = (String) nomCh.getSelectedItem();
+                int idChauffeur = getChauffeurIdFromDatabase(selectedNomPrenom);
+
+            }
+        });
+    }
+     public void ClientComboBox() {
+        
+        try {
+           
+            String query = "SELECT `idClient`, `nomCl`, `prenomCl` FROM `client`";
+             ps = conn.prepareStatement(query);
+            
+             rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String nomPrenom = rs.getString("nomCl") + " " + rs.getString("prenomCl");
+                nomCl.addItem(nomPrenom);
+            }
+
+            ps.close();
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        nomCl.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Récupérer l'ID du chauffeur sélectionné
+                String selectedNomPrenomg = (String) nomCl.getSelectedItem();
+                int idCl = getClIdFromDatabase(selectedNomPrenomg);
+
+            }
+        });
+    }
+
+    // Méthode pour récupérer l'ID du chauffeur à partir du nom et prénom sélectionné
+    private int getChauffeurIdFromDatabase(String nomPrenom) {
+        int idChauffeur = -1;
+
+        try {
+            String query = "SELECT id FROM chzuffeur WHERE CONCAT(nom, ' ', prenom) = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, nomPrenom);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idChauffeur = rs.getInt("id");
+            }
+
+            ps.close();
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return idChauffeur;
+    }    private int getClIdFromDatabase(String nomPrenom) {
+        int idCl = -1;
+
+        try {
+            String query = "SELECT idClient FROM client WHERE CONCAT(nomCl, ' ', prenomCl) = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setString(1, nomPrenom);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idCl = rs.getInt("idClient");
+            }
+
+            ps.close();
+            rs.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return idCl;
+    }
+  
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
@@ -1779,62 +2123,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void ajouter2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ajouter2ActionPerformed
-
-    private void recher2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher2ActionPerformed
-
-    private void recher2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher2MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher2MouseReleased
-
-    private void recher2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher2MouseClicked
-
-    private void modifbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modifbtn2ActionPerformed
-
-    private void supprbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_supprbtn2ActionPerformed
-
-    private void vitText5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText5ActionPerformed
-
-    private void matTex3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_matTex3ActionPerformed
-
-    private void vitText4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText4ActionPerformed
-
-    private void matTex2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matTex2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_matTex2ActionPerformed
-
-    private void table4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table4KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table4KeyReleased
-
-    private void table4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table4MouseReleased
-
-    private void table4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table4MouseClicked
-
-    private void vitText3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vitText3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vitText3ActionPerformed
 
     private void ajouter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter1ActionPerformed
         // TODO add your handling code here:
@@ -1860,6 +2148,10 @@ public class GestionChauffeur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_supprbtn1ActionPerformed
 
+    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox6ActionPerformed
+
     private void table3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table3KeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_table3KeyReleased
@@ -1871,6 +2163,176 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private void table3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_table3MouseClicked
+
+    private void recher3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher3ActionPerformed
+
+    private void recher3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher3MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher3MouseReleased
+
+    private void recher3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher3MouseClicked
+
+    private void supprbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn3ActionPerformed
+        try {
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer un chauffeur,est ce que tu es sur?",
+                "Supprimer chauffeur", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+
+            String requete = "DELETE FROM `chauffeur` WHERE numéroPermis='"+num+"'";
+            ps = conn.prepareStatement(requete);
+
+            ps.execute();
+
+        }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "erreur de supprimer \n" + e.getMessage());
+        }
+        AfficheTableau();
+    }//GEN-LAST:event_supprbtn3ActionPerformed
+
+    private void modifbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn3ActionPerformed
+        try {
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier un entretien ,est ce que tu es sur?",
+                "modiffier entretien", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+            String selectedVille = (String) villeC.getSelectedItem();
+            java.util.Date dateEm = dateEmbC.getDate();
+            java.sql.Date sqlDateEm = new java.sql.Date(dateEm.getTime());
+            java.util.Date dateFC = dateFinC.getDate();
+            java.sql.Date sqlDateFC = new java.sql.Date(dateFC.getTime());
+            java.util.Date dateOb = dateObenC.getDate();
+            java.sql.Date sqlDateOb = new java.sql.Date(dateOb.getTime());
+            java.util.Date dateVa = DateValiC.getDate();
+            java.sql.Date sqlDateVa = new java.sql.Date(dateVa.getTime());
+            String requete = "UPDATE `chauffeur` SET `nom`=?,`prenom`=?,`adresse`=?,`numéroPermis`=?,`dateEmbauche`=?,`dateFinContrat`=?,`dateObtentionPermis`=?,`dateValiditéPermis`=?,`ville`=?,`email`=?,`telephone`=?,`salaire`=?,`disponibilité`=?,`photoChauf`=? WHERE numéroPermis ='"+num+"'";
+            ps = conn.prepareStatement(requete);
+
+            ps.setString(1, nomC.getText());
+            ps.setString(2, prenomC.getText());
+            ps.setString(3, adresseC.getText());
+            ps.setString(4,numPC.getText());
+            ps.setDate(5, sqlDateEm);
+            ps.setDate(6, sqlDateFC);
+            ps.setDate(7, sqlDateOb);
+            ps.setDate(8, sqlDateVa);
+            ps.setString(9,selectedVille);
+            ps.setString(10,emailC.getText());
+            ps.setString(11, telephoneC.getText());
+            ps.setString(12, salaireC.getText());
+            ps.setString(13, dispo);
+            ps.setString(14, textPhotoC.getText());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Modification réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableau();
+            efface();
+        }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_modifbtn3ActionPerformed
+
+    private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
+        String selectedVille = (String) villeC.getSelectedItem();
+        java.util.Date dateEm = dateEmbC.getDate();
+        java.sql.Date sqlDateEm = new java.sql.Date(dateEm.getTime());
+        java.util.Date dateFC = dateFinC.getDate();
+        java.sql.Date sqlDateFC = new java.sql.Date(dateFC.getTime());
+        java.util.Date dateOb = dateObenC.getDate();
+        java.sql.Date sqlDateOb = new java.sql.Date(dateOb.getTime());
+        java.util.Date dateVa = DateValiC.getDate();
+        java.sql.Date sqlDateVa = new java.sql.Date(dateVa.getTime());
+        String requette = "INSERT INTO `chauffeur`( `nom`, `prenom`, `adresse`, `numéroPermis`, `dateEmbauche`, `dateFinContrat`, `dateObtentionPermis`, `dateValiditéPermis`, `ville`, `email`, `telephone`, `salaire`, `disponibilité`, `photoChauf`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        try{
+            ps = conn.prepareStatement(requette);
+            ps.setString(1, nomC.getText());
+            ps.setString(2, prenomC.getText());
+            ps.setString(3, adresseC.getText());
+            ps.setString(4,numPC.getText());
+            ps.setDate(5, sqlDateEm);
+            ps.setDate(6, sqlDateFC);
+            ps.setDate(7, sqlDateOb);
+            ps.setDate(8, sqlDateVa);
+            ps.setString(9,selectedVille);
+            ps.setString(10,emailC.getText());
+            ps.setString(11, telephoneC.getText());
+            ps.setString(12, salaireC.getText());
+            ps.setString(13, dispo);
+            ps.setString(14, textPhotoC.getText());
+            ps.execute();
+
+            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
+            ps.close();
+
+            AfficheTableau();
+            efface();
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_ajouterActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        imagee(144, 144, photoC, textPhotoC);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void nonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nonActionPerformed
+        dispo="Non disponible";
+    }//GEN-LAST:event_nonActionPerformed
+
+    private void ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ouiActionPerformed
+        dispo="disponible";
+    }//GEN-LAST:event_ouiActionPerformed
+
+    private void tableCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableCKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableCKeyReleased
+
+    private void tableCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableCMouseReleased
+
+    private void tableCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCMouseClicked
+        deplace();
+    }//GEN-LAST:event_tableCMouseClicked
+
+    private void prenomCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prenomCActionPerformed
+
+    private void numPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numPCActionPerformed
+
+    private void nomCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomCActionPerformed
+
+    private void salaireCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaireCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_salaireCActionPerformed
+
+    private void adresseCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adresseCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adresseCActionPerformed
+
+    private void telephoneCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telephoneCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telephoneCActionPerformed
+
+    private void emailCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailCActionPerformed
+
+    private void textPhotoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPhotoCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPhotoCActionPerformed
 
     private void table1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table1MouseClicked
         deplaceI();
@@ -1884,179 +2346,169 @@ public class GestionChauffeur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void salaireCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salaireCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_salaireCActionPerformed
-
-    private void emailCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_emailCActionPerformed
-
-    private void telephoneCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telephoneCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telephoneCActionPerformed
-
-    private void prenomCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prenomCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_prenomCActionPerformed
-
-    private void adresseCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adresseCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_adresseCActionPerformed
-
-    private void nomCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomCActionPerformed
-
-    private void numPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numPCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_numPCActionPerformed
-
-    private void tableCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCMouseClicked
-        deplace();
-    }//GEN-LAST:event_tableCMouseClicked
-
-    private void tableCMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tableCMouseReleased
-
-    private void tableCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableCKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tableCKeyReleased
-
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
-
-    private void recher3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher3MouseClicked
-
-    private void recher3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher3MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher3MouseReleased
-
-    private void recher3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher3ActionPerformed
-
-    private void ouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ouiActionPerformed
-        dispo="disponible";
-    }//GEN-LAST:event_ouiActionPerformed
-
-    private void textPhotoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPhotoCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textPhotoCActionPerformed
-
-    private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
-        String selectedVille = (String) villeC.getSelectedItem();
-        java.util.Date dateEm = dateEmbC.getDate(); 
-        java.sql.Date sqlDateEm = new java.sql.Date(dateEm.getTime());
-        java.util.Date dateFC = dateFinC.getDate(); 
-        java.sql.Date sqlDateFC = new java.sql.Date(dateFC.getTime()); 
-        java.util.Date dateOb = dateObenC.getDate(); 
-        java.sql.Date sqlDateOb = new java.sql.Date(dateOb.getTime());
-        java.util.Date dateVa = DateValiC.getDate(); 
-        java.sql.Date sqlDateVa = new java.sql.Date(dateVa.getTime());
-        String requette = "INSERT INTO `chauffeur`( `nom`, `prenom`, `adresse`, `numéroPermis`, `dateEmbauche`, `dateFinContrat`, `dateObtentionPermis`, `dateValiditéPermis`, `ville`, `email`, `telephone`, `salaire`, `disponibilité`, `photoChauf`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private void ajouter3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter3ActionPerformed
+        String selectedChauf = (String) nomCh.getSelectedItem();
+        String selectedClien = (String) nomCl.getSelectedItem();
+        java.util.Date dateEv = DateEvaluation.getDate(); 
+        java.sql.Date sqlDateEv = new java.sql.Date(dateEv.getTime());
+         String selectedD = (String) villeD.getSelectedItem();
+         String selectedA = (String) villeA.getSelectedItem();
         try{
-        ps = conn.prepareStatement(requette);
-        ps.setString(1, nomC.getText());
-        ps.setString(2, prenomC.getText());
-        ps.setString(3, adresseC.getText());
-        ps.setString(4,numPC.getText());
-        ps.setDate(5, sqlDateEm);
-        ps.setDate(6, sqlDateFC);
-        ps.setDate(7, sqlDateOb);
-        ps.setDate(8, sqlDateVa);
-        ps.setString(9,selectedVille);
-        ps.setString(10,emailC.getText());
-        ps.setString(11, telephoneC.getText());
-        ps.setString(12, salaireC.getText());
-        ps.setString(13, dispo);
-        ps.setString(14, textPhotoC.getText());
-        ps.execute();
-        
-        JOptionPane.showMessageDialog(null, "Enregistrement réussi");
-        ps.close();
-        
-        AfficheTableau();
-        efface();
-        } catch (HeadlessException | SQLException e) {
-            System.out.println("--> SQLException : " + e);
-            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
-        }
-    }//GEN-LAST:event_ajouterActionPerformed
-
-    private void modifbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn3ActionPerformed
-        try {
-             if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier un entretien ,est ce que tu es sur?",
-                    "modiffier entretien", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-           String selectedVille = (String) villeC.getSelectedItem();
-        java.util.Date dateEm = dateEmbC.getDate(); 
-        java.sql.Date sqlDateEm = new java.sql.Date(dateEm.getTime());
-        java.util.Date dateFC = dateFinC.getDate(); 
-        java.sql.Date sqlDateFC = new java.sql.Date(dateFC.getTime()); 
-        java.util.Date dateOb = dateObenC.getDate(); 
-        java.sql.Date sqlDateOb = new java.sql.Date(dateOb.getTime());
-        java.util.Date dateVa = DateValiC.getDate(); 
-        java.sql.Date sqlDateVa = new java.sql.Date(dateVa.getTime());
-            String requete = "UPDATE `chauffeur` SET `nom`=?,`prenom`=?,`adresse`=?,`numéroPermis`=?,`dateEmbauche`=?,`dateFinContrat`=?,`dateObtentionPermis`=?,`dateValiditéPermis`=?,`ville`=?,`email`=?,`telephone`=?,`salaire`=?,`disponibilité`=?,`photoChauf`=? WHERE numéroPermis ='"+num+"'";
-            ps = conn.prepareStatement(requete);
-
-            ps.setString(1, nomC.getText());
-        ps.setString(2, prenomC.getText());
-        ps.setString(3, adresseC.getText());
-        ps.setString(4,numPC.getText());
-        ps.setDate(5, sqlDateEm);
-        ps.setDate(6, sqlDateFC);
-        ps.setDate(7, sqlDateOb);
-        ps.setDate(8, sqlDateVa);
-        ps.setString(9,selectedVille);
-        ps.setString(10,emailC.getText());
-        ps.setString(11, telephoneC.getText());
-        ps.setString(12, salaireC.getText());
-        ps.setString(13, dispo);
-        ps.setString(14, textPhotoC.getText());
-        ps.execute();
-            JOptionPane.showMessageDialog(null, "Modification réussi");
+            int idNomChauf = getClIdFromDatabase(selectedChauf);
+            int idNomCli = getClIdFromDatabase(selectedClien);
+            String req = "INSERT INTO `evaluation`(`idChauffeur`, `idClient`, `dateEvaluation`, `noteConduite`, `commentaires`, `courtoisie`, `ponctualite`, `connaissanceItineraires`, `pointDepart`, `pointArrivee`, `duree`, `note`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            ps=conn.prepareStatement(req);
+            ps.setInt(1, idNomChauf);
+            ps.setInt(2,idNomCli);
+            ps.setDate(3,sqlDateEv);
+            ps.setString(4, conduite.getText());
+            ps.setString(5, commentaire.getText());
+            ps.setString(6, courtoisie.getText());
+            ps.setString(7, ponctualité.getText());
+            ps.setString(8, itinéraire.getText());
+            ps.setString(9, selectedD);
+            ps.setString(10, selectedA);
+            ps.setString(11, durée.getText());
+            ps.setString(12, note.getText());
+            ps.execute();
+            
+            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
             ps.close();
 
             // Actualiser la table
-            AfficheTableau();
-            efface();
-             }
-        } catch (HeadlessException | SQLException e) {
-            System.out.println("--> SQLException : " + e);
+            AfficheTableauEv();
+            effaceEv();
+            
+        } catch (SQLException ex) {
+             System.out.println("--> SQLException : " + ex);
             JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
-        }   
-    }//GEN-LAST:event_modifbtn3ActionPerformed
+        }
 
-    private void supprbtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn3ActionPerformed
-        try {
-            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer un chauffeur,est ce que tu es sur?",
-                    "Supprimer chauffeur", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+    }//GEN-LAST:event_ajouter3ActionPerformed
 
-                String requete = "DELETE FROM `chauffeur` WHERE numéroPermis='"+num+"'";
-                ps = conn.prepareStatement(requete);
+    private void modifbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn4ActionPerformed
+        String selectedChauf = (String) nomCh.getSelectedItem();
+        String selectedClien = (String) nomCl.getSelectedItem();
+        java.util.Date dateEv = DateEvaluation.getDate(); 
+        java.sql.Date sqlDateEv = new java.sql.Date(dateEv.getTime());
+         String selectedD = (String) villeD.getSelectedItem();
+         String selectedA = (String) villeA.getSelectedItem();
+        try{
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier une évaluation,est ce que tu es sur?",
+                    "Modifier evaluation", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
 
+                int idNomChauf = getClIdFromDatabase(selectedChauf);
+                int idNomCli = getClIdFromDatabase(selectedClien);
+                String req = "UPDATE `evaluation` SET `idChauffeur`=?,`idClient`=?,`dateEvaluation`=?,`noteConduite`=?,`commentaires`=?,`courtoisie`=?,`ponctualite`=?,`connaissanceItineraires`=?,`pointDepart`=?,`pointArrivee`=?,`duree`=?,`note`=? WHERE idEvaluation='"+idEv+"'";
+                ps=conn.prepareStatement(req);
+                ps.setInt(1, idNomChauf);
+                ps.setInt(2,idNomCli);
+                ps.setDate(3,sqlDateEv);
+                ps.setString(4, conduite.getText());
+                ps.setString(5, commentaire.getText());
+                ps.setString(6, courtoisie.getText());
+                ps.setString(7, ponctualité.getText());
+                ps.setString(8, itinéraire.getText());
+                ps.setString(9, selectedD);
+                ps.setString(10, selectedA);
+                ps.setString(11, durée.getText());
+                ps.setString(12, note.getText());
                 ps.execute();
 
+                JOptionPane.showMessageDialog(null, "Modification réussi");
+                ps.close();
             }
-        } catch (Exception e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, "erreur de supprimer \n" + e.getMessage());
+            // Actualiser la table
+            AfficheTableauEv();
+            effaceEv();
+            
+        } catch (SQLException ex) {
+             System.out.println("--> SQLException : " + ex);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
         }
-         AfficheTableau();
-    }//GEN-LAST:event_supprbtn3ActionPerformed
 
-    private void nonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nonActionPerformed
-        dispo="Non disponible";
-    }//GEN-LAST:event_nonActionPerformed
+    }//GEN-LAST:event_modifbtn4ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        imagee(144, 144, photoC, textPhotoC);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void supprbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supprbtn4ActionPerformed
+
+    private void recher4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4MouseClicked
+
+    private void recher4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4MouseReleased
+
+    private void recher4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4ActionPerformed
+
+    private void tableEVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableEVKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableEVKeyReleased
+
+    private void tableEVMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEVMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableEVMouseReleased
+
+    private void tableEVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEVMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableEVMouseClicked
+
+    private void courtoisieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courtoisieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courtoisieActionPerformed
+
+    private void conduiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conduiteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_conduiteActionPerformed
+
+    private void duréeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duréeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_duréeActionPerformed
+
+    private void ponctualitéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ponctualitéActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ponctualitéActionPerformed
+
+    private void sécuriitéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sécuriitéActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sécuriitéActionPerformed
+
+    private void itinéraireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itinéraireActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itinéraireActionPerformed
+ // Récupérer les valeurs des champs d'évaluation
+   public double calculerMoyenneGenerale(){
+    int noteConduite = Integer.parseInt(conduite.getText());
+    int courtoisi = Integer.parseInt(courtoisie.getText());
+    int ponctualite = Integer.parseInt(ponctualité.getText());
+    int conduiteSecuritaire = Integer.parseInt(sécuriité.getText());
+    int connaissanceItineraires = Integer.parseInt(itinéraire.getText());
+
+    // Supposons que la valeur du champ incidentSurvenus est un JCheckBox (oui = 1, non = 0)
+   
+
+    // Calculer la moyenne générale
+    int nombreCritères = 5; // Nombre de critères d'évaluation
+    int somme = noteConduite + courtoisi + ponctualite + conduiteSecuritaire + connaissanceItineraires ;
+    double moyenneGenerale = (double) somme / nombreCritères;
+
+    return moyenneGenerale;
+    }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
+   note.setText("");
+    double moyenneGenerale = calculerMoyenneGenerale(); // Utilisez votre méthode pour obtenir la moyenne
+    note.setText("Note: " + moyenneGenerale);
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void nomChActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomChActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomChActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2094,26 +2546,31 @@ public class GestionChauffeur extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DateEvaluation;
     private com.toedter.calendar.JDateChooser DateValiC;
     private javax.swing.JTextField adresseC;
     private javax.swing.JButton ajouter;
     private javax.swing.JButton ajouter1;
-    private javax.swing.JButton ajouter2;
+    private javax.swing.JButton ajouter3;
     private javax.swing.JTabbedPane ajouterVoiture;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextArea commentaire;
+    private javax.swing.JTextField conduite;
+    private javax.swing.JTextField courtoisie;
     private com.toedter.calendar.JDateChooser dateEmbC;
     private com.toedter.calendar.JDateChooser dateFinC;
-    private com.toedter.calendar.JDateChooser dateIm4;
     private com.toedter.calendar.JDateChooser dateObenC;
+    private javax.swing.JTextField durée;
     private javax.swing.JTextField emailC;
     private javax.swing.JLabel imgPath2;
-    private javax.swing.JLabel imgPath3;
+    private javax.swing.JTextField itinéraire;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -2126,28 +2583,23 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser6;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
@@ -2156,57 +2608,75 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
+    private javax.swing.JLabel jLabel70;
+    private javax.swing.JLabel jLabel71;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField matTex2;
-    private javax.swing.JTextField matTex3;
     private javax.swing.JButton modifbtn1;
-    private javax.swing.JButton modifbtn2;
     private javax.swing.JButton modifbtn3;
+    private javax.swing.JButton modifbtn4;
     private javax.swing.JTextField nomC;
+    private javax.swing.JComboBox<String> nomCh;
+    private javax.swing.JComboBox<String> nomCl;
     private javax.swing.JRadioButton non;
+    private javax.swing.JLabel note;
     private javax.swing.JTextField numPC;
     private javax.swing.JRadioButton oui;
     private javax.swing.JLabel photoC;
     private javax.swing.JLabel photoPP;
+    private javax.swing.JTextField ponctualité;
     private javax.swing.JTextField prenomC;
     private javax.swing.JTextField rech;
     private javax.swing.JTextField recher1;
-    private javax.swing.JTextField recher2;
     private javax.swing.JTextField recher3;
+    private javax.swing.JTextField recher4;
     private javax.swing.JTextField salaireC;
     private javax.swing.JButton supprbtn1;
-    private javax.swing.JButton supprbtn2;
     private javax.swing.JButton supprbtn3;
+    private javax.swing.JButton supprbtn4;
+    private javax.swing.JTextField sécuriité;
     private javax.swing.JTable table1;
     private javax.swing.JTable table3;
-    private javax.swing.JTable table4;
     private javax.swing.JTable tableC;
+    private javax.swing.JTable tableEV;
     private javax.swing.JTextField telephoneC;
     private javax.swing.JTextField textPhotoC;
+    private javax.swing.JComboBox<String> villeA;
     private javax.swing.JComboBox<String> villeC;
-    private javax.swing.JTextField vitText3;
-    private javax.swing.JTextField vitText4;
-    private javax.swing.JTextField vitText5;
+    private javax.swing.JComboBox<String> villeD;
     // End of variables declaration//GEN-END:variables
 }

@@ -3293,3 +3293,16 @@ public void actualiseE(){
     private javax.swing.JComboBox<String> typeAss;
     // End of variables declaration//GEN-END:variables
 }
+/*nomCh
+nomCl
+conduite
+courtoisie
+ponctualité
+sécuriité
+itinéraire
+DateEvaluation
+villeD
+villeA
+durée
+commentaire
+note*/
