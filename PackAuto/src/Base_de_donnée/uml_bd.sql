@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 19 juil. 2023 à 16:48
+-- Généré le : jeu. 20 juil. 2023 à 15:48
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -60,14 +60,15 @@ CREATE TABLE IF NOT EXISTS `assurance` (
   `montantAss` decimal(10,0) NOT NULL,
   `contactCompa` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idAss`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `assurance`
 --
 
 INSERT INTO `assurance` (`idAss`, `compagnie`, `numPolice`, `dateDebut`, `dateExpir`, `typeAss`, `montantAss`, `contactCompa`) VALUES
-(1, 'NSIA Assurances', '2134536453', '2022-07-15', '2026-09-19', 'Assurance Bris de Glace', '50000', '0103204629');
+(1, 'NSIA Assurances', '2134536453', '2022-07-15', '2026-09-19', 'Assurance Bris de Glace', '50000', '0103204629'),
+(2, 'SUNU Assurances', '5473', '2022-07-20', '2025-03-23', 'Assurance Conducteur et Passagers', '20000', '0708984752');
 
 -- --------------------------------------------------------
 
@@ -135,14 +136,16 @@ CREATE TABLE IF NOT EXISTS `chauffeur` (
   `disponibilité` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
   `photoChauf` text COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `chauffeur`
 --
 
 INSERT INTO `chauffeur` (`id`, `nom`, `prenom`, `adresse`, `numéroPermis`, `dateEmbauche`, `dateFinContrat`, `dateObtentionPermis`, `dateValiditéPermis`, `ville`, `email`, `telephone`, `salaire`, `disponibilité`, `photoChauf`) VALUES
-(1, 'Koffi', 'jean claude', 'Bassam, monkeville', '567938321', '2019-07-13', '2025-07-13', '2019-08-21', '2026-08-21', 'Grand-Bassam', 'jeanclaude@gmail.com', 708764521, '150000', 'disponible', 'C:\\Users\\cylko\\OneDrive\\Dcument de cours\\X.JPG');
+(1, 'Koffi', 'jean claude', 'Bassam, monkeville', '567938321', '2019-07-13', '2025-07-13', '2019-08-21', '2026-08-21', 'Grand-Bassam', 'jeanclaude@gmail.com', 708764521, '150000', 'disponible', 'C:\\Users\\cylko\\OneDrive\\Dcument de cours\\X.JPG'),
+(2, 'N\'guessan', 'Hachley Aurore', 'Abobo, deuxième arrêt', '53678J88', '2021-07-19', '2024-07-19', '2021-05-08', '2026-05-08', 'Abidjan', 'hachleyaurore01@gmail.com', 707873647, '200000', 'Non disponible', 'C:\\Users\\cylko\\Downloads\\IMG_20230719_173549586.jpg'),
+(3, 'kouassi', 'kouadio ange', 'Adjamé', '847389D0', '2023-02-20', '2025-02-20', '2022-06-15', '2026-06-15', 'Abidjan', '2Kange@gmail.com', 707368713, '150000', 'disponible', 'C:\\Users\\cylko\\OneDrive\\Dcument de cours\\k.JPG');
 
 -- --------------------------------------------------------
 
@@ -960,18 +963,24 @@ CREATE TABLE IF NOT EXISTS `voiture` (
   `photoV` text COLLATE utf8mb4_general_ci NOT NULL,
   `idAss` int NOT NULL,
   `kilometrage` int NOT NULL,
+  `dateAchat` date NOT NULL,
+  `consoCarburant` decimal(10,0) NOT NULL,
+  `prixLocation` decimal(10,0) NOT NULL,
+  `anneeConception` year NOT NULL,
+  `couleur` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`idVoit`),
   KEY `idDate` (`Date`),
   KEY `idMarque` (`idMarque`,`idBoiteV`,`idCarburant`,`idTemperature`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `voiture`
 --
 
-INSERT INTO `voiture` (`idVoit`, `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idModele`, `idGamme`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`, `idAss`, `kilometrage`) VALUES
-(1, '6425EH05', 4, 250, 4, 223, 32, 2, 2, 2, '2020-05-16', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\peugeot.jpeg', 1, 50000),
-(2, '3224AF02', 4, 210, 2, 124, 13, 1, 2, 3, '2023-07-16', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\mercedes.jpeg', 1, 55000);
+INSERT INTO `voiture` (`idVoit`, `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idModele`, `idGamme`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`, `idAss`, `kilometrage`, `dateAchat`, `consoCarburant`, `prixLocation`, `anneeConception`, `couleur`) VALUES
+(1, '6425EH05', 4, 250, 4, 223, 31, 2, 2, 1, '2020-05-16', '', 1, 50000, '2023-07-20', '10', '200000', 2019, 'Rouge'),
+(2, '3224AF02', 4, 210, 2, 124, 13, 1, 2, 3, '2023-07-16', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\mercedes.jpeg', 1, 55000, '2022-07-09', '9', '140000', 2021, 'Blanc'),
+(3, '1234AZ54', 5, 240, 4, 226, 33, 2, 2, 2, '2022-03-22', 'C:\\Users\\cylko\\Downloads\\voitures\\toyotaCarmi.jpg', 2, 40000, '2022-05-24', '11', '180000', 2017, 'Rouge');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
