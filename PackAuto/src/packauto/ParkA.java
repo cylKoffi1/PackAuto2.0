@@ -52,6 +52,7 @@ public class ParkA extends javax.swing.JFrame {
         ComboxAff();
         ComboboxMatri();
         ComboboxMatriadd();
+        ComboboxAssu();
         efface();
         add2();
         recher.setText("Rechercher ");
@@ -2685,7 +2686,7 @@ gam2.addActionListener(new ActionListener() {
     }//GEN-LAST:event_table1MouseClicked
 
     private void assurance2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assurance2ActionPerformed
-        // TODO add your handling code here:
+        ComboboxAssu();        
     }//GEN-LAST:event_assurance2ActionPerformed
 
     private void table2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table2KeyReleased
@@ -2904,7 +2905,7 @@ gam2.addActionListener(new ActionListener() {
     }//GEN-LAST:event_supprimerAssuranceActionPerformed
 
     private void assurance1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assurance1ActionPerformed
-       
+        ComboboxAssu();
     }//GEN-LAST:event_assurance1ActionPerformed
 
     private void gam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gam2ActionPerformed
@@ -2935,7 +2936,28 @@ gam2.addActionListener(new ActionListener() {
         e.printStackTrace();
     }
 }
+    
+    public void ComboboxAssu() {
+    try {
+        String sql = "SELECT compagnie FROM assurance";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        assurance1.removeAllItems();
+        assurance2.removeAllItems();
+        while (rs.next()) {
+            String assurance = rs.getString("compagnie");
+            assurance1.addItem(assurance);
+            assurance2.addItem(assurance);
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 
+    
     public void AfficheTableauE() {
     try {
         String sql1é = "SELECT `idEntretien` as 'id',`matVoiture` as 'matricule', `dateEntretien` as 'date', `compagni`as 'compagnie', `DescEntretien`as'description', `coutEntretien`as'cout', `matVoiture`as'matricule' FROM `entretien` ";
@@ -3189,6 +3211,8 @@ public void actualiseE(){
     private void matriculeEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeEActionPerformed
         String matriculeSelected = (String) matriculeE.getSelectedItem();
         afficherImageVoiture(matriculeSelected);
+        
+        ComboboxMatri();
     }//GEN-LAST:event_matriculeEActionPerformed
 
     private void modifbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn2ActionPerformed

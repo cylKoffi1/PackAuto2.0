@@ -119,30 +119,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         supprbtn3 = new javax.swing.JButton();
         recher3 = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
-        jPanel17 = new javax.swing.JPanel();
-        jPanel19 = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        table3 = new javax.swing.JTable();
-        imgPath2 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jDateChooser5 = new com.toedter.calendar.JDateChooser();
-        jDateChooser6 = new com.toedter.calendar.JDateChooser();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jLabel34 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        supprbtn1 = new javax.swing.JButton();
-        modifbtn1 = new javax.swing.JButton();
-        recher1 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        ajouter1 = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -785,267 +761,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         );
 
         ajouterVoiture.addTab("Ajouter/Modifier/Supprimer", jPanel12);
-
-        jPanel17.setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel19.setBackground(new java.awt.Color(102, 0, 0));
-
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("Fin assignation :");
-
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Etat assignation:");
-
-        jLabel32.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel32.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Assignations aux réservations");
-
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("Date début assignation:");
-
-        table3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Catégorie", "Marque", "Modèle", "Année"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        table3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                table3MouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                table3MouseReleased(evt);
-            }
-        });
-        table3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                table3KeyReleased(evt);
-            }
-        });
-        jScrollPane3.setViewportView(table3);
-
-        imgPath2.setBackground(new java.awt.Color(0, 0, 0));
-        imgPath2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packauto/images.png"))); // NOI18N
-        imgPath2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("Commentaire :");
-
-        jCheckBox5.setText("En cours");
-
-        jCheckBox6.setText("Annulée");
-        jCheckBox6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox6ActionPerformed(evt);
-            }
-        });
-
-        jCheckBox7.setText("Terminée");
-
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Numéro de permis :");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane7.setViewportView(jTextArea2);
-
-        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
-        jPanel19.setLayout(jPanel19Layout);
-        jPanel19Layout.setHorizontalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imgPath2)
-                        .addGap(17, 17, 17))
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel34))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox6)
-                            .addComponent(jCheckBox5)
-                            .addGroup(jPanel19Layout.createSequentialGroup()
-                                .addComponent(jCheckBox7)
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabel38)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                .addContainerGap(381, Short.MAX_VALUE)
-                .addComponent(jLabel32)
-                .addGap(243, 243, 243))
-        );
-        jPanel19Layout.setVerticalGroup(
-            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel19Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel32)
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                                .addComponent(jDateChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(jDateChooser6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel19Layout.createSequentialGroup()
-                                        .addComponent(jCheckBox5)
-                                        .addGap(12, 12, 12)
-                                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jCheckBox7)
-                                            .addComponent(jLabel31)
-                                            .addComponent(jLabel38)))
-                                    .addGroup(jPanel19Layout.createSequentialGroup()
-                                        .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel34)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(16, 16, 16)
-                                        .addComponent(jLabel33)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jCheckBox6)
-                                    .addComponent(jLabel29))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel19Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(imgPath2))
-                .addContainerGap())
-        );
-
-        supprbtn1.setBackground(new java.awt.Color(255, 255, 255));
-        supprbtn1.setForeground(new java.awt.Color(0, 0, 0));
-        supprbtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
-        supprbtn1.setText("Supprimer");
-        supprbtn1.setPreferredSize(new java.awt.Dimension(133, 47));
-        supprbtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                supprbtn1ActionPerformed(evt);
-            }
-        });
-
-        modifbtn1.setBackground(new java.awt.Color(255, 255, 255));
-        modifbtn1.setForeground(new java.awt.Color(0, 0, 0));
-        modifbtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
-        modifbtn1.setText("Modifier");
-        modifbtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifbtn1ActionPerformed(evt);
-            }
-        });
-
-        recher1.setBackground(new java.awt.Color(0, 0, 0));
-        recher1.setForeground(new java.awt.Color(255, 255, 255));
-        recher1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        recher1.setText("Rechercher");
-        recher1.setBorder(null);
-        recher1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                recher1MouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                recher1MouseReleased(evt);
-            }
-        });
-        recher1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recher1ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/IconeRecerche.png"))); // NOI18N
-
-        ajouter1.setBackground(new java.awt.Color(255, 255, 255));
-        ajouter1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        ajouter1.setForeground(new java.awt.Color(0, 0, 0));
-        ajouter1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ajouter.png"))); // NOI18N
-        ajouter1.setText("Ajouter");
-        ajouter1.setAlignmentX(0.5F);
-        ajouter1.setAlignmentY(0.0F);
-        ajouter1.setPreferredSize(new java.awt.Dimension(133, 47));
-        ajouter1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ajouter1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(recher1)
-                .addGap(49, 49, 49)
-                .addComponent(supprbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(modifbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ajouter1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(supprbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(modifbtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ajouter1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(recher1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19))
-        );
-
-        ajouterVoiture.addTab("Assignation", jPanel17);
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -2127,45 +1842,153 @@ public class GestionChauffeur extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
 
-    private void ajouter1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter1ActionPerformed
+    private void recher4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ajouter1ActionPerformed
+    }//GEN-LAST:event_recher4ActionPerformed
 
-    private void recher1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher1ActionPerformed
+    private void recher4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_recher1ActionPerformed
+    }//GEN-LAST:event_recher4MouseReleased
 
-    private void recher1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher1MouseReleased
+    private void recher4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_recher1MouseReleased
+    }//GEN-LAST:event_recher4MouseClicked
 
-    private void recher1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher1MouseClicked
+    private void supprbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn4ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_recher1MouseClicked
+    }//GEN-LAST:event_supprbtn4ActionPerformed
 
-    private void modifbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modifbtn1ActionPerformed
+    private void modifbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn4ActionPerformed
+        String selectedChauf = (String) nomCh.getSelectedItem();
+        String selectedClien = (String) nomCl.getSelectedItem();
+        java.util.Date dateEv = DateEvaluation.getDate();
+        java.sql.Date sqlDateEv = new java.sql.Date(dateEv.getTime());
+        String selectedD = (String) villeD.getSelectedItem();
+        String selectedA = (String) villeA.getSelectedItem();
+        try{
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier une évaluation,est ce que tu es sur?",
+                "Modifier evaluation", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
 
-    private void supprbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_supprbtn1ActionPerformed
+            int idNomChauf = getClIdFromDatabase(selectedChauf);
+            int idNomCli = getClIdFromDatabase(selectedClien);
+            String req = "UPDATE `evaluation` SET `idChauffeur`=?,`idClient`=?,`dateEvaluation`=?,`noteConduite`=?,`commentaires`=?,`courtoisie`=?,`ponctualite`=?,`connaissanceItineraires`=?,`pointDepart`=?,`pointArrivee`=?,`duree`=?,`note`=? WHERE idEvaluation='"+idEv+"'";
+            ps=conn.prepareStatement(req);
+            ps.setInt(1, idNomChauf);
+            ps.setInt(2,idNomCli);
+            ps.setDate(3,sqlDateEv);
+            ps.setString(4, conduite.getText());
+            ps.setString(5, commentaire.getText());
+            ps.setString(6, courtoisie.getText());
+            ps.setString(7, ponctualité.getText());
+            ps.setString(8, itinéraire.getText());
+            ps.setString(9, selectedD);
+            ps.setString(10, selectedA);
+            ps.setString(11, durée.getText());
+            ps.setString(12, note.getText());
+            ps.execute();
 
-    private void jCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox6ActionPerformed
+            JOptionPane.showMessageDialog(null, "Modification réussi");
+            ps.close();
+        }
+        // Actualiser la table
+        AfficheTableauEv();
+        effaceEv();
 
-    private void table3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table3KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table3KeyReleased
+        } catch (SQLException ex) {
+            System.out.println("--> SQLException : " + ex);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_modifbtn4ActionPerformed
 
-    private void table3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_table3MouseReleased
+    private void ajouter3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter3ActionPerformed
+        String selectedChauf = (String) nomCh.getSelectedItem();
+        String selectedClien = (String) nomCl.getSelectedItem();
+        java.util.Date dateEv = DateEvaluation.getDate();
+        java.sql.Date sqlDateEv = new java.sql.Date(dateEv.getTime());
+        String selectedD = (String) villeD.getSelectedItem();
+        String selectedA = (String) villeA.getSelectedItem();
+        try{
+            int idNomChauf = getClIdFromDatabase(selectedChauf);
+            int idNomCli = getClIdFromDatabase(selectedClien);
+            String req = "INSERT INTO `evaluation`(`idChauffeur`, `idClient`, `dateEvaluation`, `noteConduite`, `commentaires`, `courtoisie`, `ponctualite`, `connaissanceItineraires`, `pointDepart`, `pointArrivee`, `duree`, `note`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+            ps=conn.prepareStatement(req);
+            ps.setInt(1, idNomChauf);
+            ps.setInt(2,idNomCli);
+            ps.setDate(3,sqlDateEv);
+            ps.setString(4, conduite.getText());
+            ps.setString(5, commentaire.getText());
+            ps.setString(6, courtoisie.getText());
+            ps.setString(7, ponctualité.getText());
+            ps.setString(8, itinéraire.getText());
+            ps.setString(9, selectedD);
+            ps.setString(10, selectedA);
+            ps.setString(11, durée.getText());
+            ps.setString(12, note.getText());
+            ps.execute();
 
-    private void table3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table3MouseClicked
+            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableauEv();
+            effaceEv();
+
+        } catch (SQLException ex) {
+            System.out.println("--> SQLException : " + ex);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_ajouter3ActionPerformed
+
+    private void nomChActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomChActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_table3MouseClicked
+    }//GEN-LAST:event_nomChActionPerformed
+
+    private void nomChMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomChMouseClicked
+        ChauffeurComboBox();
+    }//GEN-LAST:event_nomChMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        note.setText("");
+        double moyenneGenerale = calculerMoyenneGenerale(); // Utilisez votre méthode pour obtenir la moyenne
+        note.setText("Note: " + moyenneGenerale);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void itinéraireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itinéraireActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itinéraireActionPerformed
+
+    private void sécuriitéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sécuriitéActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sécuriitéActionPerformed
+
+    private void ponctualitéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ponctualitéActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ponctualitéActionPerformed
+
+    private void tableEVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableEVKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableEVKeyReleased
+
+    private void tableEVMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEVMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableEVMouseReleased
+
+    private void tableEVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEVMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableEVMouseClicked
+
+    private void courtoisieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courtoisieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_courtoisieActionPerformed
+
+    private void conduiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conduiteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_conduiteActionPerformed
+
+    private void duréeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duréeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_duréeActionPerformed
 
     private void recher3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher3ActionPerformed
         // TODO add your handling code here:
@@ -2348,129 +2171,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void ajouter3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter3ActionPerformed
-        String selectedChauf = (String) nomCh.getSelectedItem();
-        String selectedClien = (String) nomCl.getSelectedItem();
-        java.util.Date dateEv = DateEvaluation.getDate(); 
-        java.sql.Date sqlDateEv = new java.sql.Date(dateEv.getTime());
-         String selectedD = (String) villeD.getSelectedItem();
-         String selectedA = (String) villeA.getSelectedItem();
-        try{
-            int idNomChauf = getClIdFromDatabase(selectedChauf);
-            int idNomCli = getClIdFromDatabase(selectedClien);
-            String req = "INSERT INTO `evaluation`(`idChauffeur`, `idClient`, `dateEvaluation`, `noteConduite`, `commentaires`, `courtoisie`, `ponctualite`, `connaissanceItineraires`, `pointDepart`, `pointArrivee`, `duree`, `note`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-            ps=conn.prepareStatement(req);
-            ps.setInt(1, idNomChauf);
-            ps.setInt(2,idNomCli);
-            ps.setDate(3,sqlDateEv);
-            ps.setString(4, conduite.getText());
-            ps.setString(5, commentaire.getText());
-            ps.setString(6, courtoisie.getText());
-            ps.setString(7, ponctualité.getText());
-            ps.setString(8, itinéraire.getText());
-            ps.setString(9, selectedD);
-            ps.setString(10, selectedA);
-            ps.setString(11, durée.getText());
-            ps.setString(12, note.getText());
-            ps.execute();
-            
-            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
-            ps.close();
-
-            // Actualiser la table
-            AfficheTableauEv();
-            effaceEv();
-            
-        } catch (SQLException ex) {
-             System.out.println("--> SQLException : " + ex);
-            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
-        }
-
-    }//GEN-LAST:event_ajouter3ActionPerformed
-
-    private void modifbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn4ActionPerformed
-        String selectedChauf = (String) nomCh.getSelectedItem();
-        String selectedClien = (String) nomCl.getSelectedItem();
-        java.util.Date dateEv = DateEvaluation.getDate(); 
-        java.sql.Date sqlDateEv = new java.sql.Date(dateEv.getTime());
-         String selectedD = (String) villeD.getSelectedItem();
-         String selectedA = (String) villeA.getSelectedItem();
-        try{
-            if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier une évaluation,est ce que tu es sur?",
-                    "Modifier evaluation", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-
-                int idNomChauf = getClIdFromDatabase(selectedChauf);
-                int idNomCli = getClIdFromDatabase(selectedClien);
-                String req = "UPDATE `evaluation` SET `idChauffeur`=?,`idClient`=?,`dateEvaluation`=?,`noteConduite`=?,`commentaires`=?,`courtoisie`=?,`ponctualite`=?,`connaissanceItineraires`=?,`pointDepart`=?,`pointArrivee`=?,`duree`=?,`note`=? WHERE idEvaluation='"+idEv+"'";
-                ps=conn.prepareStatement(req);
-                ps.setInt(1, idNomChauf);
-                ps.setInt(2,idNomCli);
-                ps.setDate(3,sqlDateEv);
-                ps.setString(4, conduite.getText());
-                ps.setString(5, commentaire.getText());
-                ps.setString(6, courtoisie.getText());
-                ps.setString(7, ponctualité.getText());
-                ps.setString(8, itinéraire.getText());
-                ps.setString(9, selectedD);
-                ps.setString(10, selectedA);
-                ps.setString(11, durée.getText());
-                ps.setString(12, note.getText());
-                ps.execute();
-
-                JOptionPane.showMessageDialog(null, "Modification réussi");
-                ps.close();
-            }
-            // Actualiser la table
-            AfficheTableauEv();
-            effaceEv();
-            
-        } catch (SQLException ex) {
-             System.out.println("--> SQLException : " + ex);
-            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
-        }
-
-    }//GEN-LAST:event_modifbtn4ActionPerformed
-
-    private void supprbtn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_supprbtn4ActionPerformed
-
-    private void tableEVKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableEVKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tableEVKeyReleased
-
-    private void tableEVMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEVMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tableEVMouseReleased
-
-    private void tableEVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEVMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tableEVMouseClicked
-
-    private void courtoisieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courtoisieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_courtoisieActionPerformed
-
-    private void conduiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conduiteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_conduiteActionPerformed
-
-    private void duréeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duréeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_duréeActionPerformed
-
-    private void ponctualitéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ponctualitéActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ponctualitéActionPerformed
-
-    private void sécuriitéActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sécuriitéActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sécuriitéActionPerformed
-
-    private void itinéraireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itinéraireActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_itinéraireActionPerformed
  // Récupérer les valeurs des champs d'évaluation
    public double calculerMoyenneGenerale(){
     int noteConduite = Integer.parseInt(conduite.getText());
@@ -2489,34 +2189,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
 
     return moyenneGenerale;
     }
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-   note.setText("");
-    double moyenneGenerale = calculerMoyenneGenerale(); // Utilisez votre méthode pour obtenir la moyenne
-    note.setText("Note: " + moyenneGenerale);
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void nomChActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomChActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nomChActionPerformed
-
-    private void recher4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher4ActionPerformed
-
-    private void recher4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher4MouseReleased
-
-    private void recher4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recher4MouseClicked
-
-    private void nomChMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomChMouseClicked
-        ChauffeurComboBox();
-    }//GEN-LAST:event_nomChMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -2557,7 +2229,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser DateValiC;
     private javax.swing.JTextField adresseC;
     private javax.swing.JButton ajouter;
-    private javax.swing.JButton ajouter1;
     private javax.swing.JButton ajouter3;
     private javax.swing.JTabbedPane ajouterVoiture;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -2569,7 +2240,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateObenC;
     private javax.swing.JTextField durée;
     private javax.swing.JTextField emailC;
-    private javax.swing.JLabel imgPath2;
     private javax.swing.JTextField itinéraire;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -2577,28 +2247,15 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser5;
-    private com.toedter.calendar.JDateChooser jDateChooser6;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel46;
@@ -2640,20 +2297,14 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JButton modifbtn1;
     private javax.swing.JButton modifbtn3;
     private javax.swing.JButton modifbtn4;
     private javax.swing.JTextField nomC;
@@ -2668,16 +2319,13 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private javax.swing.JTextField ponctualité;
     private javax.swing.JTextField prenomC;
     private javax.swing.JTextField rech;
-    private javax.swing.JTextField recher1;
     private javax.swing.JTextField recher3;
     private javax.swing.JTextField recher4;
     private javax.swing.JTextField salaireC;
-    private javax.swing.JButton supprbtn1;
     private javax.swing.JButton supprbtn3;
     private javax.swing.JButton supprbtn4;
     private javax.swing.JTextField sécuriité;
     private javax.swing.JTable table1;
-    private javax.swing.JTable table3;
     private javax.swing.JTable tableC;
     private javax.swing.JTable tableEV;
     private javax.swing.JTextField telephoneC;
