@@ -868,6 +868,12 @@ public class GestionChauffeur extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(tableEV);
 
+        villeD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                villeDActionPerformed(evt);
+            }
+        });
+
         jLabel70.setForeground(new java.awt.Color(255, 255, 255));
         jLabel70.setText("/10");
 
@@ -2171,6 +2177,10 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void villeDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_villeDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_villeDActionPerformed
  // Récupérer les valeurs des champs d'évaluation
    public double calculerMoyenneGenerale(){
     int noteConduite = Integer.parseInt(conduite.getText());

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 20 juil. 2023 à 15:48
+-- Généré le : ven. 21 juil. 2023 à 11:52
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -178,42 +178,55 @@ INSERT INTO `client` (`idClient`, `nomCl`, `prenomCl`, `lieuNaiss`, `dateNaiss`)
 
 DROP TABLE IF EXISTS `consommation`;
 CREATE TABLE IF NOT EXISTS `consommation` (
-  `idCon` int NOT NULL,
-  `dateCon` date NOT NULL,
-  `quantitéCon` int NOT NULL,
-  `kilometrage` decimal(10,0) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `idCon` int NOT NULL AUTO_INCREMENT,
+  `villeDe` int NOT NULL,
+  `villeAr` int NOT NULL,
+  `distances` decimal(10,0) NOT NULL,
+  `matVoiture` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `prixConso` double NOT NULL,
+  `consoLittres` double NOT NULL,
+  `typePiste` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `prxiUnitaire` double NOT NULL,
+  PRIMARY KEY (`idCon`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `consommation`
+--
+
+INSERT INTO `consommation` (`idCon`, `villeDe`, `villeAr`, `distances`, `matVoiture`, `prixConso`, `consoLittres`, `typePiste`, `prxiUnitaire`) VALUES
+(1, 1, 2, '245', '3224AF02', 14442.75, 22.05, 'goudronnée', 655);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `datecirculation`
+-- Structure de la table `distancevilles`
 --
 
-DROP TABLE IF EXISTS `datecirculation`;
-CREATE TABLE IF NOT EXISTS `datecirculation` (
-  `idDate` int NOT NULL AUTO_INCREMENT,
-  `libDate` date NOT NULL,
-  PRIMARY KEY (`idDate`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
+DROP TABLE IF EXISTS `distancevilles`;
+CREATE TABLE IF NOT EXISTS `distancevilles` (
+  `idDistance` int NOT NULL AUTO_INCREMENT,
+  `idVilleDepart` int DEFAULT NULL,
+  `idVilleArrivee` int DEFAULT NULL,
+  `Distance` double DEFAULT NULL,
+  PRIMARY KEY (`idDistance`),
+  KEY `idVilleDepart` (`idVilleDepart`),
+  KEY `idVilleArrivee` (`idVilleArrivee`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Structure de la table `enregistrementrespopark`
+-- Déchargement des données de la table `distancevilles`
 --
 
-DROP TABLE IF EXISTS `enregistrementrespopark`;
-CREATE TABLE IF NOT EXISTS `enregistrementrespopark` (
-  `nomRP` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `prenomRP` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `DateNaisseRP` date NOT NULL,
-  `LieuNaissRP` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `MatriculeRP` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `mailRP` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `mdpRP` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`MatriculeRP`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `distancevilles` (`idDistance`, `idVilleDepart`, `idVilleArrivee`, `Distance`) VALUES
+(1, 1, 2, 245),
+(2, 1, 3, 349),
+(5, 1, 4, 317.8),
+(6, 1, 5, 493),
+(7, 1, 6, 603),
+(8, 1, 7, 563),
+(9, 1, 8, 203),
+(10, 1, 9, 267);
 
 -- --------------------------------------------------------
 
@@ -968,6 +981,7 @@ CREATE TABLE IF NOT EXISTS `voiture` (
   `prixLocation` decimal(10,0) NOT NULL,
   `anneeConception` year NOT NULL,
   `couleur` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `CapaciteReservoir` double NOT NULL,
   PRIMARY KEY (`idVoit`),
   KEY `idDate` (`Date`),
   KEY `idMarque` (`idMarque`,`idBoiteV`,`idCarburant`,`idTemperature`)
@@ -977,10 +991,10 @@ CREATE TABLE IF NOT EXISTS `voiture` (
 -- Déchargement des données de la table `voiture`
 --
 
-INSERT INTO `voiture` (`idVoit`, `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idModele`, `idGamme`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`, `idAss`, `kilometrage`, `dateAchat`, `consoCarburant`, `prixLocation`, `anneeConception`, `couleur`) VALUES
-(1, '6425EH05', 4, 250, 4, 223, 31, 2, 2, 1, '2020-05-16', '', 1, 50000, '2023-07-20', '10', '200000', 2019, 'Rouge'),
-(2, '3224AF02', 4, 210, 2, 124, 13, 1, 2, 3, '2023-07-16', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\mercedes.jpeg', 1, 55000, '2022-07-09', '9', '140000', 2021, 'Blanc'),
-(3, '1234AZ54', 5, 240, 4, 226, 33, 2, 2, 2, '2022-03-22', 'C:\\Users\\cylko\\Downloads\\voitures\\toyotaCarmi.jpg', 2, 40000, '2022-05-24', '11', '180000', 2017, 'Rouge');
+INSERT INTO `voiture` (`idVoit`, `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idModele`, `idGamme`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`, `idAss`, `kilometrage`, `dateAchat`, `consoCarburant`, `prixLocation`, `anneeConception`, `couleur`, `CapaciteReservoir`) VALUES
+(1, '6425EH05', 4, 250, 4, 223, 31, 2, 2, 1, '2020-05-16', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\Mercedes-Maybach_S_680_Haute_Voiture_concept_009.jpg', 1, 50000, '2023-07-20', '10', '200000', 2019, 'Rouge', 0),
+(2, '3224AF02', 4, 210, 2, 124, 13, 1, 2, 3, '2023-07-16', 'C:\\Users\\cylko\\OneDrive\\Documents\\NetBeansProjects\\PackAuto\\PackAuto\\src\\voitureImg\\mercedes.jpeg', 1, 55000, '2022-07-09', '9', '140000', 2021, 'Blanc', 0),
+(3, '1234AZ54', 5, 240, 4, 226, 33, 2, 2, 2, '2022-03-22', 'C:\\Users\\cylko\\Downloads\\voitures\\toyotaCarmi.jpg', 2, 40000, '2022-05-24', '11', '180000', 2017, 'Rouge', 0);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -8,15 +8,20 @@ import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import static java.lang.Thread.sleep;
 import java.sql.*;
+import java.util.Calendar;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -49,13 +54,22 @@ public class ParkA extends javax.swing.JFrame {
         AfficheTableau();
         AfficheTableauE();
         AfficheTableauAss();
+        AfficheTableauC();
         ComboxAff();
         ComboboxMatri();
         ComboboxMatriadd();
         ComboboxAssu();
         efface();
         add2();
+        datecouranteC();
+        ComboboxVilleC();
+        ComboboxVilleDAddC();
+        ComboboxVilleAAddC();
+        ComboboxMatriC();
+        AfficherInfosVoitureC();
+        afficherDistanceVillesC();
         recher.setText("Rechercher ");
+        
         rech.setText("Rechercher");
     }
 
@@ -126,6 +140,8 @@ public class ParkA extends javax.swing.JFrame {
         matricule1 = new javax.swing.JTextField();
         jLabel59 = new javax.swing.JLabel();
         couleur = new javax.swing.JComboBox<>();
+        jLabel61 = new javax.swing.JLabel();
+        capacitéReservoir = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -172,6 +188,8 @@ public class ParkA extends javax.swing.JFrame {
         kilometrage2 = new javax.swing.JTextField();
         couleur2 = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
+        capacitéReservoir2 = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
         jPanel17 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
@@ -224,6 +242,50 @@ public class ParkA extends javax.swing.JFrame {
         supprbtn2 = new javax.swing.JButton();
         recher2 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
+        jPanel24 = new javax.swing.JPanel();
+        ajouter3C = new javax.swing.JButton();
+        modifbtn4C = new javax.swing.JButton();
+        supprbtn4C = new javax.swing.JButton();
+        recher4 = new javax.swing.JTextField();
+        jButton14 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        villeDC = new javax.swing.JComboBox<>();
+        villeAC = new javax.swing.JComboBox<>();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        distanceC = new javax.swing.JTextField();
+        jLabel84 = new javax.swing.JLabel();
+        consommationC = new javax.swing.JTextField();
+        jLabel85 = new javax.swing.JLabel();
+        prixUniC = new javax.swing.JTextField();
+        jLabel86 = new javax.swing.JLabel();
+        typeCarbuC = new javax.swing.JComboBox<>();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        marqueC = new javax.swing.JComboBox<>();
+        modeleC = new javax.swing.JComboBox<>();
+        jLabel89 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tableC1C = new javax.swing.JTable();
+        jLabel90 = new javax.swing.JLabel();
+        consoLittreC = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        prixConsoC = new javax.swing.JLabel();
+        jPanel25 = new javax.swing.JPanel();
+        photoPP1C = new javax.swing.JLabel();
+        jButton3C = new javax.swing.JButton();
+        jLabel92 = new javax.swing.JLabel();
+        jLabel93 = new javax.swing.JLabel();
+        jLabel94 = new javax.swing.JLabel();
+        matriculeC = new javax.swing.JComboBox<>();
+        jLabel95 = new javax.swing.JLabel();
+        etatPisteC = new javax.swing.JComboBox<>();
+        jLabel96 = new javax.swing.JLabel();
+        kilometrageC = new javax.swing.JTextField();
+        labDate = new javax.swing.JLabel();
+        labdate2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -482,6 +544,11 @@ public class ParkA extends javax.swing.JFrame {
         });
 
         textPhoto.setForeground(new java.awt.Color(0, 0, 0));
+        textPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textPhotoActionPerformed(evt);
+            }
+        });
 
         imagePhoto1.setBackground(new java.awt.Color(0, 0, 0));
         imagePhoto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
@@ -545,7 +612,7 @@ public class ParkA extends javax.swing.JFrame {
         jLabel52.setText("Consommation carburant:");
 
         consoCarburant.setForeground(new java.awt.Color(0, 0, 0));
-        consoCarburant.setText("sur 100 m");
+        consoCarburant.setText("L/Km  sur 1Km");
         consoCarburant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consoCarburantActionPerformed(evt);
@@ -587,6 +654,16 @@ public class ParkA extends javax.swing.JFrame {
             }
         });
 
+        jLabel61.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel61.setText("Capacité de reservoir");
+
+        capacitéReservoir.setForeground(new java.awt.Color(0, 0, 0));
+        capacitéReservoir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capacitéReservoirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -624,12 +701,18 @@ public class ParkA extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel55)
-                            .addComponent(jLabel52))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(consoCarburant, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(prixLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addComponent(jLabel61)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(capacitéReservoir, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel55)
+                                    .addComponent(jLabel52))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(consoCarburant, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                    .addComponent(prixLocation))))
                         .addGap(65, 65, 65)))
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
@@ -672,7 +755,7 @@ public class ParkA extends javax.swing.JFrame {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -706,28 +789,27 @@ public class ParkA extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel55)
-                                    .addComponent(prixLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(prixLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel61)
+                                    .addComponent(capacitéReservoir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addGap(4, 4, 4)
-                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel59)
-                                        .addComponent(couleur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(gam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel16))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel44)
+                                    .addComponent(modele1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel15Layout.createSequentialGroup()
-                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(gam1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel16))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel44)
-                                            .addComponent(modele1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                                .addGap(16, 16, 16)
-                                                .addComponent(jLabel51))
-                                            .addGroup(jPanel15Layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(dateConception, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                        .addGap(16, 16, 16)
+                                        .addComponent(jLabel51))
+                                    .addGroup(jPanel15Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(dateConception, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addComponent(ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -735,7 +817,7 @@ public class ParkA extends javax.swing.JFrame {
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel26)
                             .addComponent(carburant1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nombrePlace1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
@@ -759,7 +841,11 @@ public class ParkA extends javax.swing.JFrame {
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DateImm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))
-                        .addGap(85, 85, 85))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel59)
+                            .addComponent(couleur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49))))
         );
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -771,7 +857,7 @@ public class ParkA extends javax.swing.JFrame {
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -1023,6 +1109,16 @@ public class ParkA extends javax.swing.JFrame {
         jLabel60.setForeground(new java.awt.Color(102, 0, 0));
         jLabel60.setText("Couleur :");
 
+        capacitéReservoir2.setForeground(new java.awt.Color(0, 0, 0));
+        capacitéReservoir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capacitéReservoir2ActionPerformed(evt);
+            }
+        });
+
+        jLabel62.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel62.setText("Reservoir :");
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -1036,16 +1132,19 @@ public class ParkA extends javax.swing.JFrame {
                                 .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel62)
+                                .addComponent(jLabel28)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(capacitéReservoir2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(matricule2)
+                                .addComponent(VitesseMax2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(assurance2, 0, 160, Short.MAX_VALUE)
+                                .addComponent(nombrePlace2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(matricule2)
-                                    .addComponent(VitesseMax2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(assurance2, 0, 160, Short.MAX_VALUE)
-                                    .addComponent(nombrePlace2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel58)
@@ -1087,14 +1186,13 @@ public class ParkA extends javax.swing.JFrame {
                                     .addComponent(jLabel25)
                                     .addComponent(jLabel22)))
                             .addGroup(jPanel18Layout.createSequentialGroup()
-                                .addComponent(recher, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(96, 96, 96)
+                                .addGap(63, 63, 63)
                                 .addComponent(jButton11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(supprbtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(modifbtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel60)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1107,12 +1205,16 @@ public class ParkA extends javax.swing.JFrame {
                                     .addComponent(BoiteVite2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(marque2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Tempe2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(37, Short.MAX_VALUE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recher, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(imagePhoto2, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                        .addContainerGap())))
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addGap(247, 247, 247)
                 .addComponent(jLabel20)
@@ -1123,21 +1225,22 @@ public class ParkA extends javax.swing.JFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(recher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(supprbtn)
                             .addComponent(modifbtn)
                             .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel60)
-                                .addComponent(couleur2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel60)
+                            .addComponent(couleur2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(capacitéReservoir2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel62))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1195,7 +1298,9 @@ public class ParkA extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(imagePhoto2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addGap(34, 34, 34))
         );
 
@@ -1764,6 +1869,428 @@ public class ParkA extends javax.swing.JFrame {
 
         ajouterVoiture.addTab("Entretien", jPanel20);
 
+        jPanel24.setBackground(new java.awt.Color(102, 0, 0));
+
+        ajouter3C.setBackground(new java.awt.Color(255, 255, 255));
+        ajouter3C.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        ajouter3C.setForeground(new java.awt.Color(0, 0, 0));
+        ajouter3C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ajouter.png"))); // NOI18N
+        ajouter3C.setText("Ajouter");
+        ajouter3C.setAlignmentX(0.5F);
+        ajouter3C.setAlignmentY(0.0F);
+        ajouter3C.setPreferredSize(new java.awt.Dimension(133, 47));
+        ajouter3C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajouter3CActionPerformed(evt);
+            }
+        });
+
+        modifbtn4C.setBackground(new java.awt.Color(255, 255, 255));
+        modifbtn4C.setForeground(new java.awt.Color(0, 0, 0));
+        modifbtn4C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/modification.png"))); // NOI18N
+        modifbtn4C.setText("Modifier");
+        modifbtn4C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifbtn4CActionPerformed(evt);
+            }
+        });
+
+        supprbtn4C.setBackground(new java.awt.Color(255, 255, 255));
+        supprbtn4C.setForeground(new java.awt.Color(0, 0, 0));
+        supprbtn4C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/suppression.png"))); // NOI18N
+        supprbtn4C.setText("Supprimer");
+        supprbtn4C.setPreferredSize(new java.awt.Dimension(133, 47));
+        supprbtn4C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprbtn4CActionPerformed(evt);
+            }
+        });
+
+        recher4.setBackground(new java.awt.Color(0, 0, 0));
+        recher4.setForeground(new java.awt.Color(255, 255, 255));
+        recher4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        recher4.setText("Rechercher");
+        recher4.setBorder(null);
+        recher4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recher4MouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                recher4MouseReleased(evt);
+            }
+        });
+        recher4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recher4ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setBackground(new java.awt.Color(0, 0, 0));
+        jButton14.setForeground(new java.awt.Color(255, 255, 255));
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/IconeRecerche.png"))); // NOI18N
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel80.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel80.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
+        jLabel80.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel80.setText("Carburant ");
+
+        jLabel81.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel81.setText("Ville de départ :");
+
+        jLabel82.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel82.setText("Ville d'arrivée :");
+
+        jLabel83.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel83.setText("Distance :");
+
+        jLabel84.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel84.setText("Consommation :");
+
+        jLabel85.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel85.setText("Prix unitaire L :");
+
+        jLabel86.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel86.setText("Type carburant :");
+
+        jLabel87.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel87.setText("Matricule :");
+
+        jLabel88.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel88.setText("Marque :");
+
+        jLabel89.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel89.setText("Modele :");
+
+        tableC1C.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Catégorie", "Marque", "Modèle", "Année"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableC1C.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableC1CMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tableC1CMouseReleased(evt);
+            }
+        });
+        tableC1C.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tableC1CKeyReleased(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tableC1C);
+
+        jLabel90.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel90.setText("Consommation en littre :");
+
+        consoLittreC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        consoLittreC.setForeground(new java.awt.Color(102, 0, 0));
+        consoLittreC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel91.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel91.setText("Prix de la consommation :");
+
+        prixConsoC.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        prixConsoC.setForeground(new java.awt.Color(102, 0, 0));
+        prixConsoC.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        photoPP1C.setBackground(new java.awt.Color(0, 0, 0));
+        photoPP1C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/voiture.png"))); // NOI18N
+        photoPP1C.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(photoPP1C, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(photoPP1C, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton3C.setText("CALCULER");
+        jButton3C.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3CActionPerformed(evt);
+            }
+        });
+
+        jLabel92.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel92.setText("L");
+
+        jLabel93.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel93.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel93.setText("FCFA");
+
+        jLabel94.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel94.setText("Photo de voiture ");
+
+        matriculeC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                matriculeCMouseClicked(evt);
+            }
+        });
+        matriculeC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matriculeCActionPerformed(evt);
+            }
+        });
+
+        jLabel95.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel95.setText("Piste :");
+
+        etatPisteC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "goudronnée", "non goudronnée", " " }));
+
+        jLabel96.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel96.setText("Kilometrage :");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel80)
+                .addGap(448, 448, 448))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel90)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(consoLittreC, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel92)
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel91)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(prixConsoC, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel81)
+                                    .addComponent(jLabel84))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(villeDC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel82)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(villeAC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(consommationC, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel85)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(prixUniC)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel83)
+                                    .addComponent(jLabel87))
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(distanceC, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                                    .addComponent(matriculeC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel94)
+                                        .addGap(109, 109, 109))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(138, 138, 138))))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel86)
+                                            .addComponent(jLabel88))
+                                        .addGap(30, 30, 30)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(marqueC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(typeCarbuC, 0, 127, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(etatPisteC, 0, 112, Short.MAX_VALUE))
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(jLabel89)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(kilometrageC)
+                                                    .addComponent(modeleC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel93)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton3C)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 14, Short.MAX_VALUE))))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel80)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel81)
+                    .addComponent(villeDC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel82)
+                    .addComponent(villeAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel83)
+                    .addComponent(distanceC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel86)
+                    .addComponent(typeCarbuC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel95)
+                    .addComponent(etatPisteC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel84)
+                    .addComponent(consommationC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel85)
+                    .addComponent(prixUniC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel87)
+                    .addComponent(jLabel89)
+                    .addComponent(modeleC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(matriculeC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel88)
+                    .addComponent(marqueC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(consoLittreC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(prixConsoC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel91)
+                                        .addComponent(jLabel92))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabel90)
+                                        .addGap(1, 1, 1)))
+                                .addGap(30, 30, 30)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton3C)
+                                    .addComponent(jLabel93))
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(kilometrageC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel96))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel94)
+                        .addGap(3, 3, 3)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
+        );
+
+        labDate.setFont(new java.awt.Font("DS-Digital", 1, 24)); // NOI18N
+        labDate.setForeground(new java.awt.Color(255, 255, 255));
+        labDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labDate.setText("10:15:30 PM");
+
+        labdate2.setFont(new java.awt.Font("FreeSerif", 0, 14)); // NOI18N
+        labdate2.setForeground(new java.awt.Color(255, 255, 255));
+        labdate2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labdate2.setText("12/02/2016");
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jButton14)
+                .addGap(38, 38, 38)
+                .addComponent(recher4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labDate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(labdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43)
+                .addComponent(modifbtn4C)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ajouter3C, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(supprbtn4C, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(supprbtn4C, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(modifbtn4C)
+                                .addComponent(ajouter3C, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(recher4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labdate2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        ajouterVoiture.addTab("Carburant", jPanel24);
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
@@ -1955,7 +2482,204 @@ public class ParkA extends javax.swing.JFrame {
        
                   
     }//GEN-LAST:event_jButton7ActionPerformed
-public void add(){
+ public void datecouranteC() {
+        Thread clock = new Thread() {
+            public void run() {
+                for (;;) {
+                    Calendar Cal = new GregorianCalendar();
+
+                    int sconde = Cal.get(Calendar.SECOND);
+                    int minute = Cal.get(Calendar.MINUTE);
+                    int heure = Cal.get(Calendar.HOUR);
+                    int AM_PM = Cal.get(Calendar.AM_PM);  
+                    String pa;
+                    if(AM_PM==1){
+                        pa="PM";
+                    }else{
+                        pa="AM";
+                    }
+                    
+                         
+                    labDate.setText( + heure + ":" + (minute) + ":" + sconde +" "+pa  );
+                    
+                 int mois = Cal.get(Calendar.MONTH);
+                    int annee = Cal.get(Calendar.YEAR);
+                    int jour = Cal.get(Calendar.DAY_OF_MONTH);
+
+                    labdate2.setText( + jour + "/" + (mois+1) + "/" + annee);              
+                    
+                    
+                    try {
+                        sleep(1000);
+
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Calendar.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+            }
+
+        };
+        
+clock.start();
+    }
+    
+    public void ComboboxVilleC() {
+    try {
+        String sql = "SELECT`libVille` FROM `ville`";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        
+        villeAC.removeAllItems();
+        villeDC.removeAllItems();
+        while (rs.next()) {
+            String ville = rs.getString("libVille");
+            
+            villeAC.addItem(ville);
+            villeDC.addItem(ville);
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+ public void ComboboxMatriC() {
+    try {
+        String sql = "SELECT matVoiture FROM voiture";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        matriculeC.removeAllItems();
+        while (rs.next()) {
+            String matricul = rs.getString("matVoiture");
+            matriculeC.addItem(matricul);
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+ public int getIdVilleC(String nomVille) {
+    int idVille = -1; // Valeur par défaut si la ville n'est pas trouvée
+
+    try {
+        String sql = "SELECT idVille FROM Ville WHERE libVille = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, nomVille);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            idVille = rs.getInt("idVille");
+        }
+
+        rs.close();
+        ps.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+
+    return idVille;
+}
+
+ public void afficherDistanceVillesC() {
+    String villeDepart = (String) villeDC.getSelectedItem();
+    String villeArrivee = (String) villeAC.getSelectedItem();
+
+    try {
+        String sql = "SELECT Distance FROM DistanceVilles WHERE idVilleDepart = ? AND idVilleArrivee = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, getIdVilleC(villeDepart)); // Vous devez écrire une méthode pour récupérer l'id de la ville à partir de son nom
+        ps.setInt(2, getIdVilleC(villeArrivee)); // Vous devez écrire une méthode pour récupérer l'id de la ville à partir de son nom
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            String distanc = rs.getString("Distance");
+            distanceC.setText(distanc);
+        } else{
+            distanceC.setText("Aucun Km");
+        }
+
+        rs.close();
+        ps.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+    
+    villeDC.addItemListener(new ItemListener() {
+    public void itemStateChanged(ItemEvent event) {
+        if (event.getStateChange() == ItemEvent.SELECTED) {
+            afficherDistanceVillesC();
+        }
+    }
+});
+
+villeAC.addItemListener(new ItemListener() {
+    public void itemStateChanged(ItemEvent event) {
+        if (event.getStateChange() == ItemEvent.SELECTED) {
+            afficherDistanceVillesC();
+        }
+    }
+});
+}
+ 
+
+ public void AfficherInfosVoitureC() {
+    String matriculeSelectionne = (String) matriculeC.getSelectedItem();
+    
+    try {
+        String sql = "SELECT voiture.matVoiture, marque.libMarque, voiture.kilometrage, modele.libModele, carburant.libCarburant, voiture.consoCarburant, voiture.photoV FROM voiture INNER JOIN marque ON marque.idMarque = voiture.idMarque INNER JOIN modele ON modele.idModele = voiture.idModele INNER JOIN carburant ON carburant.idCarburant = voiture.idCarburant WHERE matVoiture = '"+matriculeSelectionne+"'";
+        ps = conn.prepareStatement(sql);
+
+        ResultSet rs = ps.executeQuery();
+        marqueC.removeAllItems();
+        modeleC.removeAllItems();
+        typeCarbuC.removeAllItems();
+        if (rs.next()) {
+            String marqu = rs.getString("libMarque");
+            marqueC.addItem(marqu);
+            marqueC.setSelectedItem(marqu); // Sélectionne l'élément ajouté en tête de liste
+
+            String Model = rs.getString("libModele");
+            modeleC.addItem(Model); // Ajoute la valeur numérique en tant que chaîne
+            modeleC.setSelectedItem(Model); // Sélectionne l'élément ajouté en tête de liste
+
+            String typeCarburan = rs.getString("libCarburant");
+            typeCarbuC.addItem(typeCarburan);
+            typeCarbuC.setSelectedItem(typeCarburan); // Sélectionne l'élément ajouté en tête de liste
+
+            String consommatio = rs.getString("consoCarburant");
+            consommationC.setText(consommatio);
+            
+            String kilo = rs.getString("kilometrage");
+            kilometrageC.setText(kilo);
+            
+             String lienPhoto = rs.getString("photoV");
+        ImageIcon imageIcon = new ImageIcon(lienPhoto);
+
+        // Redimensionner l'image à la taille souhaitée (307x170 pixels)
+        Image image = imageIcon.getImage();
+        Image imageRedimensionnee = image.getScaledInstance(307, 170, Image.SCALE_SMOOTH);
+
+        // Créer un nouvel ImageIcon avec l'image redimensionnée
+        ImageIcon imageIconRedimensionnee = new ImageIcon(imageRedimensionnee);
+        photoPP1C.setIcon(imageIconRedimensionnee);
+        } else {
+            System.out.println("Aucune voiture trouvée avec ce numéro de matricule.");
+        }
+
+        rs.close();
+        ps.close();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+    
+}
+
+
+    public void add(){
     marque2.removeAllItems();
     modele2.removeAllItems();
     gam2.removeAllItems();
@@ -2302,7 +3026,8 @@ gam2.addActionListener(new ActionListener() {
                 + "marque.libMarque AS 'Marque', boitevitesse.libBoiteV AS 'BoiteV',carburant.libCarburant AS 'Energie',"
                 + "temperature.libTemperature AS 'temp', voiture.Date AS 'Date',voiture.dateAchat AS 'date dachat',  "
                 + "voiture.consoCarburant AS 'consommation',  voiture.prixLocation AS 'prix',voiture.anneeConception AS 'Année',  "
-                + "voiture.couleur AS 'couleur' "
+                + "voiture.couleur AS 'couleur', "
+                + "voiture.CapaciteReservoir AS 'capacité de reservoir' "
                 + "FROM  voiture "
                 + "INNER JOIN marque ON voiture.idMarque = marque.idMarque "
                 + "INNER JOIN boitevitesse ON voiture.idBoiteV = boitevitesse.idBoiteV "
@@ -2390,6 +3115,7 @@ gam2.addActionListener(new ActionListener() {
 "       voiture.consoCarburant, \n" +
 "       voiture.prixLocation, \n" +
 "       voiture.anneeConception, \n" +
+       "voiture.CapaciteReservoir, \n"+
 "       voiture.couleur \n" +
 "FROM voiture\n" +
 "INNER JOIN marque ON voiture.idMarque = marque.idMarque\n" +
@@ -2452,7 +3178,8 @@ gam2.addActionListener(new ActionListener() {
             prixLocation2.setText(t16);
             int annee = rs.getInt("anneeConception");
             dateConception2.setYear(annee);
-            
+            String capacitéRes = rs.getString("CapaciteReservoir");
+            capacitéReservoir2.setText(capacitéRes);
 
             String t8 = rs.getString("photoV");
             if (t8 == null || t8.equals("")) {
@@ -2582,7 +3309,7 @@ gam2.addActionListener(new ActionListener() {
             int idGamme = getIdFromDatabase("idGamme","gamme","libGamme",selectedGam);
             int idAss = getIdFromDatabase("idAss","assurance","compagnie",selectedAss);
             
-            String requete = "INSERT INTO `voiture`( `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idModele`, `idGamme`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`, `idAss`, `kilometrage`, `dateAchat`, `consoCarburant`, `prixLocation`, `anneeConception`, `couleur`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String requete = "INSERT INTO `voiture`( `matVoiture`, `nbrePlace`, `puissanceMax`, `idMarque`, `idModele`, `idGamme`, `idBoiteV`, `idCarburant`, `idTemperature`, `Date`, `photoV`, `idAss`, `kilometrage`, `dateAchat`, `consoCarburant`, `prixLocation`, `anneeConception`, `couleur`,`CapaciteReservoir`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = conn.prepareStatement(requete);
             ps.setString(1, matricule1.getText());
             ps.setString(2, selectedPlace);
@@ -2603,7 +3330,8 @@ gam2.addActionListener(new ActionListener() {
             ps.setString(15, consoCarburant.getText());
             ps.setString(16, prixLocation.getText());
             ps.setInt(17, datAnnée);
-            ps.setString(17, selectedCouleur);
+            ps.setString(18, selectedCouleur);
+            ps.setString(19, capacitéReservoir.getText());
             ps.execute();
 
             JOptionPane.showMessageDialog(null, "Enregistrement réussi");
@@ -2973,6 +3701,23 @@ gam2.addActionListener(new ActionListener() {
         System.out.println(e);
     }
 }
+    public void AfficheTableauC() {
+    try {
+        String sql1C = "SELECT consommation.idCon as 'id', consommation.matVoiture as 'matricule', consommation.distances as 'distance', v1.libVille AS 'ville départ', v2.libVille AS 'ville arrivée', consommation.prixConso as 'prix', consommation.consoLittres as 'consommation L', consommation.typePiste as 'type de piste'\n" +
+"FROM consommation\n" +
+"INNER JOIN ville v1 ON v1.idVille = consommation.villeDe\n" +
+"INNER JOIN ville v2 ON v2.idVille = consommation.villeAr;";
+        PreparedStatement ps1C = conn.prepareStatement(sql1C);
+        ResultSet rs1C = ps1C.executeQuery();
+
+        tableC1C.setModel(DbUtils.resultSetToTableModel(rs1C));
+
+        ps1C.close();
+        rs1C.close();
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
 public void effaceE() {
         try {
             matriculeE.removeAllItems();
@@ -2984,6 +3729,25 @@ public void effaceE() {
             dateE.setDate(null);
             
                         
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+public void effaceC() {
+        try {
+            matriculeC.setSelectedItem(0);
+            prixConsoC.setText("");
+            consoLittreC.setText("");
+            prixUniC.setText("");
+            distanceC.setText("");
+            kilometrageC.setText("");
+            villeAC.removeAllItems();
+            villeDC.removeAllItems();
+            typeCarbuC.removeAllItems();
+            marqueC.removeAllItems();
+            modeleC.removeAllItems();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -3061,6 +3825,93 @@ public void actualiseE(){
             System.out.println(e);
         }
 }
+public void actualiseC(){
+    try {
+
+            String requete6 = "SELECT `idCon` as 'id', `matVoiture` as 'matricule',`villeDe`as 'ville départ', `villeAr`as 'ville arrivée', `distances`as 'distance',  `prixConso` as 'prix', `consoLittres` as 'consommation', `typePiste`as 'type de piste' FROM `consommation`  ";            
+            ps = conn.prepareStatement(requete6);
+            rs = ps.executeQuery();
+            tableC1C.setModel(DbUtils.resultSetToTableModel(rs));
+ 
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+}
+public void ComboboxMatriaddC() {
+    try {
+        String sql = "SELECT matVoiture FROM voiture";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String selectedMatricule = (String) matriculeC.getSelectedItem();
+
+         matriculeC.removeAllItems();
+        // Ajouter l'élément sélectionné en premier dans la combobox
+        matriculeC.addItem(selectedMatricule);
+
+        // Ajouter les autres éléments normaux à partir de la liste
+        while (rs.next()) {
+            String matricule = rs.getString("matVoiture");
+            if (!matricule.equals(selectedMatricule)) {
+                matriculeC.addItem(matricule);
+            }
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void ComboboxVilleAAddC() {
+    try {
+        String sql = "SELECT libVille FROM ville";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String selectedMatricule = (String) villeAC.getSelectedItem();
+
+         villeAC.removeAllItems();
+        // Ajouter l'élément sélectionné en premier dans la combobox
+        villeAC.addItem(selectedMatricule);
+
+        // Ajouter les autres éléments normaux à partir de la liste
+        while (rs.next()) {
+            String matricule = rs.getString("libVille");
+            if (!matricule.equals(selectedMatricule)) {
+                villeAC.addItem(matricule);
+            }
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+public void ComboboxVilleDAddC() {
+    try {
+        String sql = "SELECT libVille FROM ville";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String selectedMatricule = (String) villeDC.getSelectedItem();
+
+         villeDC.removeAllItems();
+        // Ajouter l'élément sélectionné en premier dans la combobox
+        villeDC.addItem(selectedMatricule);
+
+        // Ajouter les autres éléments normaux à partir de la liste
+        while (rs.next()) {
+            String matricule = rs.getString("libVille");
+            if (!matricule.equals(selectedMatricule)) {
+                villeDC.addItem(matricule);
+            }
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
   public void DeplaceE() {
     try {
         int row = table4.getSelectedRow();
@@ -3074,7 +3925,7 @@ public void actualiseE(){
             matriculeE.removeAllItems();
             String mm = rs.getString("matVoiture");
             matriculeE.addItem(mm);
-            ComboboxMatriadd();
+            ComboboxMatriaddC();
             String a = rs.getString("compagni");
             compagniE.setText(a);
             String b = rs.getString("numero");
@@ -3089,6 +3940,64 @@ public void actualiseE(){
             coutE.setText(cout);
             String des = rs.getString("DescEntretien");
             DescriptionE.setText(des);
+            
+            
+            
+        }
+        ps.close();
+        rs.close();
+        
+    } catch (Exception e) {
+        System.out.println(e);
+    }}
+  public void DeplaceC() {
+    try {
+        int row = tableC1C.getSelectedRow();
+        this.test = (tableC1C.getModel().getValueAt(row, 1).toString());
+        String requet = "SELECT consommation.idCon as 'id',\n" +
+"       consommation.matVoiture as 'matricule',\n" +
+"       consommation.distances as 'distances',\n" +
+"       v1.libVille AS 'villeD',\n" +
+"       v2.libVille AS 'villeA',\n" +
+"       consommation.prixConso as 'prix',\n" +
+"       consommation.consoLittres as 'consoLittres',\n" +
+"       consommation.typePiste as 'typePiste',\n" +
+       "consommation.prxiUnitaire as 'prxiUnitaire'\n"+
+"FROM consommation\n" +
+"INNER JOIN ville v1 ON v1.idVille = consommation.villeDe\n" +
+"INNER JOIN ville v2 ON v2.idVille = consommation.villeAr\n" +
+"WHERE consommation.matVoiture = '" + test + "'";
+        ps = conn.prepareStatement(requet);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            // Actualiser les champs
+            matriculeC.removeAllItems();
+            villeAC.removeAllItems();
+            villeDC.removeAllItems();
+            marqueC.removeAllItems();
+            modeleC.removeAllItems();
+            typeCarbuC.removeAllItems();
+            
+            String mm = rs.getString("matricule");
+            matriculeC.addItem(mm);
+            ComboboxMatriaddC();
+            String a = rs.getString("villeD");
+            villeDC.addItem(a);
+            String b = rs.getString("villeA");
+            villeAC.addItem(b);
+            ComboboxVilleDAddC();
+            ComboboxVilleAAddC();
+            String c = rs.getString("distances");
+            distanceC.setText(c);
+            String mat = rs.getString("prix");
+            prixConsoC.setText(mat);
+            String kil = rs.getString("consoLittres");
+            consoLittreC.setText(kil);
+            String cout =rs.getString("typePiste");
+            etatPisteC.addItem(cout);
+            String pU = rs.getString("prxiUnitaire");
+            prixUniC.setText(pU);
             
             
             
@@ -3126,7 +4035,7 @@ public void actualiseE(){
             int idGamme = getIdFromDatabase("idGamme","gamme","libGamme",selectedGam);
             int idAss = getIdFromDatabase("idAss","assurance","compagnie",selectedAss);
             
-            String requete = "UPDATE `voiture` SET `matVoiture`=?,`nbrePlace`=?,`puissanceMax`=?,`idMarque`=?,`idModele`=?,`idGamme`=?,`idBoiteV`=?,`idCarburant`=?,`idTemperature`=?,`Date`=?,`photoV`=?,`idAss`=?,`kilometrage`=? ,`dateAchat`=?,`consoCarburant`=?,`prixLocation`=?,`anneeConception`=?,`couleur`=? WHERE matVoiture='"+test+"'";
+            String requete = "UPDATE `voiture` SET `matVoiture`=?,`nbrePlace`=?,`puissanceMax`=?,`idMarque`=?,`idModele`=?,`idGamme`=?,`idBoiteV`=?,`idCarburant`=?,`idTemperature`=?,`Date`=?,`photoV`=?,`idAss`=?,`kilometrage`=? ,`dateAchat`=?,`consoCarburant`=?,`prixLocation`=?,`anneeConception`=?,`couleur`=?, `CapaciteReservoir`=? WHERE matVoiture='"+test+"'";
             ps = conn.prepareStatement(requete);
             ps.setString(1, matricule2.getText());
             ps.setString(2, selectedPlace);
@@ -3148,6 +4057,7 @@ public void actualiseE(){
             ps.setString(16, prixLocation2.getText());
             ps.setInt(17, datAnnée2);
             ps.setString(18, selectedCouleur2);
+            ps.setString(19, capacitéReservoir2.getText());
             ps.execute();
 
             JOptionPane.showMessageDialog(null, "Modification réussi");
@@ -3302,6 +4212,173 @@ public void actualiseE(){
         // TODO add your handling code here:
     }//GEN-LAST:event_couleur2ActionPerformed
 
+    private void textPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textPhotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textPhotoActionPerformed
+
+    private void capacitéReservoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacitéReservoirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capacitéReservoirActionPerformed
+
+    private void capacitéReservoir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capacitéReservoir2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capacitéReservoir2ActionPerformed
+
+    private void ajouter3CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouter3CActionPerformed
+        String selectedMat = (String) matriculeC.getSelectedItem();
+        String selectedVilleA = (String) villeAC.getSelectedItem();
+        String selectedVilleD = (String) villeDC.getSelectedItem();
+        String selectedPiste = (String) etatPisteC.getSelectedItem();
+        int idVilleA = getIdVilleC(selectedVilleA);
+        int idVilleD = getIdVilleC(selectedVilleD);
+        String requette = "INSERT INTO `consommation`(`villeDe`, `villeAr`, `distances`, `matVoiture`, `prixConso`, `consoLittres`, `typePiste`, prxiUnitaire) VALUES (?,?,?,?,?,?,?,?)";
+        try {
+            ps = conn.prepareStatement(requette);
+            ps.setInt(1, idVilleD);
+            ps.setInt(2, idVilleA);
+            ps.setString(3, distanceC.getText());
+            ps.setString(4,selectedMat);
+            ps.setString(5,prixConsoC.getText());
+            ps.setString(6,consoLittreC.getText());
+            ps.setString(7, selectedPiste);
+            ps.setString(8, prixUniC.getText());
+            ps.execute();
+       
+
+            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableauC();
+            effaceC();
+
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_ajouter3CActionPerformed
+
+    private void modifbtn4CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn4CActionPerformed
+        
+        String selectedMat = (String) matriculeC.getSelectedItem();
+        String selectedVilleA = (String) villeAC.getSelectedItem();
+        String selectedVilleD = (String) villeDC.getSelectedItem();
+        String selectedPiste = (String) etatPisteC.getSelectedItem();
+        int idVilleA = getIdVilleC(selectedVilleA);
+        int idVilleD = getIdVilleC(selectedVilleD);
+        String requette = "UPDATE `consommation` SET `villeDe`=?,`villeAr`=?,`distances`=?,`matVoiture`=?,`prixConso`=?,`consoLittres`=?,`typePiste`=? ,prxiUnitaire=? WHERE `matVoiture`='"+test+"'";
+        try {
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez modifier une consommation ,est ce que tu es sur?",
+                    "modiffier consommation", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+            ps = conn.prepareStatement(requette);
+            ps.setInt(1, idVilleD);
+            ps.setInt(2, idVilleA);
+            ps.setString(3, distanceC.getText());
+            ps.setString(4,selectedMat);
+            ps.setString(5,prixConsoC.getText());
+            ps.setString(6,consoLittreC.getText());
+            ps.setString(7, selectedPiste);
+            ps.setString(8, prixUniC.getText());
+            ps.execute();
+       
+
+            JOptionPane.showMessageDialog(null, "Enregistrement réussi");
+            ps.close();
+
+            // Actualiser la table
+            AfficheTableauC();
+            effaceC();
+            }
+        } catch (HeadlessException | SQLException e) {
+            System.out.println("--> SQLException : " + e);
+            JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires");
+        }
+    }//GEN-LAST:event_modifbtn4CActionPerformed
+
+    private void supprbtn4CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprbtn4CActionPerformed
+        try {
+            if (JOptionPane.showConfirmDialog(null, "attention vous devez suprimer une consommation,est ce que tu es sur?",
+                    "Supprimer consommation", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+
+                String requete = "DELETE FROM `consommation` WHERE `matVoiture` = '" + test + "'";
+                ps = conn.prepareStatement(requete);
+
+                ps.execute();
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "erreur de supprimer \n" + e.getMessage());
+        }
+         actualiseC();
+    }//GEN-LAST:event_supprbtn4CActionPerformed
+
+    private void recher4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4MouseClicked
+
+    private void recher4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recher4MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4MouseReleased
+
+    private void recher4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recher4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recher4ActionPerformed
+
+    private void tableC1CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableC1CMouseClicked
+        DeplaceC();
+    }//GEN-LAST:event_tableC1CMouseClicked
+
+    private void tableC1CMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableC1CMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableC1CMouseReleased
+
+    private void tableC1CKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableC1CKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableC1CKeyReleased
+
+    private void jButton3CActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3CActionPerformed
+        prixConsoC.setText("");
+        consoLittreC.setText("");
+        String distanceParcourue = distanceC.getText();
+        double D = Double.parseDouble(distanceParcourue);
+
+        double C,A;
+        String selectedOption = (String) etatPisteC.getSelectedItem();
+
+        if (selectedOption.equals("Goudronnée")) {
+            String consoGoudronnee = consommationC.getText();
+            C = Double.parseDouble(consoGoudronnee);
+        } else {
+            String consoNonGoudronnee = consommationC.getText();
+            A = Double.parseDouble(consoNonGoudronnee);
+            C = A+(A*(20/100));
+        }
+
+        double res = (D * C) / 100;
+        String ConsoLitre = String.valueOf(res);
+        consoLittreC.setText(ConsoLitre);
+
+        //Calcule du prix
+        String consoLitres = consoLittreC.getText();
+        double quantiteCarburant = Double.parseDouble(consoLitres);
+
+        String prixCarburantStr = prixUniC.getText(); // Remplacez prixCarburant par le JTextField correspondant au prix du carburant
+        double prixCarburant = Double.parseDouble(prixCarburantStr);
+
+        double prix = quantiteCarburant * prixCarburant;
+        String prixTotal = String.valueOf(prix);
+        prixConsoC.setText(prixTotal);
+    }//GEN-LAST:event_jButton3CActionPerformed
+
+    private void matriculeCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_matriculeCMouseClicked
+
+    }//GEN-LAST:event_matriculeCMouseClicked
+
+    private void matriculeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matriculeCActionPerformed
+        AfficherInfosVoitureC();
+    }//GEN-LAST:event_matriculeCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3350,16 +4427,21 @@ public void actualiseE(){
     private javax.swing.JTextField VitesseMax2;
     private javax.swing.JButton ajouter;
     private javax.swing.JButton ajouter2;
+    private javax.swing.JButton ajouter3C;
     private javax.swing.JButton ajouterAssurance;
     private javax.swing.JTabbedPane ajouterVoiture;
     private javax.swing.JComboBox<String> assurance1;
     private javax.swing.JComboBox<String> assurance2;
+    private javax.swing.JTextField capacitéReservoir;
+    private javax.swing.JTextField capacitéReservoir2;
     private javax.swing.JComboBox<String> carburant1;
     private javax.swing.JComboBox<String> carburant2;
     private javax.swing.JTextField comp;
     private javax.swing.JTextField compagniE;
     private javax.swing.JTextField consoCarburant;
     private javax.swing.JTextField consoCarburant2;
+    private javax.swing.JLabel consoLittreC;
+    private javax.swing.JTextField consommationC;
     private javax.swing.JTextField contact;
     private javax.swing.JComboBox<String> couleur;
     private javax.swing.JComboBox<String> couleur2;
@@ -3371,6 +4453,8 @@ public void actualiseE(){
     private com.toedter.calendar.JDateChooser dateE;
     private com.toedter.calendar.JDateChooser dateExpi;
     private com.toedter.calendar.JDateChooser dateProch;
+    private javax.swing.JTextField distanceC;
+    private javax.swing.JComboBox<String> etatPisteC;
     private javax.swing.JComboBox<String> gam1;
     private javax.swing.JComboBox<String> gam2;
     private javax.swing.JLabel imagePhoto1;
@@ -3380,8 +4464,10 @@ public void actualiseE(){
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton3C;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -3442,8 +4528,27 @@ public void actualiseE(){
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -3458,6 +4563,9 @@ public void actualiseE(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
@@ -3467,18 +4575,26 @@ public void actualiseE(){
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTextField kilometrage1;
     private javax.swing.JTextField kilometrage2;
+    private javax.swing.JTextField kilometrageC;
     private javax.swing.JTextField kilometrageE;
+    private javax.swing.JLabel labDate;
+    private javax.swing.JLabel labdate2;
     private javax.swing.JComboBox<String> marque1;
     private javax.swing.JComboBox<String> marque2;
+    private javax.swing.JComboBox<String> marqueC;
     private javax.swing.JTextField matricule1;
     private javax.swing.JTextField matricule2;
+    private javax.swing.JComboBox<String> matriculeC;
     private javax.swing.JComboBox<String> matriculeE;
     private javax.swing.JComboBox<String> modele1;
     private javax.swing.JComboBox<String> modele2;
+    private javax.swing.JComboBox<String> modeleC;
     private javax.swing.JButton modifbtn;
     private javax.swing.JButton modifbtn2;
+    private javax.swing.JButton modifbtn4C;
     private javax.swing.JButton modifierAssurance;
     private javax.swing.JTextField montant;
     private javax.swing.JComboBox<String> nombrePlace1;
@@ -3486,23 +4602,32 @@ public void actualiseE(){
     private javax.swing.JTextField numP;
     private javax.swing.JTextField numéroE;
     private javax.swing.JLabel photoPP;
+    private javax.swing.JLabel photoPP1C;
+    private javax.swing.JLabel prixConsoC;
     private javax.swing.JTextField prixLocation;
     private javax.swing.JTextField prixLocation2;
+    private javax.swing.JTextField prixUniC;
     private javax.swing.JTextField rech;
     private javax.swing.JTextField recher;
     private javax.swing.JTextField recher1;
     private javax.swing.JTextField recher2;
+    private javax.swing.JTextField recher4;
     private javax.swing.JButton supprbtn;
     private javax.swing.JButton supprbtn2;
+    private javax.swing.JButton supprbtn4C;
     private javax.swing.JButton supprimerAssurance;
     private javax.swing.JTable table1;
     private javax.swing.JTable table2;
     private javax.swing.JTable table4;
     private javax.swing.JTable tableAss;
+    private javax.swing.JTable tableC1C;
     private javax.swing.JTextField testesIma;
     private javax.swing.JTextField textPath1;
     private javax.swing.JTextField textPhoto;
     private javax.swing.JComboBox<String> typeAss;
+    private javax.swing.JComboBox<String> typeCarbuC;
+    private javax.swing.JComboBox<String> villeAC;
+    private javax.swing.JComboBox<String> villeDC;
     // End of variables declaration//GEN-END:variables
 }
 /*nomCh
