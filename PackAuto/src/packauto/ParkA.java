@@ -59,6 +59,7 @@ public class ParkA extends javax.swing.JFrame {
         ComboboxMatri();
         ComboboxMatriadd();
         ComboboxAssu();
+        ComboboxAssaAdd();
         efface();
         add2();
         datecouranteC();
@@ -284,6 +285,8 @@ public class ParkA extends javax.swing.JFrame {
         etatPisteC = new javax.swing.JComboBox<>();
         jLabel96 = new javax.swing.JLabel();
         kilometrageC = new javax.swing.JTextField();
+        jLabel97 = new javax.swing.JLabel();
+        kilometrageC1 = new javax.swing.JTextField();
         labDate = new javax.swing.JLabel();
         labdate2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -1719,24 +1722,25 @@ public class ParkA extends javax.swing.JFrame {
                                     .addGroup(jPanel21Layout.createSequentialGroup()
                                         .addComponent(coutE, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel21Layout.createSequentialGroup()
-                                        .addGap(78, 78, 78)
-                                        .addComponent(imgPathE, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel21Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(jLabel39)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(compagniE, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel50)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel43)
-                                .addGap(154, 154, 154))))
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel21Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jLabel50))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel43)
+                                        .addGap(155, 155, 155))))))
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(imgPathE, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(26, 26, 26))
         );
@@ -1745,47 +1749,48 @@ public class ParkA extends javax.swing.JFrame {
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel40)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel41)
-                    .addComponent(jLabel39)
-                    .addComponent(matriculeE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel50)
-                    .addComponent(jLabel43)
-                    .addComponent(compagniE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel43))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(imgPathE, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel21Layout.createSequentialGroup()
                                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel36)
-                                    .addComponent(jLabel37)
-                                    .addComponent(numéroE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(kilometrageE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel41)
+                                    .addComponent(jLabel39)
+                                    .addComponent(matriculeE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel50)
+                                    .addComponent(compagniE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(5, 5, 5)
                                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel21Layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addComponent(jLabel42))
+                                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel36)
+                                            .addComponent(jLabel37)
+                                            .addComponent(numéroE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(kilometrageE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                                .addGap(16, 16, 16)
+                                                .addComponent(jLabel42))
+                                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(dateE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGroup(jPanel21Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(dateE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(dateProch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel45)
-                                    .addComponent(coutE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(imgPathE, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                                        .addComponent(dateProch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(5, 5, 5)
+                                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel45)
+                                            .addComponent(coutE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(11, 11, 11)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(10, 10, 10))
         );
 
         ajouter2.setBackground(new java.awt.Color(255, 255, 255));
@@ -2066,6 +2071,9 @@ public class ParkA extends javax.swing.JFrame {
         jLabel96.setForeground(new java.awt.Color(102, 0, 0));
         jLabel96.setText("Kilometrage :");
 
+        jLabel97.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel97.setText("Numéro de la location :");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -2117,14 +2125,9 @@ public class ParkA extends javax.swing.JFrame {
                                     .addComponent(matriculeC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel94)
-                                        .addGap(109, 109, 109))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(138, 138, 138))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                                .addComponent(jLabel94)
+                                .addGap(109, 109, 109))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -2137,23 +2140,27 @@ public class ParkA extends javax.swing.JFrame {
                                             .addComponent(marqueC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(typeCarbuC, 0, 127, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                                .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(etatPisteC, 0, 112, Short.MAX_VALUE))
-                                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                                .addComponent(jLabel89)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(kilometrageC)
-                                                    .addComponent(modeleC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                        .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(etatPisteC, 0, 112, Short.MAX_VALUE))
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel93)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton3C)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(kilometrageC1))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(227, 227, 227)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel89)
+                                            .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(kilometrageC)
+                                            .addComponent(modeleC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addContainerGap())))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2210,7 +2217,7 @@ public class ParkA extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jButton3C)
                                     .addComponent(jLabel93))
@@ -2220,6 +2227,10 @@ public class ParkA extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(kilometrageC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel96))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(kilometrageC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel97))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jLabel94)
                         .addGap(3, 3, 3)))
@@ -3168,6 +3179,7 @@ gam2.addActionListener(new ActionListener() {
             modele2.addItem(t11);
             String t13 = rs.getString("compagnie");
             assurance2.addItem(t13);
+            ComboboxAssaAdd();
             String t12 = rs.getString("kilometrage");
             kilometrage2.setText(t12);
             String t14 = rs.getString("consoCarburant");
@@ -3414,7 +3426,7 @@ gam2.addActionListener(new ActionListener() {
     }//GEN-LAST:event_table1MouseClicked
 
     private void assurance2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assurance2ActionPerformed
-        ComboboxAssu();        
+             
     }//GEN-LAST:event_assurance2ActionPerformed
 
     private void table2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table2KeyReleased
@@ -3633,7 +3645,8 @@ gam2.addActionListener(new ActionListener() {
     }//GEN-LAST:event_supprimerAssuranceActionPerformed
 
     private void assurance1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assurance1ActionPerformed
-        ComboboxAssu();
+       
+        
     }//GEN-LAST:event_assurance1ActionPerformed
 
     private void gam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gam2ActionPerformed
@@ -3813,6 +3826,31 @@ public void ComboboxMatriadd() {
         e.printStackTrace();
     }
 }
+public void ComboboxAssaAdd() {
+    try {
+        String sql = "SELECT compagnie FROM assurance";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        String selectedMatricule = (String) assurance2.getSelectedItem();
+
+         assurance2.removeAllItems();
+        // Ajouter l'élément sélectionné en premier dans la combobox
+        assurance2.addItem(selectedMatricule);
+
+        // Ajouter les autres éléments normaux à partir de la liste
+        while (rs.next()) {
+            String matricule = rs.getString("compagnie");
+            if (!matricule.equals(selectedMatricule)) {
+                assurance2.addItem(matricule);
+            }
+        }
+        rs.close();
+        ps.close();
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
 public void actualiseE(){
     try {
 
@@ -3925,7 +3963,7 @@ public void ComboboxVilleDAddC() {
             matriculeE.removeAllItems();
             String mm = rs.getString("matVoiture");
             matriculeE.addItem(mm);
-            ComboboxMatriaddC();
+            ComboboxMatriadd();
             String a = rs.getString("compagni");
             compagniE.setText(a);
             String b = rs.getString("numero");
@@ -3940,7 +3978,16 @@ public void ComboboxVilleDAddC() {
             coutE.setText(cout);
             String des = rs.getString("DescEntretien");
             DescriptionE.setText(des);
-            
+            String lienPhoto = rs.getString("photoV");
+            ImageIcon imageIcon = new ImageIcon(lienPhoto);
+
+            // Redimensionner l'image à la taille souhaitée (307x170 pixels)
+            Image image = imageIcon.getImage();
+            Image imageRedimensionnee = image.getScaledInstance(307, 170, Image.SCALE_SMOOTH);
+
+            // Créer un nouvel ImageIcon avec l'image redimensionnée
+            ImageIcon imageIconRedimensionnee = new ImageIcon(imageRedimensionnee);
+            imgPathE.setIcon(imageIconRedimensionnee);
             
             
         }
@@ -4122,7 +4169,6 @@ public void ComboboxVilleDAddC() {
         String matriculeSelected = (String) matriculeE.getSelectedItem();
         afficherImageVoiture(matriculeSelected);
         
-        ComboboxMatri();
     }//GEN-LAST:event_matriculeEActionPerformed
 
     private void modifbtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifbtn2ActionPerformed
@@ -4549,6 +4595,7 @@ public void ComboboxVilleDAddC() {
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -4579,6 +4626,7 @@ public void ComboboxVilleDAddC() {
     private javax.swing.JTextField kilometrage1;
     private javax.swing.JTextField kilometrage2;
     private javax.swing.JTextField kilometrageC;
+    private javax.swing.JTextField kilometrageC1;
     private javax.swing.JTextField kilometrageE;
     private javax.swing.JLabel labDate;
     private javax.swing.JLabel labdate2;
