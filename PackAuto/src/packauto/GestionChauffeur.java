@@ -174,7 +174,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1281, 563));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1281, 563));
 
@@ -556,7 +555,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
                                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(villeC, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(emailC, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))))
-                                .addGap(18, 18, 18)
                                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel58)
                                     .addGroup(jPanel15Layout.createSequentialGroup()
@@ -939,7 +937,6 @@ public class GestionChauffeur extends javax.swing.JFrame {
 
         note.setFont(new java.awt.Font("Perpetua Titling MT", 1, 48)); // NOI18N
         note.setForeground(new java.awt.Color(255, 255, 255));
-        note.setText("1234");
         note.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel76.setForeground(new java.awt.Color(255, 255, 255));
@@ -1032,23 +1029,26 @@ public class GestionChauffeur extends javax.swing.JFrame {
                                                     .addComponent(villeD, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(villeA, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addComponent(jScrollPane8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel16Layout.createSequentialGroup()
-                                .addComponent(note, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel16Layout.createSequentialGroup()
+                                        .addComponent(note, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addContainerGap())
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(15, 15, 15))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                                        .addComponent(jLabel75)
-                                        .addGap(108, 108, 108))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addGap(113, 113, 113))))))))
+                                        .addGap(0, 17, Short.MAX_VALUE)
+                                        .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(15, 15, 15))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                                                .addComponent(jLabel75)
+                                                .addGap(108, 108, 108))))))
+                            .addGroup(jPanel16Layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(jButton3)
+                                .addGap(0, 0, Short.MAX_VALUE))))))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1956,8 +1956,8 @@ public class GestionChauffeur extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         note.setText("");
-        double moyenneGenerale = calculerMoyenneGenerale(); // Utilisez votre méthode pour obtenir la moyenne
-        note.setText("Note: " + moyenneGenerale);
+double moyenneGenerale = calculerMoyenneGenerale();
+note.setText(String.valueOf(moyenneGenerale));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void itinéraireActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itinéraireActionPerformed
